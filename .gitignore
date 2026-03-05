@@ -1,0 +1,6 @@
+.venv/
+.skill-venv/
+research/javascript-skills/raw/
+research/javascript-skills/upstream/
+research/javascript-skills/extracted/
+.DS_Store
