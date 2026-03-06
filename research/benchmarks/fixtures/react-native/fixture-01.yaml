@@ -1,0 +1,36 @@
+id: rn-01
+category: render-performance
+description: inline style objects and anonymous functions recreated on every render
+code: |
+  function ProductCard({ product, onAddToCart }) {
+    return (
+      <View style={{ flex: 1, padding: 16, backgroundColor: '#fff' }}>
+        <Image
+          source={{ uri: product.imageUrl }}
+          style={{ width: 200, height: 200 }}
+        />
+        <TouchableOpacity
+          onPress={() => onAddToCart(product.id)}
+          style={{ backgroundColor: '#007AFF', padding: 12 }}
+        >
+          <Text>Add to Cart</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: render-performance
+    description: "inline style objects create new object references on every render; FlatList/memo optimization is fully defeated because style props never shallowEqual"
+    evidence: "style={{ flex: 1, padding: 16, backgroundColor: '#fff' }}"
+    expected_checks: [render-performance, native-styling]
+  - severity: MAJOR
+    category: render-performance
+    description: "anonymous arrow function in onPress recreates on every render; if ProductCard is used in a FlatList, every item re-renders on any parent state change"
+    evidence: "onPress={() => onAddToCart(product.id)}"
+    expected_checks: [render-performance]
+  - severity: MINOR
+    category: render-performance
+    description: "Image has no resizeMode; default 'cover' may not match container; no loading/error placeholder"
+    evidence: "style={{ width: 200, height: 200 }}"
+    expected_checks: [native-styling]

@@ -1,0 +1,34 @@
+id: next-08
+category: app-router-conventions
+description: incorrect metadata API and missing generateStaticParams safety bounds
+code: |
+  // app/blog/[slug]/page.tsx
+  export const metadata = { // static, not dynamic
+    title: 'Blog Post',
+  };
+
+  export async function generateStaticParams() {
+    const posts = await db.post.findMany(); // no limit
+    return posts.map(p => ({ slug: p.slug }));
+  }
+
+  export default async function BlogPost({ params }) {
+    const post = await db.post.findUnique({ where: { slug: params.slug } });
+    return <article>{post.content}</article>; // no null check
+  }
+issues:
+  - severity: MAJOR
+    category: app-router-conventions
+    description: "metadata exported as a plain object instead of generateMetadata(); post-specific title/og tags (title, description, og:image) cannot be set dynamically"
+    evidence: "export const metadata = { title: 'Blog Post' };"
+    expected_checks: [app-router-conventions]
+  - severity: MAJOR
+    category: app-router-conventions
+    description: "generateStaticParams fetches all posts with no limit; at scale this causes build-time OOM and multi-hour static generation"
+    evidence: "const posts = await db.post.findMany(); // no limit"
+    expected_checks: [app-router-conventions, operability]
+  - severity: MINOR
+    category: operability
+    description: "no null check on post before rendering; if slug doesn't exist, post.content throws TypeError; should call notFound()"
+    evidence: "return <article>{post.content}</article>; // no null check"
+    expected_checks: [operability]

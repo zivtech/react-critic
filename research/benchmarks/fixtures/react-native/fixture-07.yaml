@@ -1,0 +1,27 @@
+id: rn-07
+category: hermes-compatibility
+description: optional chaining and nullish coalescing used without Hermes version guard
+code: |
+  // package.json: "react-native": "0.66.0", "hermes-engine": "0.9.0"
+  function UserAvatar({ user }) {
+    const displayName = user?.profile?.displayName ?? user?.email ?? 'Guest';
+    const avatarUri = user?.avatar?.['200x200']?.url;
+
+    return (
+      <View>
+        <Image source={{ uri: avatarUri }} />
+        <Text>{displayName}</Text>
+      </View>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: hermes-compatibility
+    description: "Hermes 0.9.0 (bundled with RN 0.66) has partial optional chaining support; chained bracket notation user?.avatar?.['200x200']?.url may throw on Android Hermes but pass on iOS JSC"
+    evidence: "const avatarUri = user?.avatar?.['200x200']?.url;"
+    expected_checks: [hermes-compatibility, upgrade-safety]
+  - severity: MINOR
+    category: operability
+    description: "Image with undefined uri source renders broken image icon instead of placeholder; no fallback source or error handler"
+    evidence: "<Image source={{ uri: avatarUri }} />"
+    expected_checks: [operability]

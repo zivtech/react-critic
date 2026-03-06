@@ -1,0 +1,34 @@
+id: next-07
+category: upgrade-safety
+description: Pages Router patterns used in App Router without migration
+code: |
+  // app/shop/[id]/page.tsx  (App Router file)
+  import { useRouter } from 'next/router'; // Pages Router import
+
+  export default function ShopPage({ params }) {
+    const router = useRouter();
+
+    const handleBack = () => router.back();
+
+    return (
+      <div>
+        <button onClick={handleBack}>Back</button>
+        <Product id={params.id} />
+      </div>
+    );
+  }
+
+  export async function getServerSideProps(ctx) { // Pages Router API
+    return { props: { id: ctx.params.id } };
+  }
+issues:
+  - severity: CRITICAL
+    category: upgrade-safety
+    description: "next/router is the Pages Router hook; App Router requires next/navigation (useRouter from next/navigation); will throw at runtime"
+    evidence: "import { useRouter } from 'next/router';"
+    expected_checks: [upgrade-safety, app-router-conventions]
+  - severity: CRITICAL
+    category: upgrade-safety
+    description: "getServerSideProps is a Pages Router API; App Router ignores it silently; params are already available via the page's props in App Router"
+    evidence: "export async function getServerSideProps(ctx) {"
+    expected_checks: [upgrade-safety, app-router-conventions]

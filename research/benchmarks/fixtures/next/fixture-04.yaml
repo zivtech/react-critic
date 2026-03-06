@@ -1,0 +1,32 @@
+id: next-04
+category: route-handler-safety
+description: route handler leaking internal error details and missing rate limiting
+code: |
+  // app/api/auth/reset-password/route.ts
+  export async function POST(request: Request) {
+    const { email } = await request.json();
+    try {
+      const user = await db.user.findUnique({ where: { email } });
+      if (!user) throw new Error(`No user found with email: ${email}`);
+      await sendResetEmail(user);
+      return Response.json({ success: true });
+    } catch (e) {
+      return Response.json({ error: e.message }, { status: 500 });
+    }
+  }
+issues:
+  - severity: CRITICAL
+    category: route-handler-safety
+    description: "error message echoes back whether a user email exists; enables user enumeration: attackers can discover registered emails by probing error responses"
+    evidence: "throw new Error(`No user found with email: ${email}`);"
+    expected_checks: [route-handler-safety, security]
+  - severity: MAJOR
+    category: route-handler-safety
+    description: "no rate limiting: endpoint accepts unlimited reset requests, enabling email spam and account lockout attacks"
+    evidence: "export async function POST(request: Request) {"
+    expected_checks: [route-handler-safety, security]
+  - severity: MAJOR
+    category: route-handler-safety
+    description: "e.message returned verbatim to client may expose internal stack traces or database error details"
+    evidence: "return Response.json({ error: e.message }, { status: 500 });"
+    expected_checks: [route-handler-safety, security]

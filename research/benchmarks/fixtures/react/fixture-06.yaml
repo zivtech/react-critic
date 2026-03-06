@@ -1,0 +1,29 @@
+id: react-06
+category: state-ownership
+description: context misuse causing full-tree re-render on any change
+code: |
+  const AppContext = createContext();
+
+  function AppProvider({ children }) {
+    const [user, setUser] = useState(null);
+    const [theme, setTheme] = useState('light');
+    const [cart, setCart] = useState([]);
+    const [notifications, setNotifications] = useState([]);
+
+    return (
+      <AppContext.Provider value={{ user, setUser, theme, setTheme, cart, setCart, notifications, setNotifications }}>
+        {children}
+      </AppContext.Provider>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: state-ownership
+    description: "single context value object is recreated on every state change; all consumers re-render when any slice changes (e.g., notification push re-renders cart checkout)"
+    evidence: "value={{ user, setUser, theme, setTheme, cart, setCart, notifications, setNotifications }}"
+    expected_checks: [state-ownership, render-behavior]
+  - severity: MINOR
+    category: state-ownership
+    description: "unrelated concerns (auth, theme, cart, notifications) colocated in one provider; should be split into separate contexts"
+    evidence: "const [user, setUser] = useState(null); const [theme..."
+    expected_checks: [state-ownership]

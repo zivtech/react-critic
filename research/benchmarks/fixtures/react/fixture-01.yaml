@@ -1,0 +1,32 @@
+id: react-01
+category: hook-correctness
+description: stale closure in useEffect with missing dependency array
+code: |
+  function SearchResults({ query }) {
+    const [results, setResults] = useState([]);
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+      fetch(`/api/search?q=${query}&page=${page}`)
+        .then(r => r.json())
+        .then(data => setResults(prev => [...prev, ...data]));
+    }, [query]); // page is missing from deps
+
+    return <div>{results.map(r => <div key={r.id}>{r.title}</div>)}</div>;
+  }
+issues:
+  - severity: MAJOR
+    category: hook-correctness
+    description: "page missing from useEffect dependency array causes stale closure; changing page silently fetches with wrong value"
+    evidence: "}, [query]); // page is missing from deps"
+    expected_checks: [hook-correctness, async-correctness]
+  - severity: MAJOR
+    category: async-correctness
+    description: "no cancellation/teardown: concurrent fetches race and stale responses overwrite newer ones"
+    evidence: "fetch(`/api/search?...`).then(r => r.json()).then(data => setResults"
+    expected_checks: [async-correctness]
+  - severity: MINOR
+    category: render-behavior
+    description: "results array grows unboundedly on re-render without reset on query change"
+    evidence: "setResults(prev => [...prev, ...data])"
+    expected_checks: [state-ownership, render-behavior]

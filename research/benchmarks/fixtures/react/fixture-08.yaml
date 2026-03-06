@@ -1,0 +1,33 @@
+id: react-08
+category: operability
+description: error boundary missing from async data path with no loading state
+code: |
+  function Dashboard() {
+    const data = useSuspenseQuery({ queryKey: ['dashboard'], queryFn: fetchDashboard });
+    return (
+      <div>
+        <RevenueChart data={data.revenue} />
+        <OrderTable orders={data.orders} />
+        <UserMetrics metrics={data.metrics} />
+      </div>
+    );
+  }
+
+  function App() {
+    return (
+      <Suspense fallback={<Skeleton />}>
+        <Dashboard />
+      </Suspense>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: operability
+    description: "no ErrorBoundary wrapping the Suspense; fetch errors propagate to root React error handler, crashing the full app instead of showing an inline error state"
+    evidence: "<Suspense fallback={<Skeleton />}><Dashboard /></Suspense>"
+    expected_checks: [operability]
+  - severity: MINOR
+    category: operability
+    description: "no stale-while-revalidate or retry config on useSuspenseQuery; transient API errors immediately suspend with no retry"
+    evidence: "queryFn: fetchDashboard"
+    expected_checks: [operability, async-correctness]

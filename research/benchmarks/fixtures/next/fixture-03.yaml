@@ -1,0 +1,33 @@
+id: next-03
+category: server-actions-safety
+description: server action with no input validation or CSRF protection
+code: |
+  // app/actions/updateProfile.ts
+  'use server';
+
+  export async function updateProfile(formData: FormData) {
+    const userId = formData.get('userId') as string;
+    const bio = formData.get('bio') as string;
+    const role = formData.get('role') as string; // should never come from user
+
+    await db.user.update({
+      where: { id: userId },
+      data: { bio, role }, // role written directly from form input
+    });
+  }
+issues:
+  - severity: CRITICAL
+    category: server-actions-safety
+    description: "role is written directly from form input with no authorization check; any user can elevate their own role to admin"
+    evidence: "const role = formData.get('role') as string; ... data: { bio, role }"
+    expected_checks: [server-actions-safety, security]
+  - severity: CRITICAL
+    category: server-actions-safety
+    description: "no session/auth check: any unauthenticated caller can update any user's profile by supplying an arbitrary userId"
+    evidence: "const userId = formData.get('userId') as string;"
+    expected_checks: [server-actions-safety, security]
+  - severity: MAJOR
+    category: server-actions-safety
+    description: "no input validation or sanitization on bio; stored XSS if bio is rendered with dangerouslySetInnerHTML elsewhere"
+    evidence: "const bio = formData.get('bio') as string;"
+    expected_checks: [server-actions-safety, security]

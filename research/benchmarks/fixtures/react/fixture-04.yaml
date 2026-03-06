@@ -1,0 +1,26 @@
+id: react-04
+category: security
+description: XSS via dangerouslySetInnerHTML with unescaped user input
+code: |
+  function CommentBody({ comment }) {
+    // "safe" because we strip <script> tags
+    const sanitized = comment.body.replace(/<script[^>]*>.*?<\/script>/gi, '');
+
+    return (
+      <div
+        className="comment-body"
+        dangerouslySetInnerHTML={{ __html: sanitized }}
+      />
+    );
+  }
+issues:
+  - severity: CRITICAL
+    category: security
+    description: "regex strip does not prevent XSS: <img src=x onerror=alert(1)>, <svg onload=...>, <a href=javascript:...> all survive; sanitization must use a library (DOMPurify) not homebrew regex"
+    evidence: "const sanitized = comment.body.replace(/<script[^>]*>.*?<\\/script>/gi, '');"
+    expected_checks: [security, operability]
+  - severity: MAJOR
+    category: security
+    description: "dangerouslySetInnerHTML with any user-supplied content requires a vetted HTML sanitizer, not string replacement"
+    evidence: "dangerouslySetInnerHTML={{ __html: sanitized }}"
+    expected_checks: [security]

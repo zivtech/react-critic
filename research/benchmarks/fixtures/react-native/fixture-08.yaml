@@ -1,0 +1,33 @@
+id: rn-08
+category: release-safety
+description: over-the-air update with no version gate or rollback strategy
+code: |
+  // App.tsx
+  import * as Updates from 'expo-updates';
+
+  useEffect(() => {
+    async function checkUpdate() {
+      const update = await Updates.checkForUpdateAsync();
+      if (update.isAvailable) {
+        await Updates.fetchUpdateAsync();
+        await Updates.reloadAsync(); // immediate reload, no user prompt
+      }
+    }
+    checkUpdate();
+  }, []);
+issues:
+  - severity: MAJOR
+    category: release-safety
+    description: "OTA update reloads the app immediately without user consent; if update introduces a crash, users are forced into a broken state with no rollback path"
+    evidence: "await Updates.reloadAsync(); // immediate reload, no user prompt"
+    expected_checks: [release-safety, operability]
+  - severity: MAJOR
+    category: release-safety
+    description: "no minimum app version check before applying OTA update; update might target a different native binary version and cause incompatibility crashes"
+    evidence: "const update = await Updates.checkForUpdateAsync();"
+    expected_checks: [release-safety, upgrade-safety]
+  - severity: MINOR
+    category: operability
+    description: "no error handling on checkForUpdateAsync/fetchUpdateAsync; network errors during update check throw and crash the app on startup"
+    evidence: "const update = await Updates.checkForUpdateAsync();"
+    expected_checks: [operability]

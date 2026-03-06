@@ -1,0 +1,31 @@
+id: react-03
+category: state-ownership
+description: direct state mutation and unsafe reducer pattern
+code: |
+  function useCart() {
+    const [items, setItems] = useState([]);
+
+    const addItem = (item) => {
+      items.push(item); // direct mutation
+      setItems(items);
+    };
+
+    const updateQty = (id, qty) => {
+      const found = items.find(i => i.id === id);
+      if (found) found.qty = qty; // mutates object in place
+      setItems([...items]);
+    };
+
+    return { items, addItem, updateQty };
+  }
+issues:
+  - severity: CRITICAL
+    category: state-ownership
+    description: "items.push(item) mutates state array in place; React bailout means re-renders are skipped unpredictably"
+    evidence: "items.push(item); // direct mutation"
+    expected_checks: [state-ownership]
+  - severity: MAJOR
+    category: state-ownership
+    description: "found.qty = qty mutates an object inside state; spread setItems([...items]) creates new array but keeps same object references; memoized children won't re-render"
+    evidence: "if (found) found.qty = qty; // mutates object in place"
+    expected_checks: [state-ownership, render-behavior]

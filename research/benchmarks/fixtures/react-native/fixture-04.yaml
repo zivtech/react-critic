@@ -1,0 +1,31 @@
+id: rn-04
+category: native-bridge
+description: synchronous native module call blocking JS thread
+code: |
+  function useDeviceInfo() {
+    const [info, setInfo] = useState({});
+
+    useEffect(() => {
+      // NativeModules.DeviceInfo.getInfo() is synchronous
+      const deviceInfo = NativeModules.DeviceInfo.getInfo();
+      setInfo(deviceInfo);
+    }, []);
+
+    return info;
+  }
+
+  function AppHeader() {
+    const info = useDeviceInfo();
+    return <View><Text>{info.model}</Text></View>;
+  }
+issues:
+  - severity: MAJOR
+    category: native-bridge
+    description: "NativeModules synchronous call blocks the JS thread; on startup this can cause frame drops and ANR on Android if the native implementation is slow"
+    evidence: "const deviceInfo = NativeModules.DeviceInfo.getInfo();"
+    expected_checks: [native-bridge, render-performance]
+  - severity: MINOR
+    category: native-bridge
+    description: "no error handling around NativeModules call; if the native module is unavailable (web target, storybook), throws uncaught TypeError"
+    evidence: "NativeModules.DeviceInfo.getInfo();"
+    expected_checks: [native-bridge, operability]

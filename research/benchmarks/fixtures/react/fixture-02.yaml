@@ -1,0 +1,38 @@
+id: react-02
+category: render-behavior
+description: expensive computation in render path without memoization
+code: |
+  function DataGrid({ rows, filters }) {
+    const visibleRows = rows.filter(r => {
+      return filters.every(f => {
+        const val = getNestedValue(r, f.path); // O(depth) traversal
+        return matchFilter(val, f); // regex compile on every call
+      });
+    });
+
+    return (
+      <table>
+        {visibleRows.map((row, i) => (
+          <tr key={i}>
+            {row.cells.map(c => <td>{c}</td>)}
+          </tr>
+        ))}
+      </table>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: render-behavior
+    description: "filter + nested traversal + regex compile runs synchronously on every render; O(rows × filters × depth) in the render path"
+    evidence: "const visibleRows = rows.filter(r => { return filters.every(f => {"
+    expected_checks: [render-behavior, hook-correctness]
+  - severity: MAJOR
+    category: render-behavior
+    description: "key=index on list items: row reorder causes full re-render and lost input state"
+    evidence: "<tr key={i}>"
+    expected_checks: [render-behavior]
+  - severity: MINOR
+    category: render-behavior
+    description: "no virtualization for potentially large row sets"
+    evidence: "{visibleRows.map((row, i) =>"
+    expected_checks: [render-behavior]

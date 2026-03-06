@@ -1,0 +1,38 @@
+id: react-05
+category: async-correctness
+description: waterfall data fetching and missing AbortController teardown
+code: |
+  function UserProfile({ userId }) {
+    const [user, setUser] = useState(null);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+      fetch(`/api/users/${userId}`)
+        .then(r => r.json())
+        .then(user => {
+          setUser(user);
+          return fetch(`/api/posts?author=${user.id}`); // waterfall
+        })
+        .then(r => r.json())
+        .then(setPosts);
+    }, [userId]);
+
+    if (!user) return <Spinner />;
+    return <div>{user.name}: {posts.length} posts</div>;
+  }
+issues:
+  - severity: MAJOR
+    category: async-correctness
+    description: "sequential fetches create a waterfall: posts request waits for user response; both requests could run in parallel with Promise.all"
+    evidence: "return fetch(`/api/posts?author=${user.id}`); // waterfall"
+    expected_checks: [async-correctness, render-behavior]
+  - severity: MAJOR
+    category: async-correctness
+    description: "no AbortController: if userId changes or component unmounts during fetch, stale setState calls fire on unmounted component"
+    evidence: ".then(r => r.json()).then(setPosts);"
+    expected_checks: [async-correctness, hook-correctness]
+  - severity: MINOR
+    category: operability
+    description: "no error handling: fetch rejections are silently swallowed, user sees infinite spinner"
+    evidence: ".then(r => r.json())"
+    expected_checks: [operability]

@@ -1,0 +1,31 @@
+id: next-06
+category: suspense-boundary
+description: missing Suspense boundary around async RSC in streaming layout
+code: |
+  // app/feed/page.tsx
+  export default async function FeedPage() {
+    return (
+      <main>
+        <Header />
+        <AsyncFeedItems />   {/* async RSC, no Suspense */}
+        <Recommendations />  {/* async RSC, no Suspense */}
+        <Footer />
+      </main>
+    );
+  }
+
+  async function AsyncFeedItems() {
+    const items = await db.feed.findMany({ take: 50 }); // slow query
+    return items.map(i => <FeedItem key={i.id} item={i} />);
+  }
+issues:
+  - severity: MAJOR
+    category: suspense-boundary
+    description: "no Suspense boundary around AsyncFeedItems; the slow db query blocks streaming of the entire page including Header and Footer"
+    evidence: "<AsyncFeedItems />   {/* async RSC, no Suspense */}"
+    expected_checks: [suspense-boundary, cache-correctness]
+  - severity: MINOR
+    category: cache-correctness
+    description: "db.feed.findMany with no cache directive; each request re-queries even for the same user; revalidate or React cache() should be applied"
+    evidence: "const items = await db.feed.findMany({ take: 50 });"
+    expected_checks: [cache-correctness]

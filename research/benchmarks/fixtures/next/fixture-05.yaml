@@ -1,0 +1,26 @@
+id: next-05
+category: runtime-choice
+description: edge runtime using Node.js-only APIs
+code: |
+  // app/api/pdf/route.ts
+  export const runtime = 'edge';
+
+  import { readFileSync } from 'fs'; // Node.js only
+  import path from 'path';
+
+  export async function GET() {
+    const template = readFileSync(path.join(process.cwd(), 'templates/invoice.pdf'));
+    const pdf = await generatePDF(template);
+    return new Response(pdf, { headers: { 'Content-Type': 'application/pdf' } });
+  }
+issues:
+  - severity: CRITICAL
+    category: runtime-choice
+    description: "runtime='edge' is incompatible with fs.readFileSync and path.join; these are Node.js APIs unavailable in the Edge Runtime; route will fail at deploy time"
+    evidence: "export const runtime = 'edge'; import { readFileSync } from 'fs';"
+    expected_checks: [runtime-choice]
+  - severity: MINOR
+    category: runtime-choice
+    description: "process.cwd() is also unavailable in Edge Runtime; file access patterns require Node.js runtime or static imports"
+    evidence: "path.join(process.cwd(), 'templates/invoice.pdf')"
+    expected_checks: [runtime-choice]

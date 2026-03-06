@@ -1,0 +1,64 @@
+version: 1
+generated_at: '2026-03-05T21:00:00Z'
+skills:
+- id: wshobson/agents/react-native-architecture
+  skills_url: https://skills.sh/wshobson/agents/react-native-architecture
+  repo_url: https://github.com/wshobson/agents
+  pinned_commit: ade0c7a211d04fa1354d10359737cace5c6fc5b0
+  categories:
+  - core-review
+  - proposal
+  - architecture
+  audiences_supported:
+  - executor
+  - stakeholder
+  - skeptic
+  priority: 92
+  status: active
+- id: dotneet/claude-code-marketplace/typescript-react-reviewer
+  skills_url: https://skills.sh/dotneet/claude-code-marketplace/typescript-react-reviewer
+  repo_url: https://github.com/dotneet/claude-code-marketplace
+  pinned_commit: 07fa7eac95c2323f73e5a8a961b70bb9e207f1d0
+  categories:
+  - proposal
+  - typescript
+  - api-design
+  audiences_supported:
+  - executor
+  - dx-maintainer
+  priority: 78
+  status: active
+- id: wshobson/agents/modern-javascript-patterns
+  skills_url: https://skills.sh/wshobson/agents/modern-javascript-patterns
+  repo_url: https://github.com/wshobson/agents
+  pinned_commit: ade0c7a211d04fa1354d10359737cace5c6fc5b0
+  categories:
+  - shared
+  - javascript
+  audiences_supported:
+  - executor
+  - skeptic
+  priority: 76
+  status: active
+- id: sickn33/antigravity-awesome-skills/api-security-best-practices
+  skills_url: https://skills.sh/sickn33/antigravity-awesome-skills/api-security-best-practices
+  repo_url: https://github.com/sickn33/antigravity-awesome-skills
+  pinned_commit: 60ed44edef8a3c6c53a0818fa06a9b987cc15fbd
+  categories:
+  - shared
+  - security
+  audiences_supported:
+  - security-engineer
+  priority: 72
+  status: active
+- id: wshobson/agents/javascript-testing-patterns
+  skills_url: https://skills.sh/wshobson/agents/javascript-testing-patterns
+  repo_url: https://github.com/wshobson/agents
+  pinned_commit: ade0c7a211d04fa1354d10359737cace5c6fc5b0
+  categories:
+  - shared
+  - testing
+  audiences_supported:
+  - executor
+  priority: 70
+  status: active

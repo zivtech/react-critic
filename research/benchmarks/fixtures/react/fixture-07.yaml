@@ -1,0 +1,39 @@
+id: react-07
+category: upgrade-safety
+description: class component using deprecated lifecycle in React 18 concurrent mode
+code: |
+  class DataLoader extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { data: null };
+    }
+
+    componentWillMount() { // deprecated
+      this.fetchData(this.props.url);
+    }
+
+    componentWillReceiveProps(nextProps) { // deprecated
+      if (nextProps.url !== this.props.url) {
+        this.fetchData(nextProps.url);
+      }
+    }
+
+    fetchData(url) {
+      fetch(url).then(r => r.json()).then(data => this.setState({ data }));
+    }
+
+    render() {
+      return this.state.data ? <Display data={this.state.data} /> : null;
+    }
+  }
+issues:
+  - severity: CRITICAL
+    category: upgrade-safety
+    description: "componentWillMount and componentWillReceiveProps are removed in React 18 strict mode concurrent renders; component will double-fire fetch and produce undefined behavior"
+    evidence: "componentWillMount() { // deprecated"
+    expected_checks: [upgrade-safety, async-correctness]
+  - severity: MAJOR
+    category: async-correctness
+    description: "fetch in componentWillMount has no cancellation; concurrent mode may call it multiple times before mount"
+    evidence: "this.fetchData(this.props.url);"
+    expected_checks: [async-correctness, upgrade-safety]

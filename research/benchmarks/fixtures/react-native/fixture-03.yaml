@@ -1,0 +1,32 @@
+id: rn-03
+category: memory-leak
+description: setInterval without cleanup and subscription without teardown
+code: |
+  function LivePriceTicker({ symbol }) {
+    const [price, setPrice] = useState(null);
+
+    useEffect(() => {
+      const id = setInterval(() => {
+        fetchPrice(symbol).then(setPrice);
+      }, 1000);
+      // no cleanup return
+    }, [symbol]);
+
+    useEffect(() => {
+      const sub = priceSocket.subscribe(symbol, setPrice);
+      // no unsubscribe
+    }, [symbol]);
+
+    return <Text>{price}</Text>;
+  }
+issues:
+  - severity: CRITICAL
+    category: memory-leak
+    description: "setInterval not cleared on unmount or symbol change; interval fires indefinitely after navigation away, calling setState on unmounted component"
+    evidence: "const id = setInterval(() => { ... // no cleanup return"
+    expected_checks: [memory-leak, hook-correctness]
+  - severity: CRITICAL
+    category: memory-leak
+    description: "priceSocket subscription not unsubscribed on unmount; multiple subscriptions stack on each symbol change"
+    evidence: "const sub = priceSocket.subscribe(symbol, setPrice); // no unsubscribe"
+    expected_checks: [memory-leak, hook-correctness]

@@ -1,0 +1,30 @@
+id: rn-02
+category: list-performance
+description: FlatList without keyExtractor, removeClippedSubviews, or windowing config
+code: |
+  function NotificationList({ notifications }) {
+    return (
+      <FlatList
+        data={notifications}
+        renderItem={({ item }) => <NotificationRow item={item} />}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.5}
+      />
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: list-performance
+    description: "no keyExtractor: FlatList falls back to index-based keys causing broken diffing on list mutations (insert/delete reorders)"
+    evidence: "renderItem={({ item }) => <NotificationRow item={item} />}"
+    expected_checks: [list-performance, render-performance]
+  - severity: MAJOR
+    category: list-performance
+    description: "no removeClippedSubviews or windowSize config; on large lists all items stay mounted, causing memory pressure on low-end Android devices"
+    evidence: "<FlatList data={notifications}"
+    expected_checks: [list-performance]
+  - severity: MINOR
+    category: list-performance
+    description: "no getItemLayout: scroll position recovery and scrollToIndex are O(n) without it"
+    evidence: "onEndReachedThreshold={0.5}"
+    expected_checks: [list-performance]

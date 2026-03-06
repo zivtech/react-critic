@@ -1,0 +1,32 @@
+id: next-01
+category: rsc-boundary
+description: use client placed too high, blocking RSC optimization
+code: |
+  // app/dashboard/page.tsx
+  'use client';
+  import { getServerSession } from 'next-auth';
+  import { db } from '@/lib/db';
+  import RevenueChart from './RevenueChart'; // needs interactivity
+  import StatCard from './StatCard';          // pure display
+
+  export default async function DashboardPage() {
+    const session = await getServerSession();
+    const stats = await db.query.stats.findMany();
+    return (
+      <div>
+        <StatCard value={stats.revenue} />
+        <RevenueChart data={stats.chartData} />
+      </div>
+    );
+  }
+issues:
+  - severity: MAJOR
+    category: rsc-boundary
+    description: "'use client' on the page prevents server-side data fetching; getServerSession and db.query will fail or be called client-side, leaking db access to the browser bundle"
+    evidence: "'use client'; ... const session = await getServerSession();"
+    expected_checks: [rsc-boundary, server-actions-safety]
+  - severity: MAJOR
+    category: rsc-boundary
+    description: "StatCard is a pure display component forced into the client bundle unnecessarily; only RevenueChart needs 'use client'"
+    evidence: "import StatCard from './StatCard'; // pure display"
+    expected_checks: [rsc-boundary, runtime-choice]

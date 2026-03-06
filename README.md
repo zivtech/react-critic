@@ -7,8 +7,9 @@ A multi-critic review suite for React, Next.js, and React Native/Expo work, buil
 - `react-critic`: React component and architecture review
 - `next-critic`: Next.js App Router and cache/runtime review
 - `react-native-critic`: React Native + Expo review
+- `proposal-critic`: Plan-first review for proposals, ADRs, RFCs, and migration specs across the React ecosystem
 
-All three critics:
+All four critics:
 - enforce harsh-critic style structured output
 - require evidence for CRITICAL/MAJOR findings
 - load a maximum of 3 external specialist skills per run
@@ -20,9 +21,11 @@ git clone git@github.com:zivtech/react-critic.git
 cp -r react-critic/.claude/skills/react-critic ~/.claude/skills/
 cp -r react-critic/.claude/skills/next-critic ~/.claude/skills/
 cp -r react-critic/.claude/skills/react-native-critic ~/.claude/skills/
+cp -r react-critic/.claude/skills/proposal-critic ~/.claude/skills/
 cp react-critic/.claude/agents/react-critic.md ~/.claude/agents/
 cp react-critic/.claude/agents/next-critic.md ~/.claude/agents/
 cp react-critic/.claude/agents/react-native-critic.md ~/.claude/agents/
+cp react-critic/.claude/agents/proposal-critic.md ~/.claude/agents/
 ```
 
 ## Validation

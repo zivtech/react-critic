@@ -1,0 +1,29 @@
+id: rn-05
+category: expo-workflow
+description: bare-workflow native module used in managed Expo project
+code: |
+  // app.json shows "expo": { "workflow": "managed" }
+  import { NativeModules } from 'react-native';
+  import RNBluetoothClassic from 'react-native-bluetooth-classic'; // native module, no Expo config plugin
+
+  export function useBluetooth() {
+    const [devices, setDevices] = useState([]);
+
+    useEffect(() => {
+      RNBluetoothClassic.startDiscovery().then(setDevices);
+      return () => RNBluetoothClassic.cancelDiscovery();
+    }, []);
+
+    return devices;
+  }
+issues:
+  - severity: CRITICAL
+    category: expo-workflow
+    description: "react-native-bluetooth-classic has no Expo config plugin; managed workflow EAS Build will fail because the native module requires bare workflow or a custom plugin to modify native files"
+    evidence: "import RNBluetoothClassic from 'react-native-bluetooth-classic'; // native module, no Expo config plugin"
+    expected_checks: [expo-workflow, upgrade-safety]
+  - severity: MAJOR
+    category: expo-workflow
+    description: "no Bluetooth permission declaration in app.json (ios.infoPlist, android.permissions); app will crash or be rejected at store review"
+    evidence: "RNBluetoothClassic.startDiscovery().then(setDevices);"
+    expected_checks: [expo-workflow, security]
