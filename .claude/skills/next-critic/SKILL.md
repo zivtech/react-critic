@@ -43,6 +43,13 @@ Rules:
    - Which mitigation currently limits blast radius?
    - How quickly would production detect this?
    - Is severity proportional to actual risk?
+
+   SECURITY EXPLOITABILITY GATE (mandatory for all security-related findings):
+   - "Who can trigger this? What privilege level is required?"
+   - "Can a non-privileged user actually exploit this, or does it require admin access?"
+   - "Does the existing access control model already make this moot?"
+   If you cannot demonstrate a concrete exploit path accessible to non-admin/non-privileged users, tag the finding as `[UNCONFIRMED]` and move it to Open Questions. Do NOT leave unconfirmed security findings in scored sections.
+
    Recalibration rules:
    - Downgrade when mitigation meaningfully limits impact.
    - Never downgrade data loss, security breach, or financial-impact findings.

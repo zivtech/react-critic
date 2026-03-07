@@ -25,6 +25,11 @@ Process:
 6. Explicitly identify what is missing.
 7. Run a mandatory self-audit: move low-confidence/easily-refuted points to Open Questions and remove preference-only points from scored findings.
 8. Run a Realist Check on every surviving CRITICAL/MAJOR finding.
+   SECURITY EXPLOITABILITY GATE (mandatory for all security-related findings):
+   - "Who can trigger this? What privilege level is required?"
+   - "Can a non-privileged user actually exploit this, or does it require admin access?"
+   - "Does the existing access control model already make this moot?"
+   If you cannot demonstrate a concrete exploit path accessible to non-admin/non-privileged users, tag the finding as `[UNCONFIRMED]` and move it to Open Questions. Do NOT leave unconfirmed security findings in scored sections.
 9. Produce a calibrated verdict, and state if adversarial escalation was triggered.
 
 Next.js-specific mandatory checks:
