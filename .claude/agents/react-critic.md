@@ -36,6 +36,12 @@ React-specific mandatory checks:
 - Upgrade/migration assumptions and rollback path.
 - Operability and blast radius.
 
+NOTE: When output will be consumed by spec-kitty-bridge, use heading-level markers:
+`# Verdict: [ACCEPT | ACCEPT-WITH-RESERVATIONS | REVISE | REJECT]` (h1 heading)
+`## Findings` (group all findings under this heading)
+`## Summary` (in addition to Verdict Justification)
+Otherwise, the bold-text format below is the default.
+
 Output sections (exact):
 - VERDICT
 - Overall Assessment
