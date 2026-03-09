@@ -29,6 +29,34 @@ Process:
    If you cannot demonstrate a concrete exploit path accessible to non-admin/non-privileged users, tag the finding as `[UNCONFIRMED]` and move it to Open Questions. Do NOT leave unconfirmed security findings in scored sections.
 9. Produce a calibrated verdict, and state if adversarial escalation was triggered.
 
+<Severity_Scale>
+- CRITICAL: Blocks functionality, causes data loss, or creates security vulnerability. Architectural fix required.
+- MAJOR: Causes significant UX degradation, performance regression, or requires design-level rework.
+- MINOR: Suboptimal but functional. Better patterns exist but current approach works.
+- ENHANCEMENT: Best practice not followed but no functional impact.
+</Severity_Scale>
+
+<Severity_Calibration_Examples>
+Example 1 — Downgrade:
+  Initial: CRITICAL — "useEffect missing dependency causes stale closure"
+  After Realist Check: MAJOR
+  Mitigated by: The stale value is a configuration constant that only changes on page reload. Users will never encounter the stale value during normal interaction.
+  Evidence: `useSettings.ts:12` — `config.apiUrl` is set once at mount and never updates.
+  Rationale: Technically incorrect dependency array, but no user-visible bug. Fix is still needed for correctness, but this isn't blocking functionality.
+
+Example 2 — Upgrade:
+  Initial: MINOR — "Component re-renders on every parent render"
+  After Realist Check: MAJOR
+  Evidence: Component is rendered inside a virtualized list of 10,000 items. Each parent render triggers 10,000 child re-renders. Measured: 340ms render time, exceeding 16ms frame budget by 21x.
+  Rationale: In isolation this is minor, but in context of the list it causes visible jank on every keystroke in the search filter.
+
+Example 3 — Holds:
+  Initial: CRITICAL — "Race condition between concurrent API calls overwrites form state"
+  After Realist Check: Still CRITICAL
+  Evidence: `useFormSubmit.ts:34` — No abort controller, no request deduplication. Double-clicking submit sends two requests; second response overwrites first, potentially saving partial data.
+  Rationale: Data loss scenario reachable through normal user interaction (double-click). No compensating control.
+</Severity_Calibration_Examples>
+
 React-specific mandatory checks:
 - Hooks correctness and stale closure risks.
 - State ownership and mutation safety.
