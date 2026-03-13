@@ -35,3 +35,19 @@ python3 scripts/aggregate_stability.py
 - Results: `research/benchmarks/results/`
 - Scoring: rubric-coverage evaluation (prompt checklist vs annotated fixture issues)
 - Seeds: 3 jackknife windows per critic; aggregate stability in `stability-report.md`
+
+## TODO: Supply Chain Security for External Skills
+
+The external skills manifests (`external-skills-manifest.yaml`) pin upstream skills by commit SHA, but the current tooling has supply chain gaps that need to be addressed:
+
+1. **No diff review on refresh** — `refresh_external_skills.py` updates pins to HEAD silently. No changelog or diff of what changed in upstream SKILL.md files between the old and new pin.
+2. **No content scanning** — nothing checks incoming skill content for suspicious patterns (prompt injection markers, instruction overrides, encoded payloads). These skills are prompt text injected into Claude's context.
+3. **No signature/author verification** — anyone with push access to an upstream repo can change what gets loaded.
+4. **No approval gate** — refresh runs and updates pins automatically with no PR/review step.
+
+Minimum next steps:
+- Add diff output to `refresh_external_skills.py` so changes are visible before committing new pins.
+- Add basic content scanning rules (flag suspicious patterns like "ignore previous instructions", base64 blocks, etc.).
+- Consider requiring a PR for pin updates rather than committing directly.
+
+See also: drupal-critic has the same gaps and the same TODO.
