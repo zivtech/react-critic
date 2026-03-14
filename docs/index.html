@@ -572,10 +572,13 @@
     <div class="toc-title">Contents</div>
     <a href="#s1">Overview</a>
     <a href="#s2">Critic Architecture</a>
-    <a href="#s3">Skill Loading</a>
-    <a href="#s4">Hardening Layers</a>
-    <a href="#s5">Refresh Workflow</a>
-    <a href="#s6">Verify Workflow</a>
+    <a href="#s3">How It Works</a>
+    <a href="#s4">Skills Catalog</a>
+    <a href="#s5">When Skills Activate</a>
+    <a href="#s6">Skill Loading</a>
+    <a href="#s7">Hardening Layers</a>
+    <a href="#s8">Refresh Workflow</a>
+    <a href="#s9">Verify Workflow</a>
   </nav>
 
   <div class="main">
@@ -700,8 +703,320 @@
       they can analyze code but never modify it. External skills inherit these restrictions.
     </div>
 
-    <!-- ==================== SECTION 3: SKILL LOADING ==================== -->
+    <!-- ==================== SECTION 3: HOW IT WORKS ==================== -->
     <div id="s3" class="sec-head anim" style="--i:10; color:var(--teal)">
+      <span class="dot" style="background:var(--teal)"></span> How It Works
+    </div>
+
+    <div class="ve-card ve-card--hero anim" style="--i:11; border-color: color-mix(in srgb, var(--teal) 20%, transparent); margin-bottom:16px">
+      <div class="card-title">Review Process</div>
+      <div class="card-desc">
+        Every review follows the same evidence-driven protocol, regardless of which critic handles it.
+        The router dispatches to the right critic, the critic loads up to 3 specialist skills, then runs a structured multi-phase analysis.
+      </div>
+    </div>
+
+    <div class="anim" style="--i:12">
+      <div class="pipeline">
+        <div class="pipeline-step step--accent">
+          <div class="step-num" style="color:var(--accent)">Phase 1</div>
+          <div class="step-name">Route</div>
+          <div class="step-detail">js-critic-router reads<br>imports, file paths, config</div>
+        </div>
+        <div class="pipeline-arrow">&#x2192;</div>
+        <div class="pipeline-step step--gold">
+          <div class="step-num" style="color:var(--gold)">Phase 2</div>
+          <div class="step-name">Load Skills</div>
+          <div class="step-detail">1 core + 1 specialist<br>+ 1 shared (max 3)</div>
+        </div>
+        <div class="pipeline-arrow">&#x2192;</div>
+        <div class="pipeline-step step--teal">
+          <div class="step-num" style="color:var(--teal)">Phase 3</div>
+          <div class="step-name">Predict</div>
+          <div class="step-detail">3-5 pre-commitment<br>failure predictions</div>
+        </div>
+        <div class="pipeline-arrow">&#x2192;</div>
+        <div class="pipeline-step step--red">
+          <div class="step-num" style="color:var(--red)">Phase 4</div>
+          <div class="step-name">Analyze</div>
+          <div class="step-detail">Multi-perspective<br>review + gap analysis</div>
+        </div>
+        <div class="pipeline-arrow">&#x2192;</div>
+        <div class="pipeline-step step--green">
+          <div class="step-num" style="color:var(--green)">Phase 5</div>
+          <div class="step-name">Calibrate</div>
+          <div class="step-detail">Self-audit, Realist<br>Check, Security Gate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="grid-3 anim" style="--i:13">
+      <div class="ve-card">
+        <div class="card-title" style="font-size:13px">Perspectives (always on)</div>
+        <div class="card-desc" style="margin-top:6px">
+          <span class="badge badge--red" style="margin:2px 2px">Security</span>
+          <span class="badge badge--accent" style="margin:2px 2px">New-hire</span>
+          <span class="badge badge--gold" style="margin:2px 2px">Ops</span>
+        </div>
+      </div>
+      <div class="ve-card">
+        <div class="card-title" style="font-size:13px">Perspectives (context-driven)</div>
+        <div class="card-desc" style="margin-top:6px">
+          <span class="badge badge--teal" style="margin:2px 2px">Perf Engineer</span>
+          <span class="badge badge--green" style="margin:2px 2px">DX Maintainer</span>
+          <span class="badge" style="margin:2px 2px; background:var(--slate-dim); color:var(--slate)">Product Reliability</span>
+        </div>
+      </div>
+      <div class="ve-card">
+        <div class="card-title" style="font-size:13px">Verdict Options</div>
+        <div class="card-desc" style="margin-top:6px">
+          <span class="badge badge--green" style="margin:2px 2px">ACCEPT</span>
+          <span class="badge badge--gold" style="margin:2px 2px">ACCEPT w/ RESERVATIONS</span>
+          <span class="badge badge--red" style="margin:2px 2px">REVISE</span>
+          <span class="badge" style="margin:2px 2px; background:var(--red-dim); color:var(--red); border-color:var(--red)">REJECT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout anim" style="--i:14; border-left-color:var(--teal)">
+      <strong>Evidence-backed only.</strong> Every CRITICAL/MAJOR finding must cite <code>file:line</code> or quote the artifact directly.
+      Low-confidence claims are moved to Open Questions (unscored). Preference-only points are removed from scored sections.
+    </div>
+
+    <!-- ==================== SECTION 4: SKILLS CATALOG ==================== -->
+    <div id="s4" class="sec-head anim" style="--i:15; color:var(--gold)">
+      <span class="dot" style="background:var(--gold)"></span> Skills Catalog
+    </div>
+
+    <p class="card-desc anim" style="--i:16; margin-bottom:16px; max-width:680px">
+      43 external skills across 15 trusted GitHub organizations. Each critic loads at most 3 per run:
+      <strong>1 core</strong> (always loaded), <strong>1 specialist</strong> (context-matched), and <strong>1 shared support</strong> skill.
+    </p>
+
+    <!-- react-critic skills -->
+    <div class="ve-card anim" style="--i:17; border-top:2px solid var(--accent); margin-bottom:14px">
+      <div class="card-title" style="display:flex; align-items:center; gap:8px">
+        <span class="badge badge--accent">react-critic</span> 9 skills from 6 orgs
+      </div>
+      <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
+        <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
+        <span><strong>vercel-react-best-practices</strong> &mdash; React performance patterns, component design, rendering optimization (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>react-state-management</strong> &mdash; State ownership, local vs shared vs server state, mutation safety</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>react-modernization</strong> &mdash; Upgrade paths, migration patterns, deprecation handling</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>react-doctor</strong> &mdash; React application analysis, performance diagnosis, anti-pattern detection (Million.js)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>typescript-react-reviewer</strong> &mdash; TypeScript + React patterns, type safety, API design</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>javascript-testing-patterns</strong> &mdash; Test strategy, async testing, coverage patterns</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>javascript-typescript-jest</strong> &mdash; Jest patterns for JS/TS projects (GitHub)</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>modern-javascript-patterns</strong> &mdash; Modern JS idioms, ESM, async patterns</span>
+
+        <span class="badge badge--red" style="font-size:10px; justify-self:end">shared</span>
+        <span><strong>api-security-best-practices</strong> &mdash; API trust boundaries, auth patterns, input validation</span>
+      </div>
+    </div>
+
+    <!-- next-critic skills -->
+    <div class="ve-card anim" style="--i:18; border-top:2px solid var(--teal); margin-bottom:14px">
+      <div class="card-title" style="display:flex; align-items:center; gap:8px">
+        <span class="badge badge--teal">next-critic</span> 11 skills from 7 orgs
+      </div>
+      <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
+        <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
+        <span><strong>next-best-practices</strong> &mdash; Next.js App Router, RSC boundaries, data fetching, caching (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>next-cache-components</strong> &mdash; Cache invalidation, revalidation strategies, ISR patterns (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>next-upgrade</strong> &mdash; Next.js version migration, breaking changes, codemods (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>nextjs-app-router-patterns</strong> &mdash; App Router architecture, layout nesting, parallel routes</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>nextjs-app-router-fundamentals</strong> &mdash; App Router fundamentals, server/client component split</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">auth</span>
+        <span><strong>clerk-nextjs-patterns</strong> &mdash; Clerk auth integration for Next.js (Clerk)</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">auth</span>
+        <span><strong>auth0-nextjs</strong> &mdash; Auth0 integration patterns for Next.js (Auth0)</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">auth</span>
+        <span><strong>nextauth-authentication</strong> &mdash; NextAuth.js / Auth.js session and provider patterns</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>javascript-testing-patterns</strong> &mdash; Test strategy, async testing, coverage patterns</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>modern-javascript-patterns</strong> &mdash; Modern JS idioms, ESM, async patterns</span>
+
+        <span class="badge badge--red" style="font-size:10px; justify-self:end">shared</span>
+        <span><strong>api-security-best-practices</strong> &mdash; API trust boundaries, auth patterns, input validation</span>
+      </div>
+    </div>
+
+    <!-- react-native-critic skills -->
+    <div class="ve-card anim" style="--i:19; border-top:2px solid var(--gold); margin-bottom:14px">
+      <div class="card-title" style="display:flex; align-items:center; gap:8px">
+        <span class="badge badge--gold">react-native-critic</span> 18 skills from 9 orgs
+      </div>
+      <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
+        <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
+        <span><strong>vercel-react-native-skills</strong> &mdash; React Native cross-platform patterns and performance (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>react-native-best-practices</strong> &mdash; RN performance, native modules, bridge optimization (Callstack)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>upgrading-react-native</strong> &mdash; RN version upgrades, native dependency alignment (Callstack)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>upgrade-react-native</strong> &mdash; Community RN upgrade guide and migration patterns</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>react-native-architecture</strong> &mdash; RN app architecture, module boundaries, state patterns</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>react-native-design</strong> &mdash; RN UI/UX design patterns, cross-platform styling</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
+        <span><strong>react-native-testing</strong> &mdash; React Native Testing Library patterns (Callstack)</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>building-native-ui</strong> &mdash; Expo native UI components and platform APIs</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>native-data-fetching</strong> &mdash; Expo data fetching, caching, offline patterns</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>upgrading-expo</strong> &mdash; Expo SDK version upgrades and migration</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>expo-api-routes</strong> &mdash; Expo API routes, server functions, backend patterns</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>expo-cicd-workflows</strong> &mdash; Expo CI/CD, EAS Build/Submit, OTA updates</span>
+
+        <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
+        <span><strong>use-dom</strong> &mdash; Expo DOM components and web-native bridging</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--accent-dim); color:var(--accent)">platform</span>
+        <span><strong>sentry-react-native-setup</strong> &mdash; Sentry error monitoring integration for RN (Sentry)</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--accent-dim); color:var(--accent)">platform</span>
+        <span><strong>auth0-react-native</strong> &mdash; Auth0 authentication for React Native (Auth0)</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>javascript-testing-patterns</strong> &mdash; Test strategy, async testing, coverage patterns</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>modern-javascript-patterns</strong> &mdash; Modern JS idioms, ESM, async patterns</span>
+
+        <span class="badge badge--red" style="font-size:10px; justify-self:end">shared</span>
+        <span><strong>api-security-best-practices</strong> &mdash; API trust boundaries, auth patterns, input validation</span>
+      </div>
+    </div>
+
+    <!-- proposal-critic skills -->
+    <div class="ve-card anim" style="--i:20; border-top:2px solid var(--slate); margin-bottom:14px">
+      <div class="card-title" style="display:flex; align-items:center; gap:8px">
+        <span class="badge" style="background:var(--slate-dim); color:var(--slate)">proposal-critic</span> 5 skills from 4 orgs
+      </div>
+      <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
+        <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
+        <span><strong>react-native-architecture</strong> &mdash; Architecture patterns for cross-framework proposal evaluation</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>typescript-react-reviewer</strong> &mdash; TypeScript + React API design review for proposals</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>modern-javascript-patterns</strong> &mdash; Modern JS idioms for pattern evaluation</span>
+
+        <span class="badge badge--red" style="font-size:10px; justify-self:end">shared</span>
+        <span><strong>api-security-best-practices</strong> &mdash; API trust boundaries for security review</span>
+
+        <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
+        <span><strong>javascript-testing-patterns</strong> &mdash; Test strategy for plan feasibility checks</span>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 5: WHEN SKILLS ACTIVATE ==================== -->
+    <div id="s5" class="sec-head anim" style="--i:21; color:var(--red)">
+      <span class="dot" style="background:var(--red)"></span> When Skills Activate
+    </div>
+
+    <p class="card-desc anim" style="--i:22; margin-bottom:16px; max-width:680px">
+      The router reads framework signals to pick a critic. The critic then selects skills based on what the code is doing.
+      Here are the <strong>jobs to be done</strong> that trigger each critic and its specialist skills.
+    </p>
+
+    <div class="grid-2 anim" style="--i:23; margin-bottom:14px">
+      <div class="ve-card" style="border-left:3px solid var(--accent)">
+        <div class="card-title" style="color:var(--accent)">react-critic activates when&hellip;</div>
+        <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
+          <li><strong>Reviewing React components</strong> &mdash; hooks, JSX, component composition &rarr; loads <em>vercel-react-best-practices</em></li>
+          <li><strong>State management changes</strong> &mdash; Redux, Zustand, Context, atoms &rarr; loads <em>react-state-management</em></li>
+          <li><strong>Upgrading React versions</strong> &mdash; migration, deprecations, codemods &rarr; loads <em>react-modernization</em></li>
+          <li><strong>Performance investigation</strong> &mdash; re-renders, memoization, virtualization &rarr; loads <em>react-doctor</em></li>
+          <li><strong>TypeScript + API design</strong> &mdash; type safety, generics, interfaces &rarr; loads <em>typescript-react-reviewer</em></li>
+        </ul>
+      </div>
+      <div class="ve-card" style="border-left:3px solid var(--teal)">
+        <div class="card-title" style="color:var(--teal)">next-critic activates when&hellip;</div>
+        <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
+          <li><strong>App Router work</strong> &mdash; <code>app/</code> pages, layouts, loading states &rarr; loads <em>next-best-practices</em></li>
+          <li><strong>Caching / revalidation</strong> &mdash; ISR, on-demand revalidation, fetch cache &rarr; loads <em>next-cache-components</em></li>
+          <li><strong>Next.js version upgrade</strong> &mdash; breaking changes, migration guides &rarr; loads <em>next-upgrade</em></li>
+          <li><strong>Auth integration</strong> &mdash; detects Clerk/Auth0/NextAuth imports &rarr; loads matching auth skill</li>
+          <li><strong>RSC boundary decisions</strong> &mdash; <code>'use client'</code>/<code>'use server'</code> directives &rarr; loads <em>app-router-patterns</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2 anim" style="--i:24">
+      <div class="ve-card" style="border-left:3px solid var(--gold)">
+        <div class="card-title" style="color:var(--gold)">react-native-critic activates when&hellip;</div>
+        <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
+          <li><strong>RN component work</strong> &mdash; <code>View</code>, <code>FlatList</code>, native modules &rarr; loads <em>react-native-best-practices</em></li>
+          <li><strong>Expo app development</strong> &mdash; <code>expo</code> imports, <code>app.json</code>, EAS &rarr; loads matching Expo skill</li>
+          <li><strong>RN version upgrade</strong> &mdash; native deps, metro config changes &rarr; loads <em>upgrading-react-native</em></li>
+          <li><strong>Testing native code</strong> &mdash; RNTL patterns, mocking native modules &rarr; loads <em>react-native-testing</em></li>
+          <li><strong>Observability / auth</strong> &mdash; Sentry or Auth0 imports detected &rarr; loads matching platform skill</li>
+        </ul>
+      </div>
+      <div class="ve-card" style="border-left:3px solid var(--slate)">
+        <div class="card-title" style="color:var(--slate)">proposal-critic activates when&hellip;</div>
+        <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
+          <li><strong>RFC or ADR</strong> &mdash; "we propose", "alternatives considered" &rarr; runs full plan critique</li>
+          <li><strong>Migration plan</strong> &mdash; "rollback strategy", phased rollout &rarr; runs dependency audit + pre-mortem</li>
+          <li><strong>Architecture decision</strong> &mdash; system design, boundary definitions &rarr; runs devil's-advocate challenge</li>
+          <li><strong>Feature spec</strong> &mdash; design doc with pseudocode, no real code &rarr; runs feasibility + ambiguity scan</li>
+          <li>Uses <strong>executor/stakeholder/skeptic</strong> perspectives instead of security/new-hire/ops</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout anim" style="--i:25">
+      <strong>Routing signals.</strong> The <code>js-critic-router</code> (runs on Haiku for speed) reads imports, file paths, <code>package.json</code> deps, config files, and document keywords.
+      First match wins. Multi-framework monorepos get a <code>MULTI</code> verdict with a recommended review order.
+    </div>
+
+    <!-- ==================== SECTION 6: SKILL LOADING ==================== -->
+    <div id="s6" class="sec-head anim" style="--i:26; color:var(--teal)">
       <span class="dot" style="background:var(--teal)"></span> External Skill Loading
     </div>
 
@@ -737,8 +1052,8 @@
       </div>
     </div>
 
-    <!-- ==================== SECTION 4: HARDENING LAYERS ==================== -->
-    <div id="s4" class="sec-head anim" style="--i:12; color:var(--red)">
+    <!-- ==================== SECTION 7: HARDENING LAYERS ==================== -->
+    <div id="s7" class="sec-head anim" style="--i:28; color:var(--red)">
       <span class="dot" style="background:var(--red)"></span> Tier 1 Hardening Layers
     </div>
 
@@ -811,8 +1126,8 @@
       </div>
     </div>
 
-    <!-- ==================== SECTION 5: REFRESH WORKFLOW ==================== -->
-    <div id="s5" class="sec-head anim" style="--i:15; color:var(--green)">
+    <!-- ==================== SECTION 8: REFRESH WORKFLOW ==================== -->
+    <div id="s8" class="sec-head anim" style="--i:32; color:var(--green)">
       <span class="dot" style="background:var(--green)"></span> Refresh Workflow
     </div>
 
@@ -880,8 +1195,8 @@
       The report still generates with <code># UNVERIFIED</code> markers. Use <code>--approve --force</code> only after reviewing the specific warnings.
     </div>
 
-    <!-- ==================== SECTION 6: VERIFY WORKFLOW ==================== -->
-    <div id="s6" class="sec-head anim" style="--i:19; color:var(--slate)">
+    <!-- ==================== SECTION 9: VERIFY WORKFLOW ==================== -->
+    <div id="s9" class="sec-head anim" style="--i:36; color:var(--slate)">
       <span class="dot" style="background:var(--slate)"></span> Verify Workflow
     </div>
 
