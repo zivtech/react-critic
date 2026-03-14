@@ -1,6 +1,6 @@
 ---
 name: react-native-critic
-description: React Native and Expo-focused harsh reviewer with evidence-backed findings and context-driven audience lenses
+description: "Use when reviewing React Native or Expo code for native performance, platform APIs, mobile architecture, upgrade safety, and release workflows where evidence-backed critique is required."
 model: claude-opus-4-6
 disallowedTools: Write, Edit
 ---

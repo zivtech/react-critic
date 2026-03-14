@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>react-critic &mdash; Supply Chain Security Architecture</title>
+<title>react-critic &mdash; Multi-Critic Review Suite for JavaScript</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
@@ -571,11 +571,11 @@
   <nav class="toc" id="toc">
     <div class="toc-title">Contents</div>
     <a href="#s1">Overview</a>
-    <a href="#s2">Critic Architecture</a>
+    <a href="#s2">Architecture</a>
     <a href="#s3">How It Works</a>
     <a href="#s4">Skills Catalog</a>
-    <a href="#s5">When Skills Activate</a>
-    <a href="#s6">Skill Loading</a>
+    <a href="#s5">Activation Triggers</a>
+    <a href="#s6">Supply Chain</a>
     <a href="#s7">Hardening Layers</a>
     <a href="#s8">Refresh Workflow</a>
     <a href="#s9">Verify Workflow</a>
@@ -584,11 +584,13 @@
   <div class="main">
 
     <h1 class="anim" style="--i:0">react-critic</h1>
-    <p class="subtitle anim" style="--i:1">supply chain security architecture</p>
+    <p class="subtitle anim" style="--i:1">harsh, evidence-backed code review for the JS ecosystem</p>
     <p class="lead anim" style="--i:2">
-      A multi-critic review suite for React, Next.js, and React Native/Expo that loads external specialist skills by reference.
-      External skills are prompt text injected into Claude's context &mdash; a compromised upstream repo means arbitrary prompt injection.
-      This page documents the supply chain hardening that prevents that.
+      A multi-critic review suite that catches what linters miss: stale closures, state ownership bugs, cache invalidation gaps,
+      unsafe RSC boundaries, missing rollback paths, and architecture risks.
+      Four specialized critics &mdash; each loaded with curated external skills from organizations like Vercel, Expo, Callstack, and Auth0 &mdash;
+      review React, Next.js, React Native/Expo code and pre-implementation plans through multiple perspectives (security, new-hire, ops)
+      and produce a structured verdict with evidence for every finding.
     </p>
 
     <div class="kpi-row anim-scale" style="--i:3">
@@ -620,14 +622,16 @@
     </div>
 
     <div class="ve-card ve-card--hero anim" style="--i:5; border-color: color-mix(in srgb, var(--accent) 20%, transparent);">
-      <div class="card-title">The Problem</div>
+      <div class="card-title">What It Does</div>
       <div class="card-desc" style="max-width:680px">
-        External skills are <strong>SKILL.md files loaded from third-party GitHub repos</strong> and injected into Claude's prompt context at review time.
-        A compromised upstream repo could silently inject prompt overrides, instruction manipulation, or encoded payloads into the critic's reasoning.
+        Submit any React, Next.js, or React Native code &mdash; or a plan, RFC, or migration spec &mdash; and get a
+        <strong>structured, severity-rated review</strong> with concrete evidence for every finding.
+        The router detects what framework you're using and dispatches to the right specialist critic,
+        which loads curated skills from the teams that build the frameworks themselves.
         <br><br>
-        The supply chain model pins each skill to a specific <strong>commit SHA + content SHA-256 hash</strong>,
-        requires human-reviewed diffs before updates, scans for prompt injection patterns, and restricts
-        sources to a curated allowlist of 15 trusted GitHub organizations.
+        Every review runs through <strong>multiple perspectives</strong> (security, new-hire, ops), a mandatory
+        <strong>self-audit</strong> that removes low-confidence claims, and a <strong>Realist Check</strong> that
+        calibrates severity against actual production risk &mdash; not theoretical worst cases.
       </div>
     </div>
 

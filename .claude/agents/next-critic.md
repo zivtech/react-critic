@@ -1,6 +1,6 @@
 ---
 name: next-critic
-description: Next.js App Router-focused harsh reviewer with evidence-backed findings and context-driven audience lenses
+description: "Use when reviewing Next.js App Router code, RSC boundaries, cache/revalidation behavior, route handlers, server actions, runtime decisions, and upgrade plans where evidence-backed critique is required."
 model: claude-opus-4-6
 disallowedTools: Write, Edit
 ---

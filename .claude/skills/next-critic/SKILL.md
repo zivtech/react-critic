@@ -1,12 +1,27 @@
 ---
 name: next-critic
-description: Next.js App Router-specific harsh review orchestration for plans, code, and implementation notes. Use when reviewing RSC boundaries, cache/revalidation behavior, route handlers/server actions, runtime decisions, and upgrade plans where evidence-backed critique is required.
+description: "Use when reviewing Next.js App Router code, RSC boundaries, cache/revalidation behavior, route handlers, server actions, runtime decisions, and upgrade plans where evidence-backed critique is required."
 ---
 
 # Next Critic
 
 ## Overview
 Run a harsh-critic style review with Next.js App Router checks, explicit evidence requirements, and context-driven audience perspectives.
+
+## Jobs To Be Done
+
+Use next-critic when you need to:
+
+- **Review App Router architecture** — layout nesting, parallel routes, intercepting routes, loading/error boundaries
+- **Audit RSC boundaries** — `'use client'`/`'use server'` placement, serialization across the boundary, component tree splits
+- **Evaluate caching and revalidation** — fetch cache, ISR, `revalidatePath`/`revalidateTag`, on-demand revalidation strategy
+- **Review server actions and route handlers** — mutation patterns, error handling, redirect behavior, form actions
+- **Catch runtime configuration issues** — edge vs Node.js runtime choices, middleware behavior, streaming pitfalls
+- **Assess auth integration** — Clerk, Auth0, or NextAuth.js patterns, session handling, protected routes
+- **Review Next.js version upgrades** — breaking changes between versions, codemods, migration scope
+- **Evaluate data fetching patterns** — waterfall risk, parallel fetching, server component data loading, Suspense boundaries
+
+The router (`js-critic-router`) dispatches here when it detects: `next` in package.json, App Router conventions (`app/**/page.tsx`), Pages Router conventions, Next.js APIs (`next/navigation`, `next/cache`), or `next.config.*`.
 
 ## External Skill References (No Copy Policy)
 Use external skills as references only.

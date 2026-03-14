@@ -1,12 +1,27 @@
 ---
 name: react-native-critic
-description: React Native and Expo-specific harsh review orchestration for plans, code, and implementation notes. Use when reviewing RN architecture, mobile performance, native integration, Expo workflows, and release safety where evidence-backed critique is required.
+description: "Use when reviewing React Native or Expo code for native performance, platform APIs, mobile architecture, upgrade safety, and release workflows where evidence-backed critique is required."
 ---
 
 # React Native Critic
 
 ## Overview
 Run a harsh-critic style review with React Native/Expo checks, explicit evidence requirements, and context-driven audience perspectives.
+
+## Jobs To Be Done
+
+Use react-native-critic when you need to:
+
+- **Review React Native components** — native module usage, bridge performance, FlatList optimization, platform-specific code
+- **Audit Expo integration** — SDK usage, EAS Build/Submit configuration, OTA update strategy, API routes
+- **Catch mobile performance issues** — JS thread blocking, native rendering bottlenecks, image optimization, memory leaks
+- **Evaluate native architecture** — module boundaries, navigation patterns, state management for mobile, offline-first design
+- **Review RN or Expo upgrades** — native dependency alignment, breaking changes, migration paths, metro config
+- **Assess platform integrations** — Sentry error monitoring, Auth0 authentication, push notifications, deep linking
+- **Review CI/CD and release workflows** — EAS pipelines, OTA vs native updates, code signing, app store submission
+- **Evaluate cross-platform patterns** — Platform.OS handling, responsive layouts, platform-specific components, web bridging via use-dom
+
+The router (`js-critic-router`) dispatches here when it detects: `react-native` or `expo` in imports/package.json, `ios/`/`android/` file paths, `metro.config.*`, `app.json`/`eas.json`, or RN-specific components (`View`, `FlatList`, `Pressable`).
 
 ## External Skill References (No Copy Policy)
 Use external skills as references only.

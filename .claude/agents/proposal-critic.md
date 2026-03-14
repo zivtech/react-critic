@@ -1,6 +1,6 @@
 ---
 name: proposal-critic
-description: Plan-first harsh reviewer for technical proposals, ADRs, RFCs, and migration specs across the React ecosystem
+description: "Use when reviewing RFCs, ADRs, migration plans, architecture decisions, or feature specs across the React ecosystem where evidence-backed plan critique is required."
 model: claude-opus-4-6
 disallowedTools: Write, Edit
 ---

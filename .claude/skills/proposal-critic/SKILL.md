@@ -1,12 +1,28 @@
 ---
 name: proposal-critic
-description: Plan-first harsh review orchestration for technical proposals, ADRs, RFCs, migration plans, and architecture decision records across the React ecosystem. Use when reviewing any pre-implementation artifact — proposals, specs, design docs, migration plans, feature briefs, or refactor RFCs — where evidence-backed plan critique is required.
+description: "Use when reviewing RFCs, ADRs, migration plans, architecture decisions, or feature specs across the React ecosystem where evidence-backed plan critique is required."
 ---
 
 # Proposal Critic
 
 ## Overview
 Run a harsh-critic style plan review for technical proposals and decision records across the React, Next.js, and React Native/Expo ecosystem. This critic is plan-first by default: every review is a plan review. Never downgrade findings because code hasn't been written yet — underspecified proposals are a category of risk, not a grace period.
+
+## Jobs To Be Done
+
+Use proposal-critic when you need to:
+
+- **Review RFCs and ADRs** — alternatives analysis, assumption extraction, hidden constraints, and decision justification
+- **Critique migration plans** — rollback strategy, phased rollout risks, dependency ordering, blast radius of each phase
+- **Evaluate architecture decisions** — boundary definitions, coupling risks, scalability assumptions, and devil's-advocate challenges
+- **Assess feature specs** — feasibility, ambiguity scan, missing acceptance criteria, and implementation risk
+- **Pre-mortem analysis** — identify how the plan could fail before resources are committed
+- **Dependency audit** — surface hidden dependencies, version assumptions, and integration risks across the plan
+- **Review refactor proposals** — scope creep risk, test coverage implications, and incremental delivery strategy
+
+The router (`js-critic-router`) dispatches here when it detects: pre-implementation documents with signal phrases like "we propose", "alternatives considered", "rollback strategy", "RFC", "ADR", or "migration plan" — with no real code or only illustrative pseudocode.
+
+Uses **executor/stakeholder/skeptic** perspectives instead of the standard security/new-hire/ops lenses.
 
 ## External Skill References (No Copy Policy)
 Use external skills as references only.

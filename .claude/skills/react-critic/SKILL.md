@@ -1,12 +1,26 @@
 ---
 name: react-critic
-description: React-specific harsh review orchestration for plans, code, and implementation notes. Use when reviewing React components, hooks, state management, rendering/performance, refactors, and React upgrades where evidence-backed critique is required.
+description: "Use when reviewing React components, hooks, state management, rendering performance, or upgrade plans where evidence-backed critique with security/new-hire/ops perspectives is required."
 ---
 
 # React Critic
 
 ## Overview
 Run a harsh-critic style review with React-specific checks, explicit evidence requirements, and context-driven audience perspectives.
+
+## Jobs To Be Done
+
+Use react-critic when you need to:
+
+- **Review React components** for hook correctness, dependency array bugs, stale closures, and rule-of-hooks violations
+- **Audit state management** — local vs shared vs server state ownership, mutation safety, and unnecessary re-renders
+- **Catch rendering performance issues** — expensive computations in render path, missing memoization, list virtualization gaps, waterfall data fetching
+- **Evaluate async correctness** — race conditions in effects, missing cancellation/teardown, concurrent request handling
+- **Review React upgrades or migrations** — version assumptions, deprecated API usage, fallback strategy, migration scope
+- **Assess operational safety** — error boundaries, monitoring visibility, blast radius of changes, rollback paths
+- **Review TypeScript + React patterns** — type safety, generic component design, API contract correctness
+
+The router (`js-critic-router`) dispatches here when it detects: React imports, JSX/TSX with hooks (`useState`, `useEffect`, etc.), React component patterns — without Next.js or React Native signals.
 
 ## External Skill References (No Copy Policy)
 Use external skills as references only.

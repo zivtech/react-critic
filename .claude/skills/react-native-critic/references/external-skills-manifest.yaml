@@ -16,6 +16,7 @@ skills:
   - performance-engineer
   priority: 100
   status: active
+  jtbd: "Load for any RN review — core cross-platform patterns, performance fundamentals, and native rendering guidance."
 - id: callstackincubator/agent-skills/react-native-best-practices
   skills_url: https://skills.sh/callstackincubator/agent-skills/react-native-best-practices
   repo_url: https://github.com/callstackincubator/agent-skills
@@ -28,6 +29,7 @@ skills:
   - performance-engineer
   priority: 95
   status: active
+  jtbd: "Load when reviewing RN performance — native modules, bridge optimization, and rendering best practices from Callstack."
 - id: callstackincubator/agent-skills/upgrading-react-native
   skills_url: https://skills.sh/callstackincubator/agent-skills/upgrading-react-native
   repo_url: https://github.com/callstackincubator/agent-skills
@@ -40,6 +42,7 @@ skills:
   - dx-maintainer
   priority: 92
   status: active
+  jtbd: "Load when reviewing RN version upgrades — native dependency alignment, breaking changes, and migration guidance from Callstack."
 - id: react-native-community/skills/upgrade-react-native
   skills_url: https://skills.sh/react-native-community/skills/upgrade-react-native
   repo_url: https://github.com/react-native-community/skills
@@ -51,6 +54,7 @@ skills:
   - ops
   priority: 88
   status: active
+  jtbd: "Load when reviewing RN upgrades — community migration patterns, compatibility matrices, and upgrade tooling."
 - id: wshobson/agents/react-native-architecture
   skills_url: https://skills.sh/wshobson/agents/react-native-architecture
   repo_url: https://github.com/wshobson/agents
@@ -63,6 +67,7 @@ skills:
   - ops
   priority: 84
   status: active
+  jtbd: "Load when reviewing RN app architecture — module boundaries, navigation patterns, and state management for mobile."
 - id: wshobson/agents/react-native-design
   skills_url: https://skills.sh/wshobson/agents/react-native-design
   repo_url: https://github.com/wshobson/agents
@@ -74,6 +79,7 @@ skills:
   - new-hire
   priority: 80
   status: active
+  jtbd: "Load when reviewing RN UI/UX patterns — cross-platform styling, responsive layouts, and platform-specific design."
 - id: callstack/react-native-testing-library/react-native-testing
   skills_url: https://skills.sh/callstack/react-native-testing-library/react-native-testing
   repo_url: https://github.com/callstack/react-native-testing-library
@@ -85,6 +91,7 @@ skills:
   - ops
   priority: 86
   status: active
+  jtbd: "Load when reviewing RN tests — React Native Testing Library patterns, native module mocking, and component testing."
 - id: expo/skills/building-native-ui
   skills_url: https://skills.sh/expo/skills/building-native-ui
   repo_url: https://github.com/expo/skills
@@ -96,6 +103,7 @@ skills:
   - new-hire
   priority: 84
   status: active
+  jtbd: "Load when reviewing Expo native UI — platform APIs, native components, and UI composition patterns."
 - id: expo/skills/native-data-fetching
   skills_url: https://skills.sh/expo/skills/native-data-fetching
   repo_url: https://github.com/expo/skills
@@ -108,6 +116,7 @@ skills:
   - security
   priority: 86
   status: active
+  jtbd: "Load when reviewing Expo data fetching — caching, offline patterns, and server communication."
 - id: expo/skills/upgrading-expo
   skills_url: https://skills.sh/expo/skills/upgrading-expo
   repo_url: https://github.com/expo/skills
@@ -119,6 +128,7 @@ skills:
   - ops
   priority: 90
   status: active
+  jtbd: "Load when reviewing Expo SDK upgrades — version migration, breaking changes, and compatibility."
 - id: expo/skills/expo-api-routes
   skills_url: https://skills.sh/expo/skills/expo-api-routes
   repo_url: https://github.com/expo/skills
@@ -131,6 +141,7 @@ skills:
   - ops
   priority: 84
   status: active
+  jtbd: "Load when reviewing Expo API routes — server functions, backend patterns, and API endpoint design."
 - id: expo/skills/expo-cicd-workflows
   skills_url: https://skills.sh/expo/skills/expo-cicd-workflows
   repo_url: https://github.com/expo/skills
@@ -142,6 +153,7 @@ skills:
   - ops
   priority: 82
   status: active
+  jtbd: "Load when reviewing Expo CI/CD — EAS Build/Submit pipelines, OTA updates, and release automation."
 - id: expo/skills/use-dom
   skills_url: https://skills.sh/expo/skills/use-dom
   repo_url: https://github.com/expo/skills
@@ -153,6 +165,7 @@ skills:
   - new-hire
   priority: 74
   status: active
+  jtbd: "Load when reviewing Expo DOM components — web-native bridging, WebView patterns, and cross-runtime rendering."
 - id: getsentry/sentry-agent-skills/sentry-react-native-setup
   skills_url: https://skills.sh/getsentry/sentry-agent-skills/sentry-react-native-setup
   repo_url: https://github.com/getsentry/sentry-agent-skills
@@ -164,6 +177,7 @@ skills:
   - ops
   priority: 78
   status: active
+  jtbd: "Load when code integrates Sentry — error monitoring setup, source maps, and crash reporting for React Native."
 - id: auth0/agent-skills/auth0-react-native
   skills_url: https://skills.sh/auth0/agent-skills/auth0-react-native
   repo_url: https://github.com/auth0/agent-skills
@@ -175,6 +189,7 @@ skills:
   - security
   priority: 76
   status: active
+  jtbd: "Load when code uses Auth0 — authentication SDK integration, token management, and session patterns for RN."
 - id: wshobson/agents/javascript-testing-patterns
   skills_url: https://skills.sh/wshobson/agents/javascript-testing-patterns
   repo_url: https://github.com/wshobson/agents
@@ -186,6 +201,7 @@ skills:
   - ops
   priority: 86
   status: active
+  jtbd: "Load when reviewing test strategy, async test patterns, or coverage gaps in JavaScript/TypeScript projects."
 - id: wshobson/agents/modern-javascript-patterns
   skills_url: https://skills.sh/wshobson/agents/modern-javascript-patterns
   repo_url: https://github.com/wshobson/agents
@@ -197,6 +213,7 @@ skills:
   - new-hire
   priority: 76
   status: active
+  jtbd: "Load when reviewing modern JS idioms — ESM usage, async patterns, and contemporary language features."
 - id: sickn33/antigravity-awesome-skills/api-security-best-practices
   skills_url: https://skills.sh/sickn33/antigravity-awesome-skills/api-security-best-practices
   repo_url: https://github.com/sickn33/antigravity-awesome-skills
@@ -208,3 +225,4 @@ skills:
   - security
   priority: 72
   status: active
+  jtbd: "Load when code handles API boundaries, auth tokens, user input, or sensitive data — trust boundary and input validation patterns."

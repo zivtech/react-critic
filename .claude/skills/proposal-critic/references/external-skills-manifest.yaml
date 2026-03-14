@@ -15,6 +15,7 @@ skills:
   - skeptic
   priority: 92
   status: active
+  jtbd: "Load when evaluating architecture proposals — provides cross-framework architectural patterns and boundary analysis."
 - id: dotneet/claude-code-marketplace/typescript-react-reviewer
   skills_url: https://skills.sh/dotneet/claude-code-marketplace/typescript-react-reviewer
   repo_url: https://github.com/dotneet/claude-code-marketplace
@@ -28,6 +29,7 @@ skills:
   - dx-maintainer
   priority: 78
   status: active
+  jtbd: "Load when evaluating TypeScript API design proposals — type safety patterns and interface design review."
 - id: wshobson/agents/modern-javascript-patterns
   skills_url: https://skills.sh/wshobson/agents/modern-javascript-patterns
   repo_url: https://github.com/wshobson/agents
@@ -40,6 +42,7 @@ skills:
   - skeptic
   priority: 76
   status: active
+  jtbd: "Load when evaluating JS/TS pattern choices in proposals — modern idioms and contemporary language feature assessment."
 - id: sickn33/antigravity-awesome-skills/api-security-best-practices
   skills_url: https://skills.sh/sickn33/antigravity-awesome-skills/api-security-best-practices
   repo_url: https://github.com/sickn33/antigravity-awesome-skills
@@ -51,6 +54,7 @@ skills:
   - security-engineer
   priority: 72
   status: active
+  jtbd: "Load when proposals involve API design, auth flows, or data handling — security architecture and trust boundary review."
 - id: wshobson/agents/javascript-testing-patterns
   skills_url: https://skills.sh/wshobson/agents/javascript-testing-patterns
   repo_url: https://github.com/wshobson/agents
@@ -62,3 +66,4 @@ skills:
   - executor
   priority: 70
   status: active
+  jtbd: "Load when evaluating test strategy feasibility in proposals — coverage planning and test architecture assessment."

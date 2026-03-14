@@ -1,6 +1,6 @@
 ---
 name: js-critic-router
-description: Routes JavaScript/TypeScript review requests to the appropriate specialist critic (react-critic, next-critic, react-native-critic, or proposal-critic) based on framework signals, file paths, imports, and artifact type.
+description: "Use as the entry point for any JavaScript/TypeScript code review or plan critique. Reads imports, file paths, package.json, and document signals to dispatch to the right specialist critic (react-critic, next-critic, react-native-critic, or proposal-critic). Invoke this instead of picking a critic directly."
 model: claude-haiku-4-5
 disallowedTools: Write, Edit
 ---

@@ -15,6 +15,7 @@ skills:
   - performance-engineer
   priority: 100
   status: active
+  jtbd: "Load for any Next.js review — core App Router patterns, RSC best practices, and data fetching guidance from Vercel."
 - id: vercel-labs/next-skills/next-cache-components
   skills_url: https://skills.sh/vercel-labs/next-skills/next-cache-components
   repo_url: https://github.com/vercel-labs/next-skills
@@ -27,6 +28,7 @@ skills:
   - performance-engineer
   priority: 95
   status: active
+  jtbd: "Load when reviewing caching, ISR, revalidation strategies, or fetch cache behavior in Next.js."
 - id: vercel-labs/next-skills/next-upgrade
   skills_url: https://skills.sh/vercel-labs/next-skills/next-upgrade
   repo_url: https://github.com/vercel-labs/next-skills
@@ -39,6 +41,7 @@ skills:
   - dx-maintainer
   priority: 92
   status: active
+  jtbd: "Load when reviewing Next.js version upgrades, breaking changes, codemods, or migration plans."
 - id: wshobson/agents/nextjs-app-router-patterns
   skills_url: https://skills.sh/wshobson/agents/nextjs-app-router-patterns
   repo_url: https://github.com/wshobson/agents
@@ -51,6 +54,7 @@ skills:
   - ops
   priority: 88
   status: active
+  jtbd: "Load when reviewing App Router architecture — layout nesting, parallel routes, route groups, and advanced patterns."
 - id: wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals
   skills_url: https://skills.sh/wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals
   repo_url: https://github.com/wsimmonds/claude-nextjs-skills
@@ -62,6 +66,7 @@ skills:
   - new-hire
   priority: 82
   status: active
+  jtbd: "Load when reviewing App Router fundamentals — server/client component split, basic routing, and data flow patterns."
 - id: clerk/skills/clerk-nextjs-patterns
   skills_url: https://skills.sh/clerk/skills/clerk-nextjs-patterns
   repo_url: https://github.com/clerk/skills
@@ -73,6 +78,7 @@ skills:
   - security
   priority: 78
   status: active
+  jtbd: "Load when code uses Clerk for authentication — middleware setup, protected routes, and session management patterns."
 - id: auth0/agent-skills/auth0-nextjs
   skills_url: https://skills.sh/auth0/agent-skills/auth0-nextjs
   repo_url: https://github.com/auth0/agent-skills
@@ -84,6 +90,7 @@ skills:
   - security
   priority: 78
   status: active
+  jtbd: "Load when code uses Auth0 for authentication — SDK integration, callback handling, and session patterns for Next.js."
 - id: mindrally/skills/nextauth-authentication
   skills_url: https://skills.sh/mindrally/skills/nextauth-authentication
   repo_url: https://github.com/mindrally/skills
@@ -95,6 +102,7 @@ skills:
   - security
   priority: 76
   status: active
+  jtbd: "Load when code uses NextAuth.js / Auth.js — provider configuration, session strategy, and callback patterns."
 - id: wshobson/agents/javascript-testing-patterns
   skills_url: https://skills.sh/wshobson/agents/javascript-testing-patterns
   repo_url: https://github.com/wshobson/agents
@@ -106,6 +114,7 @@ skills:
   - ops
   priority: 86
   status: active
+  jtbd: "Load when reviewing test strategy, async test patterns, or coverage gaps in JavaScript/TypeScript projects."
 - id: wshobson/agents/modern-javascript-patterns
   skills_url: https://skills.sh/wshobson/agents/modern-javascript-patterns
   repo_url: https://github.com/wshobson/agents
@@ -117,6 +126,7 @@ skills:
   - new-hire
   priority: 76
   status: active
+  jtbd: "Load when reviewing modern JS idioms — ESM usage, async patterns, and contemporary language features."
 - id: sickn33/antigravity-awesome-skills/api-security-best-practices
   skills_url: https://skills.sh/sickn33/antigravity-awesome-skills/api-security-best-practices
   repo_url: https://github.com/sickn33/antigravity-awesome-skills
@@ -128,3 +138,4 @@ skills:
   - security
   priority: 72
   status: active
+  jtbd: "Load when code handles API boundaries, auth tokens, user input, or sensitive data — trust boundary and input validation patterns."
