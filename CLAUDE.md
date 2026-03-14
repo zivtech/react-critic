@@ -29,6 +29,7 @@ python3 scripts/aggregate_stability.py
 - No-copy policy: external skills are referenced in manifests with pinned commits.
 - Max 3 external skills loaded per run.
 - Evidence required for CRITICAL/MAJOR findings.
+- Security Exploitability Gate: security findings must demonstrate a concrete exploit path reachable by non-privileged users. Unconfirmed findings tagged `[UNCONFIRMED]` and moved to Open Questions.
 - Shared JS-core rubric + critic-specific rubrics.
 
 ## Supply Chain Security
@@ -39,6 +40,16 @@ External skills are loaded by reference (pinned commit SHA + content SHA-256 has
 - `refresh_external_skills.py` shows content diffs and requires `--approve` to write updates.
 - `verify_no_copied_skills.py --verify-content` fetches and re-hashes to detect tampering.
 - CI validates manifest structure; full content verification available via `--verify-content`.
+
+### GitHub Repository Settings (manual setup)
+
+Upstream skill repos should be configured with:
+- **Signed commits**: require commit signature verification on default branch.
+- **Branch protection**: require PR reviews and status checks before merge to default branch.
+- **No force push**: disable force push to default branch to preserve commit history integrity.
+
+These are manual configurations on each upstream repo — they cannot be enforced from this repo,
+but should be verified before adding a new owner to `TRUSTED_OWNERS`.
 
 ## Benchmark Infrastructure
 

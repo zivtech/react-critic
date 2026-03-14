@@ -3,12 +3,16 @@ import argparse
 import difflib
 import hashlib
 import subprocess
+import sys
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from skill_security import scan_content
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFESTS = sorted(ROOT.glob('.claude/skills/*/references/external-skills-manifest.yaml'))
@@ -51,14 +55,25 @@ def show_diff(skill_id: str, old_content: str | None, new_content: str | None) -
         print(f'  (no content diff for {skill_id})')
 
 
+def make_compare_url(repo_url: str, old_sha: str, new_sha: str) -> str:
+    owner_repo = repo_url.removeprefix('https://github.com/')
+    if old_sha:
+        return f'https://github.com/{owner_repo}/compare/{old_sha}...{new_sha}'
+    return f'https://github.com/{owner_repo}/commit/{new_sha}'
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description='Refresh pinned commits in all critic manifests.')
     parser.add_argument('--check', action='store_true', help='Fail if updates are needed without writing files.')
     parser.add_argument('--approve', action='store_true', help='Apply pin and content hash updates (writes manifests).')
+    parser.add_argument('--force', action='store_true', help='Allow --approve to proceed despite content scan warnings.')
     args = parser.parse_args()
 
+    # Each entry: (manifest, skill_id, old_sha, new_sha, new_hash_or_None, repo_url)
     changes = []
     checked = 0
+    all_scan_warnings: list[str] = []
+    pending_writes: list[tuple[Path, dict]] = []
 
     for manifest in MANIFESTS:
         data = yaml.safe_load(manifest.read_text(encoding='utf-8')) or {}
@@ -84,12 +99,18 @@ def main() -> int:
             if new_content is not None:
                 new_hash = sha256_of(new_content)
                 print(f'  content_sha256 (new): {new_hash}')
+                scan_warnings = scan_content(new_content, s['id'])
+                if scan_warnings:
+                    print(f'  SCAN WARNINGS ({len(scan_warnings)}):')
+                    for w in scan_warnings:
+                        print(w)
+                    all_scan_warnings.extend(scan_warnings)
             else:
                 new_hash = None
                 print(f'  WARNING: Could not fetch new content — content_sha256 will be unverified.')
 
             local_changes.append((s['id'], current, latest, new_hash))
-            changes.append((manifest, s['id'], current, latest, new_hash))
+            changes.append((manifest, s['id'], current, latest, new_hash, s.get('repo_url', '')))
 
             if args.approve:
                 s['pinned_commit'] = latest
@@ -98,7 +119,17 @@ def main() -> int:
                 else:
                     s.pop('content_sha256', None)
 
-        if local_changes and args.approve:
+        if local_changes:
+            pending_writes.append((manifest, data))
+
+    # Scan gate: block all writes if warnings found without --force
+    if all_scan_warnings and not args.force:
+        print(f'\nContent scan found {len(all_scan_warnings)} warning(s). Review and use --approve --force to override.')
+        if args.approve:
+            return 2
+
+    if args.approve and (not all_scan_warnings or args.force):
+        for manifest, data in pending_writes:
             data['generated_at'] = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
             manifest.write_text(yaml.safe_dump(data, sort_keys=False), encoding='utf-8')
 
@@ -112,11 +143,12 @@ def main() -> int:
     ]
 
     if changes:
-        lines.append('| Manifest | Skill | Old | New | Hash Verified |')
-        lines.append('|---|---|---|---|---|')
-        for m, sid, old, new, new_hash in changes:
+        lines.append('| Manifest | Skill | Old | New | Hash Verified | Compare |')
+        lines.append('|---|---|---|---|---|---|')
+        for m, sid, old, new, new_hash, repo_url in changes:
             verified = 'yes' if new_hash else '# UNVERIFIED'
-            lines.append(f'| `{m.relative_to(ROOT)}` | `{sid}` | `{old or "-"}` | `{new}` | {verified} |')
+            compare_url = make_compare_url(repo_url, old, new)
+            lines.append(f'| `{m.relative_to(ROOT)}` | `{sid}` | `{old or "-"}` | `{new}` | {verified} | [compare]({compare_url}) |')
     else:
         lines.append('No pin changes detected.')
 

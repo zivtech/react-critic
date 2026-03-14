@@ -10,6 +10,9 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from skill_security import TRUSTED_OWNERS, scan_content
+
 ROOT = Path(__file__).resolve().parent.parent
 MANIFESTS = sorted(ROOT.glob('.claude/skills/*/references/external-skills-manifest.yaml'))
 
@@ -86,6 +89,9 @@ def main() -> int:
                 fail(f'Invalid skills_url for {sid}')
             if not str(s.get('repo_url', '')).startswith('https://github.com/'):
                 fail(f'Invalid repo_url for {sid}')
+            owner = sid.split('/')[0]
+            if owner not in TRUSTED_OWNERS:
+                fail(f'Untrusted owner "{owner}" for {sid}. Add to TRUSTED_OWNERS in scripts/skill_security.py if approved.')
             if not SHA_RE.match(str(s.get('pinned_commit', ''))):
                 fail(f'Invalid pinned_commit for {sid}')
             if s.get('status') not in {'active', 'deprecated'}:
@@ -116,6 +122,14 @@ def main() -> int:
                         content_errors += 1
                     else:
                         print(f'  OK: {sid} content hash verified.')
+
+                if content is not None:
+                    scan_warnings = scan_content(content, sid)
+                    if scan_warnings:
+                        print(f'  SCAN WARNINGS ({len(scan_warnings)}) for {sid}:')
+                        for w in scan_warnings:
+                            print(w)
+                        content_errors += len(scan_warnings)
 
     git_ls = subprocess.check_output(['git', '-C', str(ROOT), 'ls-files'], text=True).splitlines()
     forbidden_prefixes = [
