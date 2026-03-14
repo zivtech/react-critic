@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+import argparse
+import hashlib
 import re
 import subprocess
 import sys
+import urllib.request
+import urllib.error
 from pathlib import Path
 
 import yaml
@@ -11,6 +15,7 @@ MANIFESTS = sorted(ROOT.glob('.claude/skills/*/references/external-skills-manife
 
 ID_RE = re.compile(r'^[^/]+/[^/]+/[^/]+$')
 SHA_RE = re.compile(r'^[0-9a-f]{40}$')
+SHA256_RE = re.compile(r'^[0-9a-f]{64}$')
 
 
 def fail(msg: str) -> None:
@@ -18,11 +23,40 @@ def fail(msg: str) -> None:
     raise SystemExit(1)
 
 
+def fetch_skill_content(repo_url: str, commit: str, skill_name: str) -> str | None:
+    """Fetch SKILL.md content from raw.githubusercontent.com. Returns None on failure."""
+    owner_repo = repo_url.removeprefix('https://github.com/')
+    raw_url = f'https://raw.githubusercontent.com/{owner_repo}/{commit}/{skill_name}/SKILL.md'
+    try:
+        with urllib.request.urlopen(raw_url, timeout=15) as resp:
+            return resp.read().decode('utf-8')
+    except urllib.error.HTTPError as e:
+        print(f'  WARNING: HTTP {e.code} fetching {raw_url}')
+        return None
+    except Exception as e:
+        print(f'  WARNING: Failed to fetch {raw_url}: {e}')
+        return None
+
+
+def sha256_of(content: str) -> str:
+    return hashlib.sha256(content.encode('utf-8')).hexdigest()
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description='Verify no copied skills in manifests.')
+    parser.add_argument(
+        '--verify-content',
+        action='store_true',
+        help='Fetch skill content from raw.githubusercontent.com and verify content_sha256 hashes.',
+    )
+    args = parser.parse_args()
+
     if not MANIFESTS:
         fail('No external-skills-manifest.yaml files found.')
 
     seen = {}
+    content_errors = 0
+
     for manifest in MANIFESTS:
         data = yaml.safe_load(manifest.read_text(encoding='utf-8')) or {}
         skills = data.get('skills', [])
@@ -57,6 +91,32 @@ def main() -> int:
             if s.get('status') not in {'active', 'deprecated'}:
                 fail(f'Invalid status for {sid}: {s.get("status")}')
 
+            # Validate content_sha256 format if present
+            stored_hash = s.get('content_sha256')
+            if stored_hash is not None:
+                if not SHA256_RE.match(str(stored_hash)):
+                    fail(f'Invalid content_sha256 format for {sid} (must be 64-char hex): {stored_hash}')
+
+            # Optionally verify content hash against live content
+            if args.verify_content:
+                skill_name = sid.split('/')[-1]
+                commit = s.get('pinned_commit', '')
+                repo_url = s.get('repo_url', '')
+                content = fetch_skill_content(repo_url, commit, skill_name)
+                if content is None:
+                    print(f'  WARNING: Could not fetch content for {sid} — skipping hash verification.')
+                elif stored_hash is None:
+                    print(f'  WARNING: No content_sha256 stored for {sid} — run refresh_external_skills.py --approve to populate.')
+                else:
+                    actual_hash = sha256_of(content)
+                    if actual_hash != stored_hash:
+                        print(f'ERROR: content_sha256 mismatch for {sid}')
+                        print(f'  expected: {stored_hash}')
+                        print(f'  actual:   {actual_hash}')
+                        content_errors += 1
+                    else:
+                        print(f'  OK: {sid} content hash verified.')
+
     git_ls = subprocess.check_output(['git', '-C', str(ROOT), 'ls-files'], text=True).splitlines()
     forbidden_prefixes = [
         'research/javascript-skills/upstream/',
@@ -66,6 +126,10 @@ def main() -> int:
         for prefix in forbidden_prefixes:
             if f.startswith(prefix):
                 fail(f'Forbidden tracked file path: {f}')
+
+    if content_errors:
+        print(f'\n{content_errors} content hash mismatch(es) detected.')
+        raise SystemExit(1)
 
     print(f'Validation passed for {len(MANIFESTS)} manifests and {len(seen)} unique skills.')
     return 0

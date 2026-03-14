@@ -15,9 +15,11 @@ A router agent (`js-critic-router`) dispatches to the correct critic based on fr
 ## Commands
 
 ```bash
-python3 scripts/refresh_external_skills.py
-python3 scripts/refresh_external_skills.py --check
-python3 scripts/verify_no_copied_skills.py
+python3 scripts/refresh_external_skills.py              # dry-run: show diffs
+python3 scripts/refresh_external_skills.py --approve     # apply pin + hash updates
+python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
+python3 scripts/verify_no_copied_skills.py               # validate manifest structure
+python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
 python3 scripts/run_benchmark.py --all
 python3 scripts/aggregate_stability.py
 ```
@@ -28,6 +30,15 @@ python3 scripts/aggregate_stability.py
 - Max 3 external skills loaded per run.
 - Evidence required for CRITICAL/MAJOR findings.
 - Shared JS-core rubric + critic-specific rubrics.
+
+## Supply Chain Security
+
+External skills are loaded by reference (pinned commit SHA + content SHA-256 hash).
+
+- `content_sha256` in manifests stores the SHA-256 of each skill's SKILL.md at the pinned commit.
+- `refresh_external_skills.py` shows content diffs and requires `--approve` to write updates.
+- `verify_no_copied_skills.py --verify-content` fetches and re-hashes to detect tampering.
+- CI validates manifest structure; full content verification available via `--verify-content`.
 
 ## Benchmark Infrastructure
 

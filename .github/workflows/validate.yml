@@ -15,3 +15,5 @@ jobs:
       - run: pip install pyyaml
       - run: python3 scripts/refresh_external_skills.py --check
       - run: python3 scripts/verify_no_copied_skills.py
+        # Note: add --verify-content for full content integrity checks;
+        # omitted by default to avoid CI dependency on GitHub raw content availability.
