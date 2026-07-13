@@ -1,7 +1,7 @@
 ---
 name: react-critic
 description: "Use when reviewing React components, hooks, state management, rendering performance, or upgrade plans where evidence-backed critique with security/new-hire/ops perspectives is required."
-model: claude-opus-4-6
+model: claude-opus-4-8
 disallowedTools: Write, Edit
 ---
 

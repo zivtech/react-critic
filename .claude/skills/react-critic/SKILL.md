@@ -1,6 +1,6 @@
 ---
+description: Evidence-backed review of React components, hooks, state, and rendering.
 name: react-critic
-description: "Use when reviewing React components, hooks, state management, rendering performance, or upgrade plans where evidence-backed critique with security/new-hire/ops perspectives is required."
 ---
 
 # React Critic

@@ -1,6 +1,6 @@
 ---
+description: Review RFCs, ADRs, and architecture decisions with evidence-backed critique.
 name: proposal-critic
-description: "Use when reviewing RFCs, ADRs, migration plans, architecture decisions, or feature specs across the React ecosystem where evidence-backed plan critique is required."
 ---
 
 # Proposal Critic
