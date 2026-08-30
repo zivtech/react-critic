@@ -1,0 +1,12 @@
+Review the neutral numbered source lines using the committed critic skill and the rule catalog.
+
+SKILL
+{{SKILL}}
+
+RULE_CATALOG
+{{RULE_CATALOG}}
+
+SOURCE_LINES
+{{SOURCE_LINES}}
+
+Return strict JSON only: {"findings":[{"rule_id":"catalog rule","evidence_lines":[1],"assertion":"present"}]}.

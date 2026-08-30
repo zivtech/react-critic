@@ -25,5 +25,5 @@ issues:
   - severity: MINOR
     category: state-ownership
     description: "unrelated concerns (auth, theme, cart, notifications) colocated in one provider; should be split into separate contexts"
-    evidence: "const [user, setUser] = useState(null); const [theme..."
+    evidence: "const [user, setUser] = useState(null);"
     expected_checks: [state-ownership]

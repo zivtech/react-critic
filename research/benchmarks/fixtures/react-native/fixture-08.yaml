@@ -24,7 +24,7 @@ issues:
   - severity: MAJOR
     category: release-safety
     description: "no minimum app version check before applying OTA update; update might target a different native binary version and cause incompatibility crashes"
-    evidence: "const update = await Updates.checkForUpdateAsync();"
+    evidence: "await Updates.fetchUpdateAsync();"
     expected_checks: [release-safety, upgrade-safety]
   - severity: MINOR
     category: operability

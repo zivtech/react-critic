@@ -20,7 +20,7 @@ issues:
   - severity: MAJOR
     category: app-router-conventions
     description: "metadata exported as a plain object instead of generateMetadata(); post-specific title/og tags (title, description, og:image) cannot be set dynamically"
-    evidence: "export const metadata = { title: 'Blog Post' };"
+    evidence: "export const metadata = { // static, not dynamic"
     expected_checks: [app-router-conventions]
   - severity: MAJOR
     category: app-router-conventions

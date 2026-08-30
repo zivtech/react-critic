@@ -24,7 +24,7 @@ issues:
   - severity: MAJOR
     category: render-behavior
     description: "filter + nested traversal + regex compile runs synchronously on every render; O(rows × filters × depth) in the render path"
-    evidence: "const visibleRows = rows.filter(r => { return filters.every(f => {"
+    evidence: "const visibleRows = rows.filter(r => {"
     expected_checks: [render-behavior, hook-correctness]
   - severity: MAJOR
     category: render-behavior

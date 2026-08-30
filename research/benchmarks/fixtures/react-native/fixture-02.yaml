@@ -21,7 +21,7 @@ issues:
   - severity: MAJOR
     category: list-performance
     description: "no removeClippedSubviews or windowSize config; on large lists all items stay mounted, causing memory pressure on low-end Android devices"
-    evidence: "<FlatList data={notifications}"
+    evidence: "<FlatList"
     expected_checks: [list-performance]
   - severity: MINOR
     category: list-performance

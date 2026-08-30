@@ -19,7 +19,7 @@ issues:
   - severity: CRITICAL
     category: server-actions-safety
     description: "role is written directly from form input with no authorization check; any user can elevate their own role to admin"
-    evidence: "const role = formData.get('role') as string; ... data: { bio, role }"
+    evidence: "const role = formData.get('role') as string;"
     expected_checks: [server-actions-safety, security]
   - severity: CRITICAL
     category: server-actions-safety

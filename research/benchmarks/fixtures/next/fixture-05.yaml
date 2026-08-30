@@ -17,7 +17,7 @@ issues:
   - severity: CRITICAL
     category: runtime-choice
     description: "runtime='edge' is incompatible with fs.readFileSync and path.join; these are Node.js APIs unavailable in the Edge Runtime; route will fail at deploy time"
-    evidence: "export const runtime = 'edge'; import { readFileSync } from 'fs';"
+    evidence: "export const runtime = 'edge';"
     expected_checks: [runtime-choice]
   - severity: MINOR
     category: runtime-choice

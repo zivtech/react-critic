@@ -23,7 +23,7 @@ issues:
   - severity: MAJOR
     category: async-correctness
     description: "no cancellation/teardown: concurrent fetches race and stale responses overwrite newer ones"
-    evidence: "fetch(`/api/search?...`).then(r => r.json()).then(data => setResults"
+    evidence: "fetch(`/api/search?q=${query}&page=${page}`)"
     expected_checks: [async-correctness]
   - severity: MINOR
     category: render-behavior

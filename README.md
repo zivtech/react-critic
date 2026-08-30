@@ -56,9 +56,34 @@ python3 scripts/refresh_external_skills.py --approve     # apply pin + hash upda
 python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
 python3 scripts/verify_no_copied_skills.py               # validate manifest structure
 python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
-python3 scripts/run_benchmark.py --all
-python3 scripts/aggregate_stability.py
+python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit> --run-id <uuid>
+python3 -m unittest discover
 ```
+
+## Exact structured defect-detection benchmark
+
+The runner never calls a provider. It reads a run-specific, immutable
+`captures/{critic}/{run-id}/run.json` and eight candidate plus eight baseline
+capture blobs from an exact Git commit. Custody is `self-attested-repo-native`:
+provider/model/runtime/tool labels in `run.json` are not independent proof of
+execution authenticity.
+
+Prompts expose only neutral numbered source lines and a committed rule catalog.
+Candidate prompts also include the committed critic skill; baseline prompts do
+not. Gold issue IDs, severity, descriptions, remediation, and annotations stay
+private. Each response is strict JSON containing only findings with a known
+`rule_id`, sorted unique in-range `evidence_lines`, and `assertion: "present"`.
+
+The primary metric is micro exact-match precision, recall, and F1 across eight
+unique captures per role. Jackknife windows provide sensitivity references only;
+they do not increase sample size. The benchmark is not evidence of prose or
+remediation quality, severity judgment, novel-finding ability, provider
+authenticity, or statistical superiority. Historical reports remain rejected.
+
+Publication reserves the exact bundle directory before writing and adds a final
+`COMPLETE` marker only after both report and manifest are in place. This is a
+fail-closed local publication guard; it does not claim crash-durable or
+independently witnessed publication.
 
 ## License
 

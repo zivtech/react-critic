@@ -24,7 +24,7 @@ issues:
   - severity: MAJOR
     category: operability
     description: "no ErrorBoundary wrapping the Suspense; fetch errors propagate to root React error handler, crashing the full app instead of showing an inline error state"
-    evidence: "<Suspense fallback={<Skeleton />}><Dashboard /></Suspense>"
+    evidence: "<Suspense fallback={<Skeleton />}>"
     expected_checks: [operability]
   - severity: MINOR
     category: operability

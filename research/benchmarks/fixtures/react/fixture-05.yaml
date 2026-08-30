@@ -29,10 +29,11 @@ issues:
   - severity: MAJOR
     category: async-correctness
     description: "no AbortController: if userId changes or component unmounts during fetch, stale setState calls fire on unmounted component"
-    evidence: ".then(r => r.json()).then(setPosts);"
+    evidence: ".then(setPosts);"
     expected_checks: [async-correctness, hook-correctness]
   - severity: MINOR
     category: operability
     description: "no error handling: fetch rejections are silently swallowed, user sees infinite spinner"
     evidence: ".then(r => r.json())"
+    evidence_lines: [12]
     expected_checks: [operability]

@@ -1,0 +1,10 @@
+rules:
+  - {id: next.app-router-conventions, category: app-router-conventions}
+  - {id: next.cache-correctness, category: cache-correctness}
+  - {id: next.operability, category: operability}
+  - {id: next.route-handler-safety, category: route-handler-safety}
+  - {id: next.rsc-boundary, category: rsc-boundary}
+  - {id: next.runtime-choice, category: runtime-choice}
+  - {id: next.server-actions-safety, category: server-actions-safety}
+  - {id: next.suspense-boundary, category: suspense-boundary}
+  - {id: next.upgrade-safety, category: upgrade-safety}

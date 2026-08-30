@@ -1,0 +1,8 @@
+rules:
+  - {id: react.async-correctness, category: async-correctness}
+  - {id: react.hook-correctness, category: hook-correctness}
+  - {id: react.operability, category: operability}
+  - {id: react.render-behavior, category: render-behavior}
+  - {id: react.security, category: security}
+  - {id: react.state-ownership, category: state-ownership}
+  - {id: react.upgrade-safety, category: upgrade-safety}

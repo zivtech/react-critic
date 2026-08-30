@@ -23,9 +23,12 @@ issues:
     category: native-bridge
     description: "NativeModules synchronous call blocks the JS thread; on startup this can cause frame drops and ANR on Android if the native implementation is slow"
     evidence: "const deviceInfo = NativeModules.DeviceInfo.getInfo();"
+    evidence_lines: [6]
     expected_checks: [native-bridge, render-performance]
   - severity: MINOR
     category: native-bridge
+    rule_id: react-native.native-bridge.error-handling
     description: "no error handling around NativeModules call; if the native module is unavailable (web target, storybook), throws uncaught TypeError"
     evidence: "NativeModules.DeviceInfo.getInfo();"
+    evidence_lines: [6]
     expected_checks: [native-bridge, operability]

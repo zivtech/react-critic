@@ -1,0 +1,9 @@
+Review the neutral numbered source lines using only the rule catalog.
+
+RULE_CATALOG
+{{RULE_CATALOG}}
+
+SOURCE_LINES
+{{SOURCE_LINES}}
+
+Return strict JSON only: {"findings":[{"rule_id":"catalog rule","evidence_lines":[1],"assertion":"present"}]}.

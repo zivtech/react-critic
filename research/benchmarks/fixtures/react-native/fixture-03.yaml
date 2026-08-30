@@ -23,10 +23,10 @@ issues:
   - severity: CRITICAL
     category: memory-leak
     description: "setInterval not cleared on unmount or symbol change; interval fires indefinitely after navigation away, calling setState on unmounted component"
-    evidence: "const id = setInterval(() => { ... // no cleanup return"
+    evidence: "const id = setInterval(() => {"
     expected_checks: [memory-leak, hook-correctness]
   - severity: CRITICAL
     category: memory-leak
     description: "priceSocket subscription not unsubscribed on unmount; multiple subscriptions stack on each symbol change"
-    evidence: "const sub = priceSocket.subscribe(symbol, setPrice); // no unsubscribe"
+    evidence: "const sub = priceSocket.subscribe(symbol, setPrice);"
     expected_checks: [memory-leak, hook-correctness]

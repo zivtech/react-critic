@@ -1,0 +1,11 @@
+rules:
+  - {id: react-native.expo-workflow, category: expo-workflow}
+  - {id: react-native.gesture-handling, category: gesture-handling}
+  - {id: react-native.hermes-compatibility, category: hermes-compatibility}
+  - {id: react-native.list-performance, category: list-performance}
+  - {id: react-native.memory-leak, category: memory-leak}
+  - {id: react-native.native-bridge, category: native-bridge}
+  - {id: react-native.native-bridge.error-handling, category: native-bridge}
+  - {id: react-native.operability, category: operability}
+  - {id: react-native.release-safety, category: release-safety}
+  - {id: react-native.render-performance, category: render-performance}
