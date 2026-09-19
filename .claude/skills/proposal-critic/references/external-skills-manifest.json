@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "consumer": "proposal-critic",
+  "generated_at": "2026-09-19T17:46:26Z",
+  "skills": [
+    {
+      "id": "dotneet/claude-code-marketplace/typescript-react-reviewer",
+      "categories": [
+        "proposal",
+        "typescript",
+        "api-design"
+      ],
+      "audiences_supported": [
+        "executor",
+        "dx-maintainer"
+      ],
+      "priority": 78,
+      "jtbd": "Load when evaluating TypeScript API design proposals \u2014 type safety patterns and interface design review.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/modern-javascript-patterns",
+      "categories": [
+        "shared",
+        "javascript"
+      ],
+      "audiences_supported": [
+        "executor",
+        "skeptic"
+      ],
+      "priority": 76,
+      "jtbd": "Load when evaluating JS/TS pattern choices in proposals \u2014 modern idioms and contemporary language feature assessment.",
+      "enabled": true
+    },
+    {
+      "id": "sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "categories": [
+        "shared",
+        "security"
+      ],
+      "audiences_supported": [
+        "security-engineer"
+      ],
+      "priority": 72,
+      "jtbd": "Load when proposals involve API design, auth flows, or data handling \u2014 security architecture and trust boundary review.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/javascript-testing-patterns",
+      "categories": [
+        "shared",
+        "testing"
+      ],
+      "audiences_supported": [
+        "executor"
+      ],
+      "priority": 70,
+      "jtbd": "Load when evaluating test strategy feasibility in proposals \u2014 coverage planning and test architecture assessment.",
+      "enabled": true
+    },
+    {
+      "id": "vercel-labs/agent-skills/composition-patterns",
+      "categories": [
+        "core-review",
+        "proposal",
+        "architecture"
+      ],
+      "audiences_supported": [
+        "executor",
+        "stakeholder",
+        "skeptic"
+      ],
+      "priority": 96,
+      "jtbd": "Core React and Next.js component architecture planning reference.",
+      "enabled": true
+    }
+  ]
+}

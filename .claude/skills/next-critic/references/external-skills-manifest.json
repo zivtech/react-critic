@@ -1,0 +1,169 @@
+{
+  "version": 2,
+  "consumer": "next-critic",
+  "generated_at": "2026-09-19T17:46:26Z",
+  "skills": [
+    {
+      "id": "wshobson/agents/nextjs-app-router-patterns",
+      "categories": [
+        "next",
+        "app-router"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 88,
+      "jtbd": "Load when reviewing App Router architecture \u2014 layout nesting, parallel routes, route groups, and advanced patterns.",
+      "enabled": true
+    },
+    {
+      "id": "wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals",
+      "categories": [
+        "next",
+        "app-router"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 82,
+      "jtbd": "Load when reviewing App Router fundamentals \u2014 server/client component split, basic routing, and data flow patterns.",
+      "enabled": true
+    },
+    {
+      "id": "clerk/skills/clerk-nextjs-patterns",
+      "categories": [
+        "next",
+        "auth"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 78,
+      "jtbd": "Load when code uses Clerk for authentication \u2014 middleware setup, protected routes, and session management patterns.",
+      "enabled": true
+    },
+    {
+      "id": "auth0/agent-skills/auth0",
+      "categories": [
+        "next",
+        "auth"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 78,
+      "jtbd": "Load when code uses Auth0 for authentication \u2014 SDK integration, callback handling, and session patterns for Next.js.",
+      "enabled": true
+    },
+    {
+      "id": "mindrally/skills/nextauth-authentication",
+      "categories": [
+        "next",
+        "auth"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 76,
+      "jtbd": "Load when code uses NextAuth.js / Auth.js \u2014 provider configuration, session strategy, and callback patterns.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/javascript-testing-patterns",
+      "categories": [
+        "shared",
+        "testing"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 86,
+      "jtbd": "Load when reviewing test strategy, async test patterns, or coverage gaps in JavaScript/TypeScript projects.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/modern-javascript-patterns",
+      "categories": [
+        "shared",
+        "javascript"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 76,
+      "jtbd": "Load when reviewing modern JS idioms \u2014 ESM usage, async patterns, and contemporary language features.",
+      "enabled": true
+    },
+    {
+      "id": "sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "categories": [
+        "shared",
+        "security"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 72,
+      "jtbd": "Load when code handles API boundaries, auth tokens, user input, or sensitive data \u2014 trust boundary and input validation patterns.",
+      "enabled": true
+    },
+    {
+      "id": "vercel-labs/agent-skills/react-best-practices",
+      "categories": [
+        "core-review",
+        "next",
+        "performance"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 100,
+      "jtbd": "Core React and Next.js performance guidance after retirement of next-skills.",
+      "enabled": true
+    },
+    {
+      "id": "vercel-labs/agent-skills/composition-patterns",
+      "categories": [
+        "next",
+        "architecture"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 94,
+      "jtbd": "Load for component API and server/client composition decisions.",
+      "enabled": true
+    },
+    {
+      "id": "vercel/next.js/next-dev-loop",
+      "categories": [
+        "next",
+        "runtime-verification"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 92,
+      "jtbd": "Executor-only: Next 16.3+, Turbopack, running next dev, and agent-browser >=0.31.1.",
+      "enabled": true
+    },
+    {
+      "id": "vercel/next.js/next-cache-components-optimizer",
+      "categories": [
+        "next",
+        "cache-components"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 90,
+      "jtbd": "Executor-only: Next 16.3+ Cache Components instant-navigation work.",
+      "enabled": true
+    }
+  ]
+}

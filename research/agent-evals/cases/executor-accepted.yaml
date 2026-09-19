@@ -1,0 +1,24 @@
+id: executor-accepted
+agent: react-executor
+gate: accepted
+framework: react
+critic: react-critic
+objective: Change value to 2.
+scope: [src]
+steps: [Change src/value.ts to export value 2.]
+validation: [Inspect src/value.ts.]
+files:
+  package.json: '{"dependencies":{"react":"19.1.0"}}'
+  src/value.ts: "export const value = 1;\n"
+prompt: >-
+  Execute {workspace}/plan.json using {workspace}/scope.json, {workspace}/review.txt, and {workspace}/receipt.json.
+  Make only the approved edit. For this bounded eval, post-implementation critic review is unavailable;
+  report that limitation in the reason. Return status completed, framework react, and critic react-critic.
+expect:
+  status: completed
+  framework: react
+  critic: react-critic
+assert_files:
+  - path: src/value.ts
+    changed: true
+    contains: "value = 2"

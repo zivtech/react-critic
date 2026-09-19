@@ -1,0 +1,3 @@
+display_name: React Planner
+short_description: Critic-gated React and Next.js planning
+default_prompt: Inspect this repository and produce a bounded, framework-routed JSON implementation plan with deterministic plan and scope fingerprints.

@@ -1,0 +1,3294 @@
+{
+  "version": 2,
+  "generated_at": "2026-09-19T18:43:05Z",
+  "skills": {
+    "auth0/agent-skills/auth0-nextjs": {
+      "id": "auth0/agent-skills/auth0-nextjs",
+      "repo_url": "https://github.com/auth0/agent-skills",
+      "skills_url": "https://skills.sh/auth0/agent-skills/auth0-nextjs",
+      "source_path": "plugins/auth0-sdks/skills/auth0-nextjs/SKILL.md",
+      "pinned_commit": "d0213ce31c397204db831368aded71f8ed18af4e",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "auth0/agent-skills/auth0"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "61b03d675a7d33aceed0dec8e46d3244cf7ebbf488e963c71eb49bb6a56085c6",
+      "bundle_sha256": "1c4fba8b2bc296339da953eadbf20c646a8297b4fc2ec6f519bb4822cd79b850",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 8125,
+          "sha256": "61b03d675a7d33aceed0dec8e46d3244cf7ebbf488e963c71eb49bb6a56085c6"
+        },
+        {
+          "path": "references/api.md",
+          "size": 4122,
+          "sha256": "4dd082dc073cd8bafbf85cfbe08bf252b48832484e074ef6aec19eef16baff73"
+        },
+        {
+          "path": "references/integration.md",
+          "size": 5925,
+          "sha256": "0c754569204d386f099ab59033e9a2cdfcf445160f49fa461150edb6d0c9a457"
+        },
+        {
+          "path": "references/setup.md",
+          "size": 5335,
+          "sha256": "9c6c2caf57ff5d604656a31b67df35ade7b8e0163a4eb9c6dd34f3d8658e4edf"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "auth0/agent-skills/auth0-react-native": {
+      "id": "auth0/agent-skills/auth0-react-native",
+      "repo_url": "https://github.com/auth0/agent-skills",
+      "skills_url": "https://skills.sh/auth0/agent-skills/auth0-react-native",
+      "source_path": "plugins/auth0-sdks/skills/auth0-react-native/SKILL.md",
+      "pinned_commit": "d0213ce31c397204db831368aded71f8ed18af4e",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "auth0/agent-skills/auth0"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "51d380d79827de1a77a1e13012b4db34d7f3fc9f1048c27b7ef943070dbc96d4",
+      "bundle_sha256": "9d638f1c62a10355991eb7b786f77350c8c53ca39214ffececd46e5d221deb23",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 6261,
+          "sha256": "51d380d79827de1a77a1e13012b4db34d7f3fc9f1048c27b7ef943070dbc96d4"
+        },
+        {
+          "path": "references/api.md",
+          "size": 2439,
+          "sha256": "de283a26ce28b6e868662ec9ce832240dae7e5c0e8c9c22fe56e375f7f71e819"
+        },
+        {
+          "path": "references/patterns.md",
+          "size": 3858,
+          "sha256": "df6e0fd1cf600c7830fcda0c9f8be6ccc996b05c8fbeb29468cb38b5bdafd34a"
+        },
+        {
+          "path": "references/setup.md",
+          "size": 3020,
+          "sha256": "ccbb4e8c3eae56795cd5c0338b1caf58c504c9c116d82b4167471e4652764d81"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "callstack/react-native-testing-library/react-native-testing": {
+      "id": "callstack/react-native-testing-library/react-native-testing",
+      "repo_url": "https://github.com/callstack/react-native-testing-library",
+      "skills_url": "https://skills.sh/callstack/react-native-testing-library/react-native-testing",
+      "source_path": "skills/react-native-testing/SKILL.md",
+      "pinned_commit": "fc59e55769307befbd103c17131d6f78f38033b7",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "dea54d1d397cbd271a9ee7f6c09e841bb1aa546d9f2a3ee46fd466275061e6e1",
+      "bundle_sha256": "59471f0a144e517fa4d06e737fad4b2fe58bd045140da1d035b91824e04366f3",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 7315,
+          "sha256": "dea54d1d397cbd271a9ee7f6c09e841bb1aa546d9f2a3ee46fd466275061e6e1"
+        },
+        {
+          "path": "references/anti-patterns.md",
+          "size": 7104,
+          "sha256": "1ae7fcef36164093ca259a4192556b6356ba70ec2ac000b08307ffebd89da823"
+        },
+        {
+          "path": "references/api-reference-v13.md",
+          "size": 20021,
+          "sha256": "f9a47fcbee4c54871b2fc337e7ba035d9f9753c2f0cadef459e40b11932e77a7"
+        },
+        {
+          "path": "references/api-reference-v14.md",
+          "size": 19208,
+          "sha256": "90f594b9bc8cfa17b27f87a6cb411ef7078fc5b5add1b7b0e9ac37623055ab65"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "callstackincubator/agent-skills/react-native-best-practices": {
+      "id": "callstackincubator/agent-skills/react-native-best-practices",
+      "repo_url": "https://github.com/callstackincubator/agent-skills",
+      "skills_url": "https://skills.sh/callstackincubator/agent-skills/react-native-best-practices",
+      "source_path": "skills/react-native-best-practices/SKILL.md",
+      "pinned_commit": "61e6e7dfdf3a8ee862254c200d751fcb1fb863dc",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "abdbb7fc34ad739420fe43632e0baa1d646a01d097c6905211aa8b5b41957bf1",
+      "bundle_sha256": "f008c0756b40937b4ec6ff4fee6cf3f82a2a15e0015dee5e69510dda40112591",
+      "files": [
+        {
+          "path": "POWER.md",
+          "size": 8312,
+          "sha256": "7e39898ec7b7e3335fbc8d290bd3b806020435fecfbc1c5e98ebfd31b2798999"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 12348,
+          "sha256": "abdbb7fc34ad739420fe43632e0baa1d646a01d097c6905211aa8b5b41957bf1"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 227,
+          "sha256": "13d867840f5d10f87256653bc71da8de508ad13b10fd6931e1eb29cdd8ceb9e6"
+        },
+        {
+          "path": "references/bundle-analyze-app.md",
+          "size": 5461,
+          "sha256": "2c43a39bdad593091b2ec6f3fb0307096feb854bf11f4187f31f237a50cf76ca"
+        },
+        {
+          "path": "references/bundle-analyze-js.md",
+          "size": 7029,
+          "sha256": "4e97a27c06ea91b49cacb18230f63bad392fc949e40d348787aab39755e8da41"
+        },
+        {
+          "path": "references/bundle-barrel-exports.md",
+          "size": 5406,
+          "sha256": "187ac5a80822d22dbccdf3bb07f0fa60905b494285e735b30d97e79961fdfca5"
+        },
+        {
+          "path": "references/bundle-code-splitting.md",
+          "size": 7545,
+          "sha256": "4cf3cae585f9ae7f64fc55af7af71d70e5ac3acb93fa6264a3186cc79d939cd7"
+        },
+        {
+          "path": "references/bundle-hermes-mmap.md",
+          "size": 4133,
+          "sha256": "5eca09ae487bce41436461cc7d8d96fa8861b39815a2b930263807591778b757"
+        },
+        {
+          "path": "references/bundle-library-size.md",
+          "size": 4150,
+          "sha256": "cb87a2d8a3cddd508b524b6b627ca775f5fc5a613f29d8a0f7e037ba054e4a7e"
+        },
+        {
+          "path": "references/bundle-native-assets.md",
+          "size": 5041,
+          "sha256": "766fb2d22a3cb8b5f26969fd4afc3caf1dd32fd8f2da6bf9233aac48c2bbfd42"
+        },
+        {
+          "path": "references/bundle-r8-android.md",
+          "size": 5356,
+          "sha256": "9f49269531e906e25f26eeb2a77b9af76bd562065d537c3cc0155301eb7bf9c0"
+        },
+        {
+          "path": "references/bundle-tree-shaking.md",
+          "size": 5690,
+          "sha256": "3033f006a07a430ca4e2381b456774e59b3ace4fe0aee38740291cd0f305e9ca"
+        },
+        {
+          "path": "references/js-animations-reanimated.md",
+          "size": 8015,
+          "sha256": "b0912deb98d8af8b8bf97d98789e39d467466be28cab9d96def7101b6e799b16"
+        },
+        {
+          "path": "references/js-atomic-state.md",
+          "size": 5267,
+          "sha256": "6005f5ba3e46c120d3c3fa38d1ea077bbc026c8c707dea0075025c84a4ff8254"
+        },
+        {
+          "path": "references/js-bottomsheet.md",
+          "size": 12199,
+          "sha256": "43eca23b45f2c100d506f51c21e56d72ae501147b5acec7b9fd1cbb92e2d08df"
+        },
+        {
+          "path": "references/js-concurrent-react.md",
+          "size": 6652,
+          "sha256": "0b2bab623b62136745e34ce135148f79311c3c4487068b0b0f2fa0b1fab851f2"
+        },
+        {
+          "path": "references/js-lists-flatlist-flashlist.md",
+          "size": 5998,
+          "sha256": "4d62b3a9d6325fc77cdc4fc18597d9e5d241e5afd37f9284babf0fc69ce0def7"
+        },
+        {
+          "path": "references/js-measure-fps.md",
+          "size": 5306,
+          "sha256": "5efca75bfbe57ebf1ec1e38df8704909e0df2e41df856715bb425d438cb48a34"
+        },
+        {
+          "path": "references/js-memory-leaks.md",
+          "size": 5301,
+          "sha256": "52d0f71f0addbd6b03e8a12e46fa7405a5ae68394f106081768e2625f1ffd838"
+        },
+        {
+          "path": "references/js-profile-react.md",
+          "size": 5871,
+          "sha256": "c7a283f68320de85d84940871e58c0c40b71182d704202d49a115ba98fdca716"
+        },
+        {
+          "path": "references/js-react-compiler.md",
+          "size": 7372,
+          "sha256": "70f873d84646260256e01b93f504468d645a4e57ad5f88eef5d090f63358aa1a"
+        },
+        {
+          "path": "references/js-uncontrolled-components.md",
+          "size": 5492,
+          "sha256": "4c27d770d1818edcb193612f141efe62f1ec907aa3aa8fbc54d15e677ffa54e7"
+        },
+        {
+          "path": "references/native-android-16kb-alignment.md",
+          "size": 3761,
+          "sha256": "d61c945db16abf89c03099138febb8be2f228187b94a534eab7c385290938806"
+        },
+        {
+          "path": "references/native-measure-tti.md",
+          "size": 6527,
+          "sha256": "f27bc1de4d443a9e49d372806aea91bf793bb4c7125e693db7cae3442eff57a1"
+        },
+        {
+          "path": "references/native-memory-leaks.md",
+          "size": 5627,
+          "sha256": "3b69f2545bcc541b81dde55c0e0d2803a87671dd7a64da848e041af43019b4f4"
+        },
+        {
+          "path": "references/native-memory-patterns.md",
+          "size": 5986,
+          "sha256": "cecf5b6eea44e3de9544976a9077b1b88d11bf5a336bf25cd27e094988ffb17d"
+        },
+        {
+          "path": "references/native-platform-setup.md",
+          "size": 3786,
+          "sha256": "767b2d7ee9889fb43eccaec15ef2601cc3e25706f85cef14f264ce052789572e"
+        },
+        {
+          "path": "references/native-profiling.md",
+          "size": 4358,
+          "sha256": "7830d1fd35fc52979b34d09646b8d237e895a3894d464ad16d6fd8bb32fe80c9"
+        },
+        {
+          "path": "references/native-sdks-over-polyfills.md",
+          "size": 6279,
+          "sha256": "ac9ca06c1f3a3646c4b75d2ca85039ed357cc117522d4d2de112dda5bd75cf2f"
+        },
+        {
+          "path": "references/native-threading-model.md",
+          "size": 6882,
+          "sha256": "7543ae88d708a382f0ec4d8fba987e7e89d8f2d2c954586a77a26c449e246b66"
+        },
+        {
+          "path": "references/native-turbo-modules.md",
+          "size": 5650,
+          "sha256": "39ca96ce0b787cbff25aa649508cb64ea8bbb1c07ddd08e10c1d6a6ac932ea41"
+        },
+        {
+          "path": "references/native-view-flattening.md",
+          "size": 5236,
+          "sha256": "483a25551f4d73199156599874d21d67731dbc4d1bc241ec672f064667265c24"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "callstackincubator/agent-skills/upgrading-react-native": {
+      "id": "callstackincubator/agent-skills/upgrading-react-native",
+      "repo_url": "https://github.com/callstackincubator/agent-skills",
+      "skills_url": "https://skills.sh/callstackincubator/agent-skills/upgrading-react-native",
+      "source_path": "skills/upgrading-react-native/SKILL.md",
+      "pinned_commit": "61e6e7dfdf3a8ee862254c200d751fcb1fb863dc",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "5d81737d25e48a320ec56b12bca4be3fa99166ddd3186374ec31ca31d8417930",
+      "bundle_sha256": "2182c671937cc24e3b60fc1d91ef834d484536de26e1ac94f576d6f2ed327c16",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 4210,
+          "sha256": "5d81737d25e48a320ec56b12bca4be3fa99166ddd3186374ec31ca31d8417930"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 248,
+          "sha256": "e939f5552cd297e567fd2d7327cecc747c0f07524e4ff902ae3178a467f409aa"
+        },
+        {
+          "path": "references/expo-sdk-upgrade.md",
+          "size": 2579,
+          "sha256": "7e3e9ba33ab2f906e282815a4e4fb4338b5f1b1d56090929f37ab9c4f107665d"
+        },
+        {
+          "path": "references/monorepo-singlerepo-targeting.md",
+          "size": 1074,
+          "sha256": "8c9e1d6f2204316da6b72bf52b846f649eb41ece2da297233c5257611f636ddd"
+        },
+        {
+          "path": "references/react.md",
+          "size": 1582,
+          "sha256": "b69b8f74bd1cb6bd87bbb77873c65d417f754209c37561bc7009d8aad7e044f3"
+        },
+        {
+          "path": "references/upgrade-helper-core.md",
+          "size": 6607,
+          "sha256": "21f637047d96bd91a5d6ec184351abf29cd16ccd2978af7aa0efcd6e84158d95"
+        },
+        {
+          "path": "references/upgrade-verification.md",
+          "size": 2486,
+          "sha256": "5d28d2d3f5bfba88bec3d160bf782978f22438a4357870bccc33ed6778b6b250"
+        },
+        {
+          "path": "references/upgrading-dependencies.md",
+          "size": 2244,
+          "sha256": "31dc910dff7df54b6f6de010b06fb715c316f0f2c3d4c60804fd2cc62ed37f4a"
+        },
+        {
+          "path": "references/upgrading-react-native.md",
+          "size": 2807,
+          "sha256": "286e9284da759e1243cd71e6b2612a439fe609b0ca0ee9173b36e06df6855c34"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "clerk/skills/clerk-nextjs-patterns": {
+      "id": "clerk/skills/clerk-nextjs-patterns",
+      "repo_url": "https://github.com/clerk/skills",
+      "skills_url": "https://skills.sh/clerk/skills/clerk-nextjs-patterns",
+      "source_path": "skills/frameworks/clerk-nextjs-patterns/SKILL.md",
+      "pinned_commit": "7523bd34543de745eed93b29acdf114d33404dfd",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "51a833e5f5edab03b5632b1da1a7587fe1d812fc149e3acc69f59cccd39369e3",
+      "bundle_sha256": "7bdaebc2edf053ab9f8e02bb30d0eb0d203e7e77ef7ce5071bbaaac5a0688936",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 8302,
+          "sha256": "51a833e5f5edab03b5632b1da1a7587fe1d812fc149e3acc69f59cccd39369e3"
+        },
+        {
+          "path": "evals/evals.json",
+          "size": 4871,
+          "sha256": "72d8401e2e5949e99c66315645c25582ebf641836af1d8fcc185d5ac03604607"
+        },
+        {
+          "path": "references/api-routes.md",
+          "size": 1462,
+          "sha256": "751a4881c20d6bbbd1e53555e3228af3e13a29fd61dd724b496a0cd9c9a6b51e"
+        },
+        {
+          "path": "references/caching-auth.md",
+          "size": 1373,
+          "sha256": "9601c76ba935df5fe44604d7e082bdb014f78afb78afee238080141b3d62a693"
+        },
+        {
+          "path": "references/middleware-strategies.md",
+          "size": 3742,
+          "sha256": "a1813435a214cc32364dfd84b127e2c3dd2290a370e8f94fc8ec3f0ef4a525a0"
+        },
+        {
+          "path": "references/server-actions.md",
+          "size": 1588,
+          "sha256": "b4eca13874b0e3eb747fd38a5424243d2d080dd17eb7927130f0fe31bb416061"
+        },
+        {
+          "path": "references/server-vs-client.md",
+          "size": 2379,
+          "sha256": "eb4bc8405bdbfae63d43888809fcaff8c99ebecad6eae1ae576002eb9315148e"
+        },
+        {
+          "path": "templates/nextjs-basic-auth/app/layout.tsx",
+          "size": 565,
+          "sha256": "8e4629c940fea2b6eecb8019c253a125a2e0c7808b5f12a90ef0c0ea31e47df2"
+        },
+        {
+          "path": "templates/nextjs-basic-auth/app/page.tsx",
+          "size": 58,
+          "sha256": "1bb49c33a007de7405bc342e4a8efcd36b6573a76ffc48cb85c17b11a4804980"
+        },
+        {
+          "path": "templates/nextjs-basic-auth/package.json",
+          "size": 353,
+          "sha256": "5fddc15ad9c6b29d1c1334fcd7c9d0f383e65cc3b59990614db3824d69ccb0a2"
+        },
+        {
+          "path": "templates/nextjs-basic-auth/proxy.ts",
+          "size": 280,
+          "sha256": "3f3d57175d003288cb831b4aa57cc63b6a1d4fdc7af09abe8a785814534fe71f"
+        },
+        {
+          "path": "templates/nextjs-basic-auth/tsconfig.json",
+          "size": 576,
+          "sha256": "1b12f56ab16430b64622ff8512cb05b06cf633060dbec6ebad6f9e792a6dc2a0"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "dotneet/claude-code-marketplace/typescript-react-reviewer": {
+      "id": "dotneet/claude-code-marketplace/typescript-react-reviewer",
+      "repo_url": "https://github.com/dotneet/claude-code-marketplace",
+      "skills_url": "https://skills.sh/dotneet/claude-code-marketplace/typescript-react-reviewer",
+      "source_path": "review-tool/skills/typescript-react-reviewer/SKILL.md",
+      "pinned_commit": "07fa7eac95c2323f73e5a8a961b70bb9e207f1d0",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "8ad9846c1b55bd3abe0d4516e239f33adf412ef3191a334392556596a5943d04",
+      "bundle_sha256": "afe295d267039cdb778064709a69c20284b6861acc74d6540877921b7e218774",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 6638,
+          "sha256": "8ad9846c1b55bd3abe0d4516e239f33adf412ef3191a334392556596a5943d04"
+        },
+        {
+          "path": "references/antipatterns.md",
+          "size": 12240,
+          "sha256": "edd3b2848c8a6918d115a6f41e92231dc7cf8409fe2552244a811bf3055b8c6f"
+        },
+        {
+          "path": "references/checklist.md",
+          "size": 7616,
+          "sha256": "b34c02df2e8e868bdea063d59fa36ec0cfb2cba30685b00f34d6d40b0c6f962a"
+        },
+        {
+          "path": "references/react19-patterns.md",
+          "size": 7749,
+          "sha256": "ccc9ea423070269e62fad0d98d6dab6ce7b244c858cac7128421c243f8ecbf85"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/building-native-ui": {
+      "id": "expo/skills/building-native-ui",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/building-native-ui",
+      "source_path": "plugins/expo-app-design/skills/building-native-ui/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "expo/skills/expo-native-ui"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "dc9c08d2601ea0f3df25656da2c6bff4f28fbc164901fabf7c8b504f5c833c19",
+      "bundle_sha256": "785e9afaa20c3d31e42470b097b70ff5277729d45de4ccc73cb9f43e071347ba",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 10442,
+          "sha256": "dc9c08d2601ea0f3df25656da2c6bff4f28fbc164901fabf7c8b504f5c833c19"
+        },
+        {
+          "path": "references/animations.md",
+          "size": 4747,
+          "sha256": "3e855090009f0fde1652694344b2bfb7d9ed9c645789e243933c3e58f28c3670"
+        },
+        {
+          "path": "references/controls.md",
+          "size": 5055,
+          "sha256": "e63a7e92cac8a5d0ceb9ed5f05e19ea9cd4d865a8bea6ff8f8a82c74c77fa180"
+        },
+        {
+          "path": "references/form-sheet.md",
+          "size": 6320,
+          "sha256": "947de9cf35a15aacf3f02e96e45942b5e4826e536e529570886e5ddbb7ec8591"
+        },
+        {
+          "path": "references/gradients.md",
+          "size": 2717,
+          "sha256": "63ced0392f67c41bf90e726613d139a389db609799bfcb91124e6e69b9a66e70"
+        },
+        {
+          "path": "references/icons.md",
+          "size": 4771,
+          "sha256": "0436582534ae1cc468805ac5ab9a3cb0fb25faeaededb1d5f415ea246814c596"
+        },
+        {
+          "path": "references/media.md",
+          "size": 6196,
+          "sha256": "b05966f4b2ab48b57ea82da172359000295726585f7ffe18a2e5a1be93f2c14f"
+        },
+        {
+          "path": "references/route-structure.md",
+          "size": 5106,
+          "sha256": "4c3d70edeb7e36d965c4d96fa150f23ee57e01be5f6c57dd3e34c6309aab7e87"
+        },
+        {
+          "path": "references/search.md",
+          "size": 5193,
+          "sha256": "6eefcc0345167031b3661d17090100b101cbedc1053de2e679090405658dfa92"
+        },
+        {
+          "path": "references/storage.md",
+          "size": 2935,
+          "sha256": "265e8bc21adcd698062f18fa442e0e07e99e67868576f18aac2112e5381ffbf1"
+        },
+        {
+          "path": "references/tabs.md",
+          "size": 13308,
+          "sha256": "2793a7ac0a45cf65564bcf2f6f9282539d201a4b8bea620dc0b53de092454de4"
+        },
+        {
+          "path": "references/toolbar-and-headers.md",
+          "size": 8061,
+          "sha256": "14d9a71dd949bd2b28a5bd531f6b9c1b4f3fa847a86db8c5218fee67b5295769"
+        },
+        {
+          "path": "references/visual-effects.md",
+          "size": 4335,
+          "sha256": "2c1dfd5438f27e4c15bc09ececc57810a58a13e633dc782caac93f8f52cadadf"
+        },
+        {
+          "path": "references/webgpu-three.md",
+          "size": 14466,
+          "sha256": "3a247a7740e4bab4aea5dec8b81c7782a5918bb221838a05f6a94c669f145679"
+        },
+        {
+          "path": "references/zoom-transitions.md",
+          "size": 4848,
+          "sha256": "cacc1665e9f3044762765d2cd55fd1ead9627f06478f12dfa2280c6f9ae88ede"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-api-routes": {
+      "id": "expo/skills/expo-api-routes",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-api-routes",
+      "source_path": "plugins/expo-app-design/skills/expo-api-routes/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [],
+      "deprecation_reason": "Upstream skill retired without a like-for-like successor.",
+      "entry_sha256": "db4d2cd6fbce04d9a7914db6e37513c218d5fb678e962c034ebfc122c7406fd3",
+      "bundle_sha256": "12fad8553d64a60e025d124732adc45449f357e05fbaaf6a6b6fcdc662a53dc6",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 8704,
+          "sha256": "db4d2cd6fbce04d9a7914db6e37513c218d5fb678e962c034ebfc122c7406fd3"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-cicd-workflows": {
+      "id": "expo/skills/expo-cicd-workflows",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-cicd-workflows",
+      "source_path": "plugins/expo-deployment/skills/expo-cicd-workflows/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "expo/skills/eas-workflows"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "484e1867238a1760d775dd9492ad720ef5099367fbef6907974c69a6a8adc723",
+      "bundle_sha256": "643cfa85b045a6cf475d836c6348aac1ba8adcc3da5efe52a1c3a3a9453817a7",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 3508,
+          "sha256": "484e1867238a1760d775dd9492ad720ef5099367fbef6907974c69a6a8adc723"
+        },
+        {
+          "path": "scripts/fetch.js",
+          "size": 2979,
+          "sha256": "6e00c6fa7277c429c18ae211d1b6515caf2fdf500136cf297921c05d27447483"
+        },
+        {
+          "path": "scripts/package.json",
+          "size": 204,
+          "sha256": "c405e32c72836c09697b19e326ac56786b6d06d830fce577d0785c9382a69daf"
+        },
+        {
+          "path": "scripts/validate.js",
+          "size": 2159,
+          "sha256": "6cae9885ca926a450dc8ad08775d80334f551ed5192c7d1acadf89d34201bd4c"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/native-data-fetching": {
+      "id": "expo/skills/native-data-fetching",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/native-data-fetching",
+      "source_path": "plugins/expo-app-design/skills/native-data-fetching/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "expo/skills/expo-data-fetching"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "eaa2f00ceed45e3149a9c6b6e1b989413bd1350fd4a256c76d89a60d9dc00026",
+      "bundle_sha256": "dc5101441f9e9ee5ff9e946a945abde54a9c40067bd437c583465131216309c1",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 11643,
+          "sha256": "eaa2f00ceed45e3149a9c6b6e1b989413bd1350fd4a256c76d89a60d9dc00026"
+        },
+        {
+          "path": "references/expo-router-loaders.md",
+          "size": 9838,
+          "sha256": "f842c86483a15380c44a4b49db27bf3d41e17b48b1f44b9a2bbacc563a9dcbe6"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/upgrading-expo": {
+      "id": "expo/skills/upgrading-expo",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/upgrading-expo",
+      "source_path": "plugins/upgrading-expo/skills/upgrading-expo/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "expo/skills/expo-upgrade"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "bfe835c6bcd84384a7634588f861443dc8d0d53d6291ae13fe5e669b99e7f0fc",
+      "bundle_sha256": "a5a2f00b9d8d81503805e1d49b548b01ae1853ecc79ff32fb472ce07c9feb5f7",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 5268,
+          "sha256": "bfe835c6bcd84384a7634588f861443dc8d0d53d6291ae13fe5e669b99e7f0fc"
+        },
+        {
+          "path": "references/expo-av-to-audio.md",
+          "size": 3683,
+          "sha256": "b66df7e8722339e2b0ae5e22da225e313794744eb0648303ad6cfc43632cc6a1"
+        },
+        {
+          "path": "references/expo-av-to-video.md",
+          "size": 4262,
+          "sha256": "e222bf0e767baee721f7e42ce68d2c26a8b844d723e830d81cdfecac805564a2"
+        },
+        {
+          "path": "references/native-tabs.md",
+          "size": 3520,
+          "sha256": "bf945b38a970a556769d1c406f8089d8ece34b5f204fe32a0e10fbedc24fff83"
+        },
+        {
+          "path": "references/new-architecture.md",
+          "size": 2177,
+          "sha256": "32479e9be069c5e4931dfdf3e475119ddc7a879bac8a475e259e5193bcf32cff"
+        },
+        {
+          "path": "references/react-19.md",
+          "size": 1875,
+          "sha256": "bf600571e38dd7d114b58e0f6ace5a560792624dcfdc49c421134cd1669a0d77"
+        },
+        {
+          "path": "references/react-compiler.md",
+          "size": 1645,
+          "sha256": "ad485033650cff963abdfd8a98d5bbe5f0825a853ffebd6cfe11a4c80b3c63db"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/use-dom": {
+      "id": "expo/skills/use-dom",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/use-dom",
+      "source_path": "plugins/expo-app-design/skills/use-dom/SKILL.md",
+      "pinned_commit": "46fa1f8b93479046445706c528af4c70d270e727",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "expo/skills/expo-dom"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "7041bb26db02e24c45eb6c4c4879138a0f52786dd928eefd66c90a35b0e3197d",
+      "bundle_sha256": "667eaf046ec1dd9cf2d785e093873aeb0291a26b47b5b723a60193c894e92043",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 9707,
+          "sha256": "7041bb26db02e24c45eb6c4c4879138a0f52786dd928eefd66c90a35b0e3197d"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "getsentry/sentry-agent-skills/sentry-react-native-setup": {
+      "id": "getsentry/sentry-agent-skills/sentry-react-native-setup",
+      "repo_url": "https://github.com/getsentry/sentry-agent-skills",
+      "skills_url": "https://skills.sh/getsentry/sentry-agent-skills/sentry-react-native-setup",
+      "source_path": "skills/sentry-react-native-sdk/SKILL.md",
+      "pinned_commit": "9f54eb021916a7cff2c04a9f4e4c1f9439f3202c",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "getsentry/sentry-agent-skills/sentry-react-native-sdk"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "c299d701ea8de4abd4a8959efc4ea3a63791e3e1152021491fb5cdcc3f554797",
+      "bundle_sha256": "020792b301f144011fcc44e7c42bb4492d2d386883e869e3b4b219f0d6e566bb",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 31398,
+          "sha256": "c299d701ea8de4abd4a8959efc4ea3a63791e3e1152021491fb5cdcc3f554797"
+        },
+        {
+          "path": "references/error-monitoring.md",
+          "size": 44766,
+          "sha256": "e01f96cbe75d82c1385877d30a5858441c981d78d3378655081cee6e84d54b94"
+        },
+        {
+          "path": "references/logging.md",
+          "size": 13492,
+          "sha256": "3b94cb5beec92164d8c4309c9ae27f8bcb9fb643e9e2fd631934ed3e8f054534"
+        },
+        {
+          "path": "references/profiling.md",
+          "size": 14737,
+          "sha256": "627fa790420ce036f0813e9feeb57221e6d86ea372ebcb037bc3c9bb8f7066eb"
+        },
+        {
+          "path": "references/session-replay.md",
+          "size": 22591,
+          "sha256": "b58415b2d7b5e69e810a4a7bb8e91ec44d7718e28422732570358a57b8c53281"
+        },
+        {
+          "path": "references/tracing.md",
+          "size": 34462,
+          "sha256": "06643071a1acd805998098a56bf5572447b5c210ff68726740837e5fa8ce9fdb"
+        },
+        {
+          "path": "references/user-feedback.md",
+          "size": 22200,
+          "sha256": "fec0c65d6b1c8d8e04b00d66fd99987aa248c4fb315bd49ba6deba970d2d0d09"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "github/awesome-copilot/javascript-typescript-jest": {
+      "id": "github/awesome-copilot/javascript-typescript-jest",
+      "repo_url": "https://github.com/github/awesome-copilot",
+      "skills_url": "https://skills.sh/github/awesome-copilot/javascript-typescript-jest",
+      "source_path": "skills/javascript-typescript-jest/SKILL.md",
+      "pinned_commit": "4f4796f0bf30e105700f97ed8408c12b6aa95e06",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "cb9a552dfe63cae4f310b27067ba28351b59ad17e83a9e1c5ff23c542ce6fdd8",
+      "bundle_sha256": "a20b992120f07eae0ddbd0e0f321f368af4b027b5bfa639eb3d8fbd186d8c685",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 2235,
+          "sha256": "cb9a552dfe63cae4f310b27067ba28351b59ad17e83a9e1c5ff23c542ce6fdd8"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "millionco/react-doctor/react-doctor": {
+      "id": "millionco/react-doctor/react-doctor",
+      "repo_url": "https://github.com/millionco/react-doctor",
+      "skills_url": "https://skills.sh/millionco/react-doctor/react-doctor",
+      "source_path": "skills/react-doctor/SKILL.md",
+      "pinned_commit": "260b448cdd742e9e62d7029a8d69b0410732ee52",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "75dee12205065567c3598a980cf4f76fe9bcb7594ba4fa77479a2c04a03527d3",
+      "bundle_sha256": "68ee8ab91a34fec89c59b2aafd8799e2c4c6449583216502b840347c613b907e",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 4070,
+          "sha256": "75dee12205065567c3598a980cf4f76fe9bcb7594ba4fa77479a2c04a03527d3"
+        },
+        {
+          "path": "references/explain.md",
+          "size": 4358,
+          "sha256": "21fa0414874d117a63e5360d527884ccd42bf0906e6dcab371409cebac8b3d12"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "mindrally/skills/nextauth-authentication": {
+      "id": "mindrally/skills/nextauth-authentication",
+      "repo_url": "https://github.com/mindrally/skills",
+      "skills_url": "https://skills.sh/mindrally/skills/nextauth-authentication",
+      "source_path": "nextauth-authentication/SKILL.md",
+      "pinned_commit": "97184105b5daa3a6860a2aeb8e7e7fd1c42da40a",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "3cdb190f4cdcbd941c43c5165c6df696c8343070b5b8666c4180e705a58f819d",
+      "bundle_sha256": "3e119b8ad9c00bd177128a7f71fac1d4a0d02ba981a4037a297438222b75cd69",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 14047,
+          "sha256": "3cdb190f4cdcbd941c43c5165c6df696c8343070b5b8666c4180e705a58f819d"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "react-native-community/skills/upgrade-react-native": {
+      "id": "react-native-community/skills/upgrade-react-native",
+      "repo_url": "https://github.com/react-native-community/skills",
+      "skills_url": "https://skills.sh/react-native-community/skills/upgrade-react-native",
+      "source_path": "upgrade-react-native/SKILL.md",
+      "pinned_commit": "1fb0e0848fc7f4bbf42fec490338613cbc6f6b08",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "02ec09109002878942ae47ae71c2492e143689d8f8ba1b73c346401161b46102",
+      "bundle_sha256": "83e6c6fab2421c1336e238d332acb1ade8fb45372eb249833a860ae52ddc6020",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 9263,
+          "sha256": "02ec09109002878942ae47ae71c2492e143689d8f8ba1b73c346401161b46102"
+        },
+        {
+          "path": "references/upgrade-helper-api.md",
+          "size": 2245,
+          "sha256": "a5b2eafba55b480fbb6702fd0400180af960958bcd85e88a6ddf4a0a9e90d5ac"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "sickn33/antigravity-awesome-skills/api-security-best-practices": {
+      "id": "sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "repo_url": "https://github.com/sickn33/antigravity-awesome-skills",
+      "skills_url": "https://skills.sh/sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "source_path": "skills/api-security-best-practices/SKILL.md",
+      "pinned_commit": "2fd5ecfeee025f7d8dd1ea6c683c8b32b7c40783",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "f01d39fb4e2a134f4ae416dc03701d99b5e703d49472376a7ce488cfdd55328f",
+      "bundle_sha256": "021b40501379d89e7142da4a307ee50bfccc0d39cd4d69cc225214f7e04f8c0a",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 11267,
+          "sha256": "f01d39fb4e2a134f4ae416dc03701d99b5e703d49472376a7ce488cfdd55328f"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/agent-skills/vercel-react-best-practices": {
+      "id": "vercel-labs/agent-skills/vercel-react-best-practices",
+      "repo_url": "https://github.com/vercel-labs/agent-skills",
+      "skills_url": "https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices",
+      "source_path": "skills/react-best-practices/SKILL.md",
+      "pinned_commit": "cc8bd7a5b51e41270f20b43466ffa4149c18cc01",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "vercel-labs/agent-skills/react-best-practices"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "b0bc1161fa20c5d2154099b7db2a46e9937b51d8f3f88f57ea1a06e76af0d474",
+      "bundle_sha256": "ad43b45e418864bcf063a01ebceb3b9d407aa0a8313117cb3a3adca87c8995ab",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "size": 83450,
+          "sha256": "149d25dbe0e22b1e678565fee026ded3565abd45925384a8607c367daf45e878"
+        },
+        {
+          "path": "README.md",
+          "size": 3360,
+          "sha256": "9eafb2123d3b8b2aef41fba0db2648a3f4f49996f8c7c8bb2c86263befd8b48a"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 6242,
+          "sha256": "b0bc1161fa20c5d2154099b7db2a46e9937b51d8f3f88f57ea1a06e76af0d474"
+        },
+        {
+          "path": "metadata.json",
+          "size": 921,
+          "sha256": "c4e18bac3290fbe1b471a605867d4df68b03144ea26b8befdbe8f9d8fd124354"
+        },
+        {
+          "path": "rules/_sections.md",
+          "size": 1554,
+          "sha256": "01c59969e4e867f0708c8f8ef9c6d87fab9a07d0586244f429ff84013db8a115"
+        },
+        {
+          "path": "rules/_template.md",
+          "size": 631,
+          "sha256": "99df2a3ea088c6c22de2484ddc7e964d0e9923846f44c63380343ecc64455442"
+        },
+        {
+          "path": "rules/advanced-event-handler-refs.md",
+          "size": 1483,
+          "sha256": "a3097edeecfb2ff6851cd66ed8cdf0617c3c88180504bee824aa6e75a215bbbc"
+        },
+        {
+          "path": "rules/advanced-init-once.md",
+          "size": 958,
+          "sha256": "3e4dc22173eb0e2b6dcf583e3babd862b8696328f8f59aee7c4d746c5bc05f6c"
+        },
+        {
+          "path": "rules/advanced-use-latest.md",
+          "size": 1072,
+          "sha256": "8a3f64dfe5a77d1564248faf17fe662ae75b55d497a243cb30b38eb07ccbbf9a"
+        },
+        {
+          "path": "rules/async-api-routes.md",
+          "size": 1125,
+          "sha256": "523338540d73427dc14c0cbb19f2741ebccdf8b105a7b2c1b33d2905cf237a42"
+        },
+        {
+          "path": "rules/async-defer-await.md",
+          "size": 2028,
+          "sha256": "9b9166c7fc58b436cf039ac4e36dd0d3c4f762b61111f579d93cdb9f2ab2b6f9"
+        },
+        {
+          "path": "rules/async-dependencies.md",
+          "size": 1293,
+          "sha256": "16ef469f877e30c6b8e1e1b4bc3e527312fa3c6318cb785a4eca186ea236131a"
+        },
+        {
+          "path": "rules/async-parallel.md",
+          "size": 654,
+          "sha256": "6d2f841896279e976dfcdc1ac89e70771ac188baadfd43c096b5706cb838b961"
+        },
+        {
+          "path": "rules/async-suspense-boundaries.md",
+          "size": 2510,
+          "sha256": "de05fedac2eb7ae563b887b5a424464ec3dfaf84e5b7797467ebe2a796ac8afc"
+        },
+        {
+          "path": "rules/bundle-barrel-imports.md",
+          "size": 2370,
+          "sha256": "9e61a5d579a8a7d55194c2e110414d7ee2d8da947ba187d444daa1e54d265f0f"
+        },
+        {
+          "path": "rules/bundle-conditional.md",
+          "size": 949,
+          "sha256": "09c8259c3efb04fc0abb8e412ccbda217c222ae8118516283e571c995fe3a7d4"
+        },
+        {
+          "path": "rules/bundle-defer-third-party.md",
+          "size": 920,
+          "sha256": "3719fb47b191e8db4fe22686ec88448ad5af9e6838585425abbe103d0b642e37"
+        },
+        {
+          "path": "rules/bundle-dynamic-imports.md",
+          "size": 791,
+          "sha256": "401817a7369f315fc5a68a1095742ff7d53d0461906880dc9d64a41495ee1986"
+        },
+        {
+          "path": "rules/bundle-preload.md",
+          "size": 1149,
+          "sha256": "d1f7cc28da7cd5ab249acd287edc5b761afcfb194e9cb62cd44c5f3543db2de2"
+        },
+        {
+          "path": "rules/client-event-listeners.md",
+          "size": 1969,
+          "sha256": "242a873349febc1ce685e85617994784dbab92c2eaa68aed7fed5a83e7680e93"
+        },
+        {
+          "path": "rules/client-localstorage-schema.md",
+          "size": 1950,
+          "sha256": "0fb7cdf9dc93fdf22f87e3669f953fb9d4ac9b0be42eec4a29fe9a2560610b88"
+        },
+        {
+          "path": "rules/client-passive-event-listeners.md",
+          "size": 1644,
+          "sha256": "1f35016f9053de69e884ee9be00654e37979c2ca85f5e57764dc2626ff7acb4b"
+        },
+        {
+          "path": "rules/client-swr-dedup.md",
+          "size": 1159,
+          "sha256": "644652c39c6cc00de8d1c77a7273612e868dc3f7edda30764164c12ec0f764a3"
+        },
+        {
+          "path": "rules/js-batch-dom-css.md",
+          "size": 3266,
+          "sha256": "480b891b9eaf96e929dc1e964274a4828e3a78009b7d00ccd965a0d425215959"
+        },
+        {
+          "path": "rules/js-cache-function-results.md",
+          "size": 1949,
+          "sha256": "3daaa11d24f4295cb6be8bc6f407f2ce83cc7b5bd1f0e68891ea8ab835721dc7"
+        },
+        {
+          "path": "rules/js-cache-property-access.md",
+          "size": 532,
+          "sha256": "73e47431e74878a927061bf0ddc7cd91a7556cb35d2573f3421e82300d9ae311"
+        },
+        {
+          "path": "rules/js-cache-storage.md",
+          "size": 1651,
+          "sha256": "11b826b0433898c1ece2d3547010d8e77db9fb240185748c45db91493de9b6cc"
+        },
+        {
+          "path": "rules/js-combine-iterations.md",
+          "size": 753,
+          "sha256": "71add08aeeb43091d4ff4c0b2842cce8b4bdef8ad3e732cc034bb5a84827e746"
+        },
+        {
+          "path": "rules/js-early-exit.md",
+          "size": 1133,
+          "sha256": "925ce5ce87f3347186ca62212f29cc6baa2b8c85a96d2720ad07c3d0abf781c0"
+        },
+        {
+          "path": "rules/js-hoist-regexp.md",
+          "size": 1028,
+          "sha256": "f9e9aef2f7c2307dd7310f283df85dcada45fc43e9bb941b0c3aa414dec21ec4"
+        },
+        {
+          "path": "rules/js-index-maps.md",
+          "size": 837,
+          "sha256": "5df1bdc2cfabb2c98abd55d26762e5c18189535c2e686184f426082e62920391"
+        },
+        {
+          "path": "rules/js-length-check-first.md",
+          "size": 1747,
+          "sha256": "8b54a311c826b299272f29187fc58bc55772a04c4a72eeb29456ee96dc9fc624"
+        },
+        {
+          "path": "rules/js-min-max-loop.md",
+          "size": 2290,
+          "sha256": "87dfb67e2f39df6ad8bcfb5b78c5fb364d3c07554ad188a202408d99f3763421"
+        },
+        {
+          "path": "rules/js-set-map-lookups.md",
+          "size": 532,
+          "sha256": "a7fd781a6ba9ad49065961b6f9a90ef486bf6b648390e1a08704025f98e1642b"
+        },
+        {
+          "path": "rules/js-tosorted-immutable.md",
+          "size": 1782,
+          "sha256": "d0a5e1b0fec48a0a81397957e2f068e224329f7c42cb5feeed8aae6fa64025e8"
+        },
+        {
+          "path": "rules/rendering-activity.md",
+          "size": 564,
+          "sha256": "1e5e7eaf3555e61d6a2e900089c676527d26259501db5594f59544b6c664f85a"
+        },
+        {
+          "path": "rules/rendering-animate-svg-wrapper.md",
+          "size": 1185,
+          "sha256": "9c6ae0ca7a51434e803887c64cded760956579a1452ccb80a461a03f9c937c77"
+        },
+        {
+          "path": "rules/rendering-conditional-render.md",
+          "size": 980,
+          "sha256": "2ec2fa23c4148285144687050c52369adba3da2fbe3d486f8d3e0aad8f06f2bc"
+        },
+        {
+          "path": "rules/rendering-content-visibility.md",
+          "size": 815,
+          "sha256": "64eee6d5b916fe74df33363994b27fc7f71bea3bcedc7ee04bda23107ca3e6e4"
+        },
+        {
+          "path": "rules/rendering-hoist-jsx.md",
+          "size": 1039,
+          "sha256": "93b229560fae92005ed9a2a829064607b39b2e984e92d221d05b2d41df2b7c0e"
+        },
+        {
+          "path": "rules/rendering-hydration-no-flicker.md",
+          "size": 2308,
+          "sha256": "dc7ab358c67c177bca6e6f360fbc935ebe4efa928c0ba3ebd3f9f3d9e2000ca3"
+        },
+        {
+          "path": "rules/rendering-hydration-suppress-warning.md",
+          "size": 872,
+          "sha256": "915bacb934e2927d84b37a3f3d225a47b309ac8f9e494ed2bcb66ce07c5676a2"
+        },
+        {
+          "path": "rules/rendering-svg-precision.md",
+          "size": 588,
+          "sha256": "ed468533f6e95f622859c884b122cf21f9f593ed6bb3d500a54de4b9f9bcb9fb"
+        },
+        {
+          "path": "rules/rendering-usetransition-loading.md",
+          "size": 2074,
+          "sha256": "3a1249c3f13026b6f54ab5712c388df219d6af01b12aa542749acd99a46f4bc1"
+        },
+        {
+          "path": "rules/rerender-defer-reads.md",
+          "size": 973,
+          "sha256": "234050a77faf50cb306be10a9e15bd4421134ab5907e75f13e6d78e2bd262dc9"
+        },
+        {
+          "path": "rules/rerender-dependencies.md",
+          "size": 824,
+          "sha256": "17eb5830956fb56486fd3cfc7431f5849d39751730c05ad9e77dd4f0c27169c5"
+        },
+        {
+          "path": "rules/rerender-derived-state-no-effect.md",
+          "size": 1201,
+          "sha256": "cb11ec76f50aa7b6847269f02d79b120c889a30d9ecd2c1d578f75144419c77a"
+        },
+        {
+          "path": "rules/rerender-derived-state.md",
+          "size": 728,
+          "sha256": "1c326bb67b01fb084eb00c8911b0a7cff54681c2315b629f88e49b64eaa6481d"
+        },
+        {
+          "path": "rules/rerender-functional-setstate.md",
+          "size": 2968,
+          "sha256": "5e68df6b2ae8058e67f476ff1ac67bde159f5a9d18df439e46eabcdeb7b52e58"
+        },
+        {
+          "path": "rules/rerender-lazy-state-init.md",
+          "size": 2016,
+          "sha256": "4ae844740f266fc8cbf050701230286624a2440ec5be67b9a63d9edc3c580573"
+        },
+        {
+          "path": "rules/rerender-memo-with-default-value.md",
+          "size": 1173,
+          "sha256": "81c47476564ad8a79fc68fc442734255ca7d6829424359464503fda0a9f9a0dd"
+        },
+        {
+          "path": "rules/rerender-memo.md",
+          "size": 1148,
+          "sha256": "1f258990c2f27ff6256b3cc5c43300631bb3f0d81f749aed08d07fcdcc131dd1"
+        },
+        {
+          "path": "rules/rerender-move-effect-to-event.md",
+          "size": 1268,
+          "sha256": "abc2cbf167bee056743023351e96806a411d3398da8802093620aecf0721f029"
+        },
+        {
+          "path": "rules/rerender-simple-expression-in-memo.md",
+          "size": 1018,
+          "sha256": "5bdcf2d1558ba5204e643c887b7b4060f89630969425651eb68e96427d97f800"
+        },
+        {
+          "path": "rules/rerender-transitions.md",
+          "size": 1055,
+          "sha256": "60f4033909a62df5e5b8c601494f9e50a562e2f8c1c2d81eac24f38142265f1c"
+        },
+        {
+          "path": "rules/rerender-use-ref-transient-values.md",
+          "size": 1742,
+          "sha256": "f1a649af9d1d0b5c762f6c9c4c1c70c90d7df82aa10296ee87aadb78c1b76c54"
+        },
+        {
+          "path": "rules/server-after-nonblocking.md",
+          "size": 2012,
+          "sha256": "d0b8d24a3db9f0f65f9e2bddbf230b0e03a5f60e1229d93a4a18f5e7a991c7c2"
+        },
+        {
+          "path": "rules/server-auth-actions.md",
+          "size": 2649,
+          "sha256": "a2ca8aa102839251c7971ec784560fab943c20b36fe6f80365d4110c13260c23"
+        },
+        {
+          "path": "rules/server-cache-lru.md",
+          "size": 1353,
+          "sha256": "1924b64561841923b88a657085097a0aeba3e0ba2d5470b9f5c15cc10d6ae70f"
+        },
+        {
+          "path": "rules/server-cache-react.md",
+          "size": 2228,
+          "sha256": "fddeea6c870bb3da4134b61d54b7d09b83d2603f929b7547cd3dc1dc269edd5c"
+        },
+        {
+          "path": "rules/server-dedup-props.md",
+          "size": 2060,
+          "sha256": "c2747424cdac46be62f835f245a0aa887b0090b416d28e2ac8676702645eeb37"
+        },
+        {
+          "path": "rules/server-hoist-static-io.md",
+          "size": 4393,
+          "sha256": "f90610d0f0db0fa8da5cf99790ed3369544a5b9b671bc4198347c95ec3325db4"
+        },
+        {
+          "path": "rules/server-parallel-fetching.md",
+          "size": 1554,
+          "sha256": "569a2e9fc04f9606686cd75c5894ef8781b502786a7fffe241396846c7733472"
+        },
+        {
+          "path": "rules/server-serialization.md",
+          "size": 996,
+          "sha256": "f4c7d68b29c82381baad059c4a7f09e868e71ec9c3115a26ad3ae7d24c0dfe1f"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/agent-skills/vercel-react-native-skills": {
+      "id": "vercel-labs/agent-skills/vercel-react-native-skills",
+      "repo_url": "https://github.com/vercel-labs/agent-skills",
+      "skills_url": "https://skills.sh/vercel-labs/agent-skills/vercel-react-native-skills",
+      "source_path": "skills/react-native-skills/SKILL.md",
+      "pinned_commit": "cc8bd7a5b51e41270f20b43466ffa4149c18cc01",
+      "lifecycle": "deprecated",
+      "replaced_by": [
+        "vercel-labs/agent-skills/react-native-skills"
+      ],
+      "deprecation_reason": "Renamed or consolidated upstream.",
+      "entry_sha256": "4012750a5ccbe064ca04af3835d5d1b011979d2d09d9b6df1c8128fac58e0a66",
+      "bundle_sha256": "7b55155ebc449bcd47b9e83abb5798be9769d27af8ac31f4906c84c1c802fe37",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "size": 73771,
+          "sha256": "72996343b8260800fbeb9af63ddaed91f14b65dc547e0922f9f8e9bd72076cbf"
+        },
+        {
+          "path": "README.md",
+          "size": 5064,
+          "sha256": "d60d7623005a833b928be6a109ed9d14dea43d7217fb534e8f2e4de5fc1f0ddf"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 4439,
+          "sha256": "4012750a5ccbe064ca04af3835d5d1b011979d2d09d9b6df1c8128fac58e0a66"
+        },
+        {
+          "path": "metadata.json",
+          "size": 896,
+          "sha256": "59ee2274cadbd95b2220727028f0dbc26d3e0251e7937226edc9e7640756ba21"
+        },
+        {
+          "path": "rules/_sections.md",
+          "size": 2228,
+          "sha256": "21d7445e92bd7d393b420118c3fb9ebbf30aaf123a15143afb6c0b1b562cfdfd"
+        },
+        {
+          "path": "rules/_template.md",
+          "size": 631,
+          "sha256": "99df2a3ea088c6c22de2484ddc7e964d0e9923846f44c63380343ecc64455442"
+        },
+        {
+          "path": "rules/animation-derived-value.md",
+          "size": 1373,
+          "sha256": "689228e9d59227934f296563963951aa9368be0afb2a188f650de161203b1862"
+        },
+        {
+          "path": "rules/animation-gesture-detector-press.md",
+          "size": 2559,
+          "sha256": "69408d4be669e74689d865c5f50a22fc3a802d521fe493371761abd20526e58e"
+        },
+        {
+          "path": "rules/animation-gpu-properties.md",
+          "size": 2059,
+          "sha256": "f885e4179445da27cbc225e0a4aa3ed9016fc3507ca6f864392ba7a9d0bd7516"
+        },
+        {
+          "path": "rules/design-system-compound-components.md",
+          "size": 1625,
+          "sha256": "dcb10900a58fcf57cca2e27c062d02df2325a7949e08fb45e9e05cc2b132b1a6"
+        },
+        {
+          "path": "rules/fonts-config-plugin.md",
+          "size": 1393,
+          "sha256": "b92568774064a604e7a479d4c8d7263aed5609740e9161d2f2764bfff761905d"
+        },
+        {
+          "path": "rules/imports-design-system-folder.md",
+          "size": 1418,
+          "sha256": "aa6337f7f2869a46a9141ec65e02c3da5c3bf051023899b82e0f0aef5bff8423"
+        },
+        {
+          "path": "rules/js-hoist-intl.md",
+          "size": 1645,
+          "sha256": "b4b08622465ffcd5e5961878eb8c6d7359aa242d16c990b59941c9111962fe46"
+        },
+        {
+          "path": "rules/list-performance-callbacks.md",
+          "size": 1059,
+          "sha256": "db800e9dfe0080eb4954b96e2a362ee8344d08e08b1ed06bc8059450f3e6f0dd"
+        },
+        {
+          "path": "rules/list-performance-function-references.md",
+          "size": 4133,
+          "sha256": "b54470e41d578b207ee3223f6853efb7fbf8e5f83d9aecf8da16989072f99544"
+        },
+        {
+          "path": "rules/list-performance-images.md",
+          "size": 1417,
+          "sha256": "e88f16ac113c29230d674b7aa2c66c31d5772a74b1ea378d48a97b1143fe6c19"
+        },
+        {
+          "path": "rules/list-performance-inline-objects.md",
+          "size": 2308,
+          "sha256": "e2a80aac0f29c6abaf0163c1cc273d09cc8a0030ec077ca2022bbf5c309e4625"
+        },
+        {
+          "path": "rules/list-performance-item-expensive.md",
+          "size": 2466,
+          "sha256": "a68cc8ec5dba3c55761bd5df9dfd3d98485f63076868d3e03af15f1e58907ce3"
+        },
+        {
+          "path": "rules/list-performance-item-memo.md",
+          "size": 2250,
+          "sha256": "38ec1d149ee485434d11c2b9e2101dfc914afadae4a0738ca905f26b05f708c1"
+        },
+        {
+          "path": "rules/list-performance-item-types.md",
+          "size": 2749,
+          "sha256": "eed225f4e9e504bfa7db01f5395d1402545cc47de8adf1829a9408cd5d158cf6"
+        },
+        {
+          "path": "rules/list-performance-virtualize.md",
+          "size": 1742,
+          "sha256": "98cad308118acb4d6e8e975c0168ce56e2d48ca52ed47f23bc9a30667c066ada"
+        },
+        {
+          "path": "rules/monorepo-native-deps-in-app.md",
+          "size": 1091,
+          "sha256": "8368b109027fcec1b8a81bfb99718aef2b64edaba77107f73d7c465cc5a14217"
+        },
+        {
+          "path": "rules/monorepo-single-dependency-versions.md",
+          "size": 1351,
+          "sha256": "61c01b9eaab1e319bf078204231fb573bdfea3c43a6eb99e7ef73ee95d474ccc"
+        },
+        {
+          "path": "rules/navigation-native-navigators.md",
+          "size": 4941,
+          "sha256": "6642dedb57e72f0b56df5fbc3d5b8aaa91fc4456932c12712cfd076d393f32c6"
+        },
+        {
+          "path": "rules/react-compiler-destructure-functions.md",
+          "size": 1274,
+          "sha256": "8048926a4fa3fbd28fc0ecf4ba4c383a2f0ed06c2fd7330dd4a15d7f4e548044"
+        },
+        {
+          "path": "rules/react-compiler-reanimated-shared-values.md",
+          "size": 1268,
+          "sha256": "3174303a72b6849ff0eda5cd9f9650f26baa5f31ed28d35a75076af714fb2ffc"
+        },
+        {
+          "path": "rules/react-state-dispatcher.md",
+          "size": 2255,
+          "sha256": "7ec5b653e3ff8d9ca97d8d66981cce5590c0e49fa79ab708fd6324542b588870"
+        },
+        {
+          "path": "rules/react-state-fallback.md",
+          "size": 1735,
+          "sha256": "eb76e386d71680bfdfc0ab64dba1221f4d3d0fdcb4980bb4a871381d58e9e58b"
+        },
+        {
+          "path": "rules/react-state-minimize.md",
+          "size": 1740,
+          "sha256": "31b989de61defda1c61d8578c4700efd64a427218c3f3dbb7062a1666e1cbe43"
+        },
+        {
+          "path": "rules/rendering-no-falsy-and.md",
+          "size": 1812,
+          "sha256": "7300fa45ac3a4968db144727a21052421bc62de9b5e9f6f59e28bd16d2fff001"
+        },
+        {
+          "path": "rules/rendering-text-in-text-component.md",
+          "size": 697,
+          "sha256": "fc67897b6126b6b5574f4d284a6c5b2282528fe89de8ec08e6cfd2a86ab5b235"
+        },
+        {
+          "path": "rules/scroll-position-no-state.md",
+          "size": 1936,
+          "sha256": "70aa1ee679e755556d7b01b326431fe898d3c23ddba40d0da6bdac23c87a1525"
+        },
+        {
+          "path": "rules/state-ground-truth.md",
+          "size": 2172,
+          "sha256": "9f3efc73d2e66a5deb3199c9774f42524cd6a0f69784af38301946be5d747cb5"
+        },
+        {
+          "path": "rules/ui-expo-image.md",
+          "size": 1648,
+          "sha256": "c3c13cce3dd2cc7f8a9b4861e5743af98f62e28f5699f72f492e79a335cfae55"
+        },
+        {
+          "path": "rules/ui-image-gallery.md",
+          "size": 2546,
+          "sha256": "b34d1ba03710ed9622187716541ae618968e7d03bc28895c2ac918d3cc5853f1"
+        },
+        {
+          "path": "rules/ui-measure-views.md",
+          "size": 2232,
+          "sha256": "170d058abc4900ea9e851e54f5e8b437ffffc2c9d3847ae35e30a515c8990c3d"
+        },
+        {
+          "path": "rules/ui-menus.md",
+          "size": 4598,
+          "sha256": "5964adbecfe9aeb28d736a4eaacec6469a1c4ca3f48779d243eb38b6d181cfe9"
+        },
+        {
+          "path": "rules/ui-native-modals.md",
+          "size": 1859,
+          "sha256": "d803493b3046ad31cbb2c189f1fffb948fd0055050e3c322589bd548421e23a8"
+        },
+        {
+          "path": "rules/ui-pressable.md",
+          "size": 1534,
+          "sha256": "52cdbad127d713d7d32c59ef74ab1bbd6dca211edc9b25993453f7f4545e79fa"
+        },
+        {
+          "path": "rules/ui-safe-area-scroll.md",
+          "size": 1579,
+          "sha256": "3dd776caef2344d73529010940b50042861d06d31a192122a4df64bc06aed0e8"
+        },
+        {
+          "path": "rules/ui-scrollview-content-inset.md",
+          "size": 1317,
+          "sha256": "89e4bbe5e9a602660f4155e9d4c0dee09db1adf21c73f47213cd67ec896e5a13"
+        },
+        {
+          "path": "rules/ui-styling.md",
+          "size": 2212,
+          "sha256": "cdef4d8b1a097b844e5992ab78e66a2dc604faf1e90f8d325a0eb116e8ef6a7e"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/next-skills/next-best-practices": {
+      "id": "vercel-labs/next-skills/next-best-practices",
+      "repo_url": "https://github.com/vercel-labs/next-skills",
+      "skills_url": "https://skills.sh/vercel-labs/next-skills/next-best-practices",
+      "source_path": "skills/next-best-practices/SKILL.md",
+      "pinned_commit": "038954e07bfc313e97fa5f6ff7caf87226e4a782",
+      "lifecycle": "deprecated",
+      "replaced_by": [],
+      "deprecation_reason": "Upstream skill retired without a like-for-like successor.",
+      "entry_sha256": "c78f952d4e98bf3694856dbf70c03a6037d4e258ff3701f2642bfdf108549a25",
+      "bundle_sha256": "3fdfe25ff8df83524cb3fb43c5174551b4e03ffa28291cb1e942a9592e306fb8",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 4004,
+          "sha256": "c78f952d4e98bf3694856dbf70c03a6037d4e258ff3701f2642bfdf108549a25"
+        },
+        {
+          "path": "async-patterns.md",
+          "size": 1664,
+          "sha256": "3a5e4a91d8399f0922c4a3b15b3490fbeb7396f976139a92311ea34cfa300584"
+        },
+        {
+          "path": "bundling.md",
+          "size": 4456,
+          "sha256": "5496b337073985068c61527e0a89fbf7088faa47b9f92d2dd09a7d070cb48a7c"
+        },
+        {
+          "path": "data-patterns.md",
+          "size": 6687,
+          "sha256": "538c8e24cd60eded9825a9461f2c644f5e6e5203d95aa4bf7c9486412bcc7aa1"
+        },
+        {
+          "path": "debug-tricks.md",
+          "size": 2953,
+          "sha256": "62617a7cb131a2111f9f033617404fadb3458d56aeb0643f75aa5b2e43abf192"
+        },
+        {
+          "path": "directives.md",
+          "size": 1476,
+          "sha256": "60b82ee24a8d43631da59beeec11f46ab25ce83c8000578f2222ecb6b6cadf4d"
+        },
+        {
+          "path": "error-handling.md",
+          "size": 4736,
+          "sha256": "30b4e825b625df01d4a7c441591ac46782aab4f913432e96f408153d5fa62098"
+        },
+        {
+          "path": "file-conventions.md",
+          "size": 3464,
+          "sha256": "95eeb1c6e1c98571192662c8ba3cbf6a034f754596aba54a35077a50a5266de3"
+        },
+        {
+          "path": "font.md",
+          "size": 5196,
+          "sha256": "cb1f8d43e8fbca39839056b4621724837858bdace13e73bf3faf69abca318a21"
+        },
+        {
+          "path": "functions.md",
+          "size": 4388,
+          "sha256": "39a8a418af501d7132d289f4b5dd6cae59d1bfa6fda941d502fc29bb0204e079"
+        },
+        {
+          "path": "hydration-error.md",
+          "size": 1801,
+          "sha256": "d4baec07ab818045e284c45dd24422685ac934a38ea325139651f664a94eff57"
+        },
+        {
+          "path": "image.md",
+          "size": 3882,
+          "sha256": "231a15ddea67fe0b965762cc89993ca5aaeb0c35c0e67767bd53ca138ec04c05"
+        },
+        {
+          "path": "metadata.md",
+          "size": 7140,
+          "sha256": "19b00274877056f222f2284be5ade2479690e79e86af9a0466bc9d209506a95d"
+        },
+        {
+          "path": "parallel-routes.md",
+          "size": 7171,
+          "sha256": "d8a1c2546d90af2b37e22a4a56a1978555af0d62a7683e349ce3e3287ab8a4af"
+        },
+        {
+          "path": "route-handlers.md",
+          "size": 3244,
+          "sha256": "976a17de8024b3a65063350ae0fb6b9b617293f06358305800c858f58b015680"
+        },
+        {
+          "path": "rsc-boundaries.md",
+          "size": 4309,
+          "sha256": "2b50b0310884609efc9f2620fbb81ef83a30a810544e449ff669c55935d5b920"
+        },
+        {
+          "path": "runtime-selection.md",
+          "size": 985,
+          "sha256": "7abb95f9af0f4769e7e9e91aba94a5787ed16e2c4009a140c8577a3a49828060"
+        },
+        {
+          "path": "scripts.md",
+          "size": 3326,
+          "sha256": "fff3bc7530d5af472e2825fde69a26218c9e58acba74d60913f403baab4628a3"
+        },
+        {
+          "path": "self-hosting.md",
+          "size": 8334,
+          "sha256": "f59e9afa0ff4dcbe20374dff13517ccec3ac6a239ef6d02e0ee8863cf9fc7082"
+        },
+        {
+          "path": "suspense-boundaries.md",
+          "size": 1366,
+          "sha256": "63e2e7125b1a1a9d652dd301814ad7140f8ab3ad6726b2b53df76a89d9bc262a"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/next-skills/next-cache-components": {
+      "id": "vercel-labs/next-skills/next-cache-components",
+      "repo_url": "https://github.com/vercel-labs/next-skills",
+      "skills_url": "https://skills.sh/vercel-labs/next-skills/next-cache-components",
+      "source_path": "skills/next-cache-components/SKILL.md",
+      "pinned_commit": "038954e07bfc313e97fa5f6ff7caf87226e4a782",
+      "lifecycle": "deprecated",
+      "replaced_by": [],
+      "deprecation_reason": "Upstream skill retired without a like-for-like successor.",
+      "entry_sha256": "92fc6ac94c5cabdcd13c7dc7aabd6a4d04921e6295dfc00dd9888e375fd1ff4c",
+      "bundle_sha256": "319753ec080947a23c43970f6ba9329f2c571024559481fc9b471a33bfa796f5",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 9362,
+          "sha256": "92fc6ac94c5cabdcd13c7dc7aabd6a4d04921e6295dfc00dd9888e375fd1ff4c"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/next-skills/next-upgrade": {
+      "id": "vercel-labs/next-skills/next-upgrade",
+      "repo_url": "https://github.com/vercel-labs/next-skills",
+      "skills_url": "https://skills.sh/vercel-labs/next-skills/next-upgrade",
+      "source_path": "skills/next-upgrade/SKILL.md",
+      "pinned_commit": "038954e07bfc313e97fa5f6ff7caf87226e4a782",
+      "lifecycle": "deprecated",
+      "replaced_by": [],
+      "deprecation_reason": "Upstream skill retired without a like-for-like successor.",
+      "entry_sha256": "562f9834d7c55c37498e0787fe431061f4bb766cd1dd6bb52441790593c7e1a8",
+      "bundle_sha256": "7bed35b01fab94bb0fdb8afb13bd118c05c73cf73bc225a492fe592e1506aec1",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 2009,
+          "sha256": "562f9834d7c55c37498e0787fe431061f4bb766cd1dd6bb52441790593c7e1a8"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/javascript-testing-patterns": {
+      "id": "wshobson/agents/javascript-testing-patterns",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/javascript-testing-patterns",
+      "source_path": "plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "d99e1d7344ca7b87395c7e49f6c635ea67fe16d57f4698d72c78d405020f5782",
+      "bundle_sha256": "13e0d474c74995e7aa446154d62a7dd598bf70bc74ce46a1f8591965ba331799",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 14629,
+          "sha256": "d99e1d7344ca7b87395c7e49f6c635ea67fe16d57f4698d72c78d405020f5782"
+        },
+        {
+          "path": "references/advanced-testing-patterns.md",
+          "size": 12837,
+          "sha256": "c7aece88f868bb54b57cc7ea2ca87d3df0868ab32f974c22af247bb047ea353f"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/modern-javascript-patterns": {
+      "id": "wshobson/agents/modern-javascript-patterns",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/modern-javascript-patterns",
+      "source_path": "plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "32e203b8d944115102986dcb3cf4c48918edc5dbf6942668875970121809c064",
+      "bundle_sha256": "bf9866e4a4e54853d21027030b9ae48cdbe3d7ab1d95960c69f5e71e77ac1214",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 2189,
+          "sha256": "32e203b8d944115102986dcb3cf4c48918edc5dbf6942668875970121809c064"
+        },
+        {
+          "path": "references/advanced-patterns.md",
+          "size": 10110,
+          "sha256": "bd44770188cfa14d453b1c3026289cfaf7beff78f0eedbe47a9c6b9f24dfe3af"
+        },
+        {
+          "path": "references/details.md",
+          "size": 10407,
+          "sha256": "c0f9ef7a4a7efaaf827ea269f6dc3c8f58aaa78d7dec0d5419fac49cfa8fe23e"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/nextjs-app-router-patterns": {
+      "id": "wshobson/agents/nextjs-app-router-patterns",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/nextjs-app-router-patterns",
+      "source_path": "plugins/frontend-mobile-development/skills/nextjs-app-router-patterns/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "8de4ab196350d6bb2d191260e13d1645822b7ec1bae205a2018a24cdc3f9b26c",
+      "bundle_sha256": "cea13d3a966822d60ee47a7589f65e44883e668b3dbfe10770c04980290ac825",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 3714,
+          "sha256": "8de4ab196350d6bb2d191260e13d1645822b7ec1bae205a2018a24cdc3f9b26c"
+        },
+        {
+          "path": "references/details.md",
+          "size": 9939,
+          "sha256": "ce694daee93b0bba3373ae77bc3dbe66583807fee394088a24b33b8adae1d96e"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/react-modernization": {
+      "id": "wshobson/agents/react-modernization",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/react-modernization",
+      "source_path": "plugins/framework-migration/skills/react-modernization/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "7787e2435f53744559f1c48a0769f17ffba48cb1e2ca4fe207cbb81b800055f1",
+      "bundle_sha256": "62aa29297284011f170602771521a4ae00aa724be3865dd7e5cf0be55573f973",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 6815,
+          "sha256": "7787e2435f53744559f1c48a0769f17ffba48cb1e2ca4fe207cbb81b800055f1"
+        },
+        {
+          "path": "references/details.md",
+          "size": 4436,
+          "sha256": "29632d9c891ed3f9716fffb7592941337c12d50ec4499479440b371a6f1074fc"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/react-native-architecture": {
+      "id": "wshobson/agents/react-native-architecture",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/react-native-architecture",
+      "source_path": "plugins/frontend-mobile-development/skills/react-native-architecture/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "84895e8207c68928f30896a0b4da38c6e0d3abd2d9ac39227bf279bb08c2a79e",
+      "bundle_sha256": "a67c8826c32a840e198a34f53eade82ac768a5565decb04c91926580e77ecd96",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 3602,
+          "sha256": "84895e8207c68928f30896a0b4da38c6e0d3abd2d9ac39227bf279bb08c2a79e"
+        },
+        {
+          "path": "references/details.md",
+          "size": 13728,
+          "sha256": "72b69297e14daa2f3d16be629e986ebd07d6146b646a4449cf96516d2e291de5"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/react-native-design": {
+      "id": "wshobson/agents/react-native-design",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/react-native-design",
+      "source_path": "plugins/ui-design/skills/react-native-design/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "71eacfb8d4a62142e135e8b1934ffb540b0d2703d6b6b273d4c0f255bb1aa68d",
+      "bundle_sha256": "0ad5025994596b11c2616466f34f161aeb6e368c33d18922fba0e366844094fe",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 3949,
+          "sha256": "71eacfb8d4a62142e135e8b1934ffb540b0d2703d6b6b273d4c0f255bb1aa68d"
+        },
+        {
+          "path": "references/details.md",
+          "size": 6515,
+          "sha256": "46c4f302d86c5493d6b7ebc9d72750124b925851c3b48f3d2d9717fe0567a171"
+        },
+        {
+          "path": "references/navigation-patterns.md",
+          "size": 20184,
+          "sha256": "fef43e6a8f768b34f6c7e54989872c6fcc03e0883b4ace27258ec480440f3e45"
+        },
+        {
+          "path": "references/reanimated-patterns.md",
+          "size": 17423,
+          "sha256": "861706a5ea0fd6d908eaf7159f156d1bbb6600d406b8e0d892624f059b341a35"
+        },
+        {
+          "path": "references/styling-patterns.md",
+          "size": 18876,
+          "sha256": "3fddb0ebf1c12b5b077906a72a388d447797c1e1cdf9f51a4d71fc24e3b88c32"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wshobson/agents/react-state-management": {
+      "id": "wshobson/agents/react-state-management",
+      "repo_url": "https://github.com/wshobson/agents",
+      "skills_url": "https://skills.sh/wshobson/agents/react-state-management",
+      "source_path": "plugins/frontend-mobile-development/skills/react-state-management/SKILL.md",
+      "pinned_commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "71abf349b19fe5cef64f4e4f2dd4a89011a5e947d8ce278d53a489292f508032",
+      "bundle_sha256": "950b946936e545e292dc344c7366625199a1483738ce54560fdbbbb62c533a27",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 4005,
+          "sha256": "71abf349b19fe5cef64f4e4f2dd4a89011a5e947d8ce278d53a489292f508032"
+        },
+        {
+          "path": "references/details.md",
+          "size": 7750,
+          "sha256": "30bc6c3a9a05ab3649d6fbbbccf3f9806e97688c76b64af85e369353ccd37404"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals": {
+      "id": "wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals",
+      "repo_url": "https://github.com/wsimmonds/claude-nextjs-skills",
+      "skills_url": "https://skills.sh/wsimmonds/claude-nextjs-skills/nextjs-app-router-fundamentals",
+      "source_path": "nextjs-app-router-fundamentals/SKILL.md",
+      "pinned_commit": "9e0aa5f99b6cfcede69e375d1a40951dae283046",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "29d13dabb933cbefb25cde0b7c0fde1184461dab483386f56ae7223b3432154d",
+      "bundle_sha256": "908af4d1706dd0cb6271b1349c928d3ea595c1c62aa4309414553ea438a2ea6d",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 18293,
+          "sha256": "29d13dabb933cbefb25cde0b7c0fde1184461dab483386f56ae7223b3432154d"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "auth0/agent-skills/auth0": {
+      "id": "auth0/agent-skills/auth0",
+      "repo_url": "https://github.com/auth0/agent-skills",
+      "skills_url": "https://skills.sh/auth0/agent-skills/auth0",
+      "source_path": "plugins/auth0/skills/auth0/SKILL.md",
+      "pinned_commit": "46e17946a35e9a1d2ecca0acd503b56d941ba71e",
+      "lifecycle": "active",
+      "supersedes": [
+        "auth0/agent-skills/auth0-nextjs",
+        "auth0/agent-skills/auth0-react-native"
+      ],
+      "entry_sha256": "172e7f46ab4cfbd29c4b71fd5b381512584864b1c3e972e6b775220c9d2b7729",
+      "bundle_sha256": "25dc0bcc32a02d674efd14791ebb03806a13ad4f8134529d92de22c18a0c9e1b",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 18593,
+          "sha256": "172e7f46ab4cfbd29c4b71fd5b381512584864b1c3e972e6b775220c9d2b7729"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 436,
+          "sha256": "e4957bad8cb3ac85314d69a40d2776ffc934e89e6b394a1b3be8a98cf668a190"
+        },
+        {
+          "path": "references/feature-acul/index.md",
+          "size": 69625,
+          "sha256": "6be4d43fe9eafc3a3bce5ce9dacd9232fa83d731c674b5476738c67521fc1341"
+        },
+        {
+          "path": "references/feature-audit-pricing/index.md",
+          "size": 17351,
+          "sha256": "9078074a34d5414407dea883593d8dd3714a0fe7748b7aa990cee1a6e781fa71"
+        },
+        {
+          "path": "references/feature-audit-remediation/index.md",
+          "size": 9308,
+          "sha256": "97aabddcffc7a47056171c719ba4a7836d213e3c9d19d01989bd52d9bee81d3c"
+        },
+        {
+          "path": "references/feature-audit/index.md",
+          "size": 37077,
+          "sha256": "89189bd2d3b4a2c2ef4d72f659b9b2d28469122f0f113013f25a1d399f71e8cb"
+        },
+        {
+          "path": "references/feature-branding/index.md",
+          "size": 94780,
+          "sha256": "8ce30e98fcf429ecf376d79f96e49c2d1482101e5ca9760d0626311674f1cdb4"
+        },
+        {
+          "path": "references/feature-custom-domains/index.md",
+          "size": 106073,
+          "sha256": "5b89f5127371a91067853e8a58652133a377b015c92dea08f4572813ac53a3ba"
+        },
+        {
+          "path": "references/feature-dpop/index.md",
+          "size": 15281,
+          "sha256": "eb074b8ebb0b7dc0603ed3cc636c86c2c9cea14d0ec1b88e05533c8007d02cfb"
+        },
+        {
+          "path": "references/feature-healthcheck/index.md",
+          "size": 68633,
+          "sha256": "c3576ee979c47300706a65ecbebde75d9fd00d82751083e7bb266f866eefa8d3"
+        },
+        {
+          "path": "references/feature-mfa/auth0-android.md",
+          "size": 4653,
+          "sha256": "10980c4621639d98f919384a9b6026fc194752febe9f41efa55a0335cc30334d"
+        },
+        {
+          "path": "references/feature-mfa/auth0-angular.md",
+          "size": 4282,
+          "sha256": "4000bff1e1345d2fdb1ca9de16b214379f4d83f6c92e1fc58951ed1d3bdb23a8"
+        },
+        {
+          "path": "references/feature-mfa/auth0-auth-js.md",
+          "size": 3593,
+          "sha256": "1b706a9bd7b7471252eadb3f353f277f0e1ec5ab49f09252e305e1a5bc30110c"
+        },
+        {
+          "path": "references/feature-mfa/auth0-react.md",
+          "size": 3273,
+          "sha256": "22290550cadf95e39c6917ecfe835f4049e6866f13e34237be7638ec029bedc6"
+        },
+        {
+          "path": "references/feature-mfa/auth0-server-js.md",
+          "size": 3778,
+          "sha256": "d9e1a2d3bcc424e5f90147e1f11880bb8736efc9f4201a97332e46dc6bbc2667"
+        },
+        {
+          "path": "references/feature-mfa/auth0-server-python.md",
+          "size": 7041,
+          "sha256": "dd86ce02f5dfa4376bfd6efa0888101c0c0fdd97422100077817c316813a0b09"
+        },
+        {
+          "path": "references/feature-mfa/auth0-spa-js.md",
+          "size": 2303,
+          "sha256": "a9ce90a681da6dd7029cb1495dea10e697b89109b75bcd0bad74543276c14b4e"
+        },
+        {
+          "path": "references/feature-mfa/auth0-swift.md",
+          "size": 3297,
+          "sha256": "ba964e304a331cf1c895e9c40dad184cfad01a316f0e3787e1276bbe15b5c458"
+        },
+        {
+          "path": "references/feature-mfa/auth0-vue.md",
+          "size": 4021,
+          "sha256": "ede76704fc9d91a75ee1bb2b7e6ac4c8e804f1a9fff1f448827454666b3e6b30"
+        },
+        {
+          "path": "references/feature-mfa/express-oidc.md",
+          "size": 4128,
+          "sha256": "1b492cefacf5250dbe2d0f285a2fd4af66cefccbcd0d65cec785eb6856d8e5db"
+        },
+        {
+          "path": "references/feature-mfa/index.md",
+          "size": 21447,
+          "sha256": "70e1e987c702b596be84f67131a9959543c6413ebc753fe8fa60bd199853c6e7"
+        },
+        {
+          "path": "references/feature-mfa/nextjs-auth0.md",
+          "size": 7790,
+          "sha256": "2e92a4b6175e7f2cd5c7dafdc8956acf92f07459f669f2c1da115fb8f1106e4b"
+        },
+        {
+          "path": "references/feature-migration/index.md",
+          "size": 32905,
+          "sha256": "41bb36f8152d93b3cee524fffce15b189eb07b7e0603fc7671b9966ca7eee480"
+        },
+        {
+          "path": "references/feature-organizations/index.md",
+          "size": 15898,
+          "sha256": "64124c3af9db68bff1731748a542c241fcb1e3d9a36f36a0ac6d545ca821696d"
+        },
+        {
+          "path": "references/feature-universal-portals/index.md",
+          "size": 14514,
+          "sha256": "e94240198f7b1106c8af6f36a8668a3aceeadd45aac83aac857b3aa6f64c8801"
+        },
+        {
+          "path": "references/framework-android/index.md",
+          "size": 77614,
+          "sha256": "55c467aa488041ea854d1975e33c574513b955103a15b7cc99395ccfb644752c"
+        },
+        {
+          "path": "references/framework-angular/index.md",
+          "size": 23876,
+          "sha256": "1e4daa8545c9cce05b1ac8706114278be38d21ab28c4eb598ba1787a98e44cbc"
+        },
+        {
+          "path": "references/framework-aspnetcore-api/index.md",
+          "size": 25808,
+          "sha256": "74e7004d74eab60a3720bae64d9c480431173d266fd8a75f433cdead62515678"
+        },
+        {
+          "path": "references/framework-aspnetcore-auth/index.md",
+          "size": 42355,
+          "sha256": "327e085557b329196b85bab02905f9d84b8e09c830105a475a09ca07caa6aa9b"
+        },
+        {
+          "path": "references/framework-auth0-api-js/index.md",
+          "size": 12329,
+          "sha256": "c1de8ee0cc34f79b5871eac109565d33d6928477e43b02259d07bf1ad1f1c9e5"
+        },
+        {
+          "path": "references/framework-auth0-auth-js/index.md",
+          "size": 6865,
+          "sha256": "4b28e62e91958c1b0d5e6e49af46d557127c3a6fef3d5a5966e202c17bd46a9a"
+        },
+        {
+          "path": "references/framework-auth0-server-js/index.md",
+          "size": 8556,
+          "sha256": "6d2ff1fbf53f5de268e36b5dcca153f512431a02337a76d64935882fa23e782f"
+        },
+        {
+          "path": "references/framework-expo/index.md",
+          "size": 46323,
+          "sha256": "52cc0410500149eeff31ff349ab987d592e71ecaf69372a43b28b5a744251c3b"
+        },
+        {
+          "path": "references/framework-express-jwt/index.md",
+          "size": 36573,
+          "sha256": "222e5cf9b970ed19515d436df70e0a1ae1565d8380ac22fa703599999d3b8f95"
+        },
+        {
+          "path": "references/framework-express/index.md",
+          "size": 20570,
+          "sha256": "dece52837bb9b39c1862102d6e5db060c971e43d6b406400aa9a3764851a5165"
+        },
+        {
+          "path": "references/framework-fastapi-api/index.md",
+          "size": 34413,
+          "sha256": "07e51247c8d517394427690b827660b6ec06fe2606d5992bad7a92c7f5000855"
+        },
+        {
+          "path": "references/framework-fastify-api/index.md",
+          "size": 4993,
+          "sha256": "9ad3bb3146c3f5c7f9624e5a8978b26faca076266a93cea7c4e7d64a7c32defa"
+        },
+        {
+          "path": "references/framework-fastify/index.md",
+          "size": 4945,
+          "sha256": "b3f822a9efc621fd4ca6e9e35a2a1b3308ea8fb7ad24296c20d91ebb2a8153a6"
+        },
+        {
+          "path": "references/framework-flask/index.md",
+          "size": 36655,
+          "sha256": "a27c9330e7c885024705cdb6692d834af95449fdcd22c8030b811e68814946d0"
+        },
+        {
+          "path": "references/framework-flutter-native/index.md",
+          "size": 18066,
+          "sha256": "3a12944e9566d76a52be2b99decbb82175ee669dfaf1a72d41a6dcba04bbc996"
+        },
+        {
+          "path": "references/framework-flutter-web/index.md",
+          "size": 13795,
+          "sha256": "bcb7b865e4cd13189a5c8bf165ea5406e85f810538cf7f94fe762abc5bab6959"
+        },
+        {
+          "path": "references/framework-flutter-windows/index.md",
+          "size": 23611,
+          "sha256": "b50b3c7c454aad396b979f700b45441a28915699196eaa695cc26ac4fadd9094"
+        },
+        {
+          "path": "references/framework-go/index.md",
+          "size": 57811,
+          "sha256": "39e77072fa9809cefede435e99302e738df99aa0db637e4bf8f6fabeac208a12"
+        },
+        {
+          "path": "references/framework-ionic-angular/index.md",
+          "size": 44764,
+          "sha256": "9557aceafb252ed16dace86db15d468d851dc7f8db2f1ba2ffacde0a51233ae1"
+        },
+        {
+          "path": "references/framework-ionic-react/index.md",
+          "size": 34449,
+          "sha256": "870514c9f2d0bc93081104cb3af7a58ce2fcd8f307212917b320db80ea6fd2b4"
+        },
+        {
+          "path": "references/framework-ionic-vue/index.md",
+          "size": 42558,
+          "sha256": "ea12ed47ad0815685701051835413b6e296cfcac3c5564fa8d3bee543bc27aed"
+        },
+        {
+          "path": "references/framework-java-mvc/index.md",
+          "size": 45382,
+          "sha256": "f12b565aa5c4ae8ac74434ec792890764d36c309f76f0aaf87be0beafed3924d"
+        },
+        {
+          "path": "references/framework-kmp/index.md",
+          "size": 23391,
+          "sha256": "c4cdef033a286b5c6d55c5824e894ee62b50aadffe264ca5c3fbfc0c521932ce"
+        },
+        {
+          "path": "references/framework-laravel-api/index.md",
+          "size": 17875,
+          "sha256": "e13c30a9e78b4e4f4133b05fe6eed1f72171b5e63ef09423bbc8dd6767d86a32"
+        },
+        {
+          "path": "references/framework-laravel/index.md",
+          "size": 11577,
+          "sha256": "a94abc949d0445e926c7f380c2a18d1fd1ac8570fa9a2e4f3d278d4cb1fc1829"
+        },
+        {
+          "path": "references/framework-maui/index.md",
+          "size": 13422,
+          "sha256": "0a940e753b12ab70309b8d52039913d4c119ab554914720d612dd2ec9fa903a4"
+        },
+        {
+          "path": "references/framework-net-android/index.md",
+          "size": 11462,
+          "sha256": "4098a88e5ec32b9e224a0ac4e8535adb4c30a75dcb033483b11efbe9b68dc93e"
+        },
+        {
+          "path": "references/framework-net-ios/index.md",
+          "size": 10129,
+          "sha256": "85c9e39eac68c8bec0432a33bacc2665329682c0af7c7457a5d47db843b111c0"
+        },
+        {
+          "path": "references/framework-nextjs/index.md",
+          "size": 23857,
+          "sha256": "0475d47c21f2e1c1ad592cffc0bc9075dc8b7a3cba7f4c98e57c81622d006890"
+        },
+        {
+          "path": "references/framework-node-auth0/index.md",
+          "size": 12996,
+          "sha256": "d8811d736246cb99855fad5649f39fc95a7cc83186eb46bddf9eac41f08a8db7"
+        },
+        {
+          "path": "references/framework-node-auth0/migration.md",
+          "size": 69970,
+          "sha256": "b794c46f10987570eef7a373dbbf43f9c67d38074b13375ad50b076e6fdf90b2"
+        },
+        {
+          "path": "references/framework-nuxt/index.md",
+          "size": 40517,
+          "sha256": "af40e2342291fc672f32f197b0232dcfae8144ad566f3019b25d2e4535f97f69"
+        },
+        {
+          "path": "references/framework-php-api/index.md",
+          "size": 50252,
+          "sha256": "96dc72915730e34992a5170ccf6b12728b1b5da412dd316b952ff1e40dbb95b8"
+        },
+        {
+          "path": "references/framework-php/index.md",
+          "size": 42715,
+          "sha256": "52e85e65727e8f657de9b865f068e3a07e993b9bf728e40a836b458f2c6c533c"
+        },
+        {
+          "path": "references/framework-react-native/index.md",
+          "size": 20385,
+          "sha256": "10e006921ecc2ef56704e35cd8b01e7e5647c59742f0decb8b2a3e2796c2c517"
+        },
+        {
+          "path": "references/framework-react/index.md",
+          "size": 35774,
+          "sha256": "f16dd116f57f318788fff8049eb5ff666610020fe769d11af55189ba0f81e8bc"
+        },
+        {
+          "path": "references/framework-server-python/index.md",
+          "size": 29157,
+          "sha256": "b181cbd2388a2d4bceaaf7b5cdd062b29f03f366809655a4b66845e0ceddd601"
+        },
+        {
+          "path": "references/framework-spa-js/index.md",
+          "size": 37677,
+          "sha256": "57bda02373393c3ad2973ce1d9ad102313a1067f2af065641d23c857266342e2"
+        },
+        {
+          "path": "references/framework-springboot-api/index.md",
+          "size": 38574,
+          "sha256": "a19b0024831aadb612943d0f57f4c4c049dd3f916900d18e092cefaf4eb12578"
+        },
+        {
+          "path": "references/framework-swift/index.md",
+          "size": 106994,
+          "sha256": "7a17acad19729dbcf352c97f88111f72aa0bf9dcb54a0fbde2641c3a3120f83f"
+        },
+        {
+          "path": "references/framework-vue/index.md",
+          "size": 27644,
+          "sha256": "9b7a917573aa7a21f2ea9fb40becd23cf28bbae8dd067852c694e8c960eb0982"
+        },
+        {
+          "path": "references/framework-winforms/index.md",
+          "size": 10911,
+          "sha256": "7c071107b59e645575dde6329972aa212694558774d4357399d7ac4aa43016f3"
+        },
+        {
+          "path": "references/framework-wpf/index.md",
+          "size": 10925,
+          "sha256": "a9c6124b975feea72c55035936ee4b150f5820fcfe8ff4e2b86cbd2efcecd773"
+        },
+        {
+          "path": "references/pattern-common-errors/index.md",
+          "size": 2494,
+          "sha256": "912f8686f2a5d056e1e0bd1e60094c40eebce3194e1b1a4ab68f75c6b144ad40"
+        },
+        {
+          "path": "references/pattern-multi-tenant/index.md",
+          "size": 2069,
+          "sha256": "81232a9420e8bbbd40849b23d0e44a9c4fbc6affd2d4a15aba7f8b5a39c76e3c"
+        },
+        {
+          "path": "references/pattern-rate-limiting/index.md",
+          "size": 2171,
+          "sha256": "9f0433666c912bb9170672842eb6a4a563f1da8774b2c7eedb346c94f4c5a86e"
+        },
+        {
+          "path": "references/pattern-security/index.md",
+          "size": 2469,
+          "sha256": "eb87697482da783910361395255edb72dfee063da1081ed97c430a5345e4e665"
+        },
+        {
+          "path": "references/pattern-token-handling/index.md",
+          "size": 1998,
+          "sha256": "99b77bdd1173ad3754f94872085275add51e9ecaa9ca4495161c4d5b2edb22fe"
+        },
+        {
+          "path": "references/tooling-cli/index.md",
+          "size": 20759,
+          "sha256": "63d18ab4cbf1599c1fb65655fc3483598e32a81e486e4a84bf6ef6f6f1522985"
+        },
+        {
+          "path": "references/tooling-mcp/index.md",
+          "size": 3121,
+          "sha256": "5cac01a739c30a5349b6da7adee9fc42571127e070f1097f993b38ac90512bc9"
+        },
+        {
+          "path": "references/tooling-terraform/index.md",
+          "size": 4281,
+          "sha256": "99e03e32ecfe71a028ee6a5a1c568a6c0e4303df44afa2c35ef639f035005b92"
+        },
+        {
+          "path": "references/tooling-vercel/index.md",
+          "size": 12277,
+          "sha256": "0a398e1f96c22699c93c540c9f05747193b573c3be409bca333ff1d078e20960"
+        },
+        {
+          "path": "scripts/render_pdf.sh",
+          "size": 4162,
+          "sha256": "30bac18efc1a7e17509d187672e5c799b782434dfc150e4796d93aefc2f7f08f"
+        },
+        {
+          "path": "scripts/validate-skill.sh",
+          "size": 4743,
+          "sha256": "aa3ed4e2885819b6a208c3859013d75bc66dcd0635d3d0c57ac4c3c0a2c52aaa"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/eas-workflows": {
+      "id": "expo/skills/eas-workflows",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/eas-workflows",
+      "source_path": "plugins/expo/skills/eas-workflows/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [
+        "expo/skills/expo-cicd-workflows"
+      ],
+      "entry_sha256": "6c54224fa405c0167748ef97624ac79b00477fffa21d491ec042f4a70f47de0d",
+      "bundle_sha256": "d23f5ce2077306353a347f0b8af504bb90f8f24a33e4863d92fb0b27d783244e",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 4827,
+          "sha256": "6c54224fa405c0167748ef97624ac79b00477fffa21d491ec042f4a70f47de0d"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 349,
+          "sha256": "7a85d17343456a986142460c97d683ec60035487e3749da38104e48ddfabdb53"
+        },
+        {
+          "path": "scripts/fetch.js",
+          "size": 2979,
+          "sha256": "6e00c6fa7277c429c18ae211d1b6515caf2fdf500136cf297921c05d27447483"
+        },
+        {
+          "path": "scripts/package.json",
+          "size": 103,
+          "sha256": "4445d509a3dcd6a57ce4da9bfc99589659235c1354e4559c62957cb54fd6260c"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-data-fetching": {
+      "id": "expo/skills/expo-data-fetching",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-data-fetching",
+      "source_path": "plugins/expo/skills/expo-data-fetching/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [
+        "expo/skills/native-data-fetching"
+      ],
+      "entry_sha256": "36fd61981bae65d976c630667000176e605cd923916eaae7ff857d92a6f93838",
+      "bundle_sha256": "3f8262bbff690c6a8f72599c0e774aa07d33b83b369a549c5329c7561f117b1b",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 13632,
+          "sha256": "36fd61981bae65d976c630667000176e605cd923916eaae7ff857d92a6f93838"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 421,
+          "sha256": "50254d420a1db8e631ee24aaf8463708a525049059ac391b0d219dce8ce82e0a"
+        },
+        {
+          "path": "references/expo-router-loaders.md",
+          "size": 9838,
+          "sha256": "f842c86483a15380c44a4b49db27bf3d41e17b48b1f44b9a2bbacc563a9dcbe6"
+        },
+        {
+          "path": "references/offline-and-cancellation.md",
+          "size": 1400,
+          "sha256": "750f7f25acc4e6143a6ff4daacffbcd5daf64370540a75e7b3a4f3b4b1aa462c"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-dom": {
+      "id": "expo/skills/expo-dom",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-dom",
+      "source_path": "plugins/expo/skills/expo-dom/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [
+        "expo/skills/use-dom"
+      ],
+      "entry_sha256": "6eafb05fcc5d95c1d0a593e4917e59ca8f505aed7cf3d97e41b4b80139492190",
+      "bundle_sha256": "e1743f4384f5f387dcda6976fc7c99e3dfa490f0190bd37d667686b32dad3e59",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 10352,
+          "sha256": "6eafb05fcc5d95c1d0a593e4917e59ca8f505aed7cf3d97e41b4b80139492190"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 371,
+          "sha256": "33cfd1779613514afc93a8eab23e1f5648499b20c8205e0e8aa524b5d761e06f"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-native-ui": {
+      "id": "expo/skills/expo-native-ui",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-native-ui",
+      "source_path": "plugins/expo/skills/expo-native-ui/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [
+        "expo/skills/building-native-ui"
+      ],
+      "entry_sha256": "52d8c3bdf6d466dda826a89b3d0846b5014233c1e399f01ab193be7b1baccf53",
+      "bundle_sha256": "a5349bcd57a8f57b54a96ab5eed506b646052775266f8751cf355e1aad2e3bb0",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 12574,
+          "sha256": "52d8c3bdf6d466dda826a89b3d0846b5014233c1e399f01ab193be7b1baccf53"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 408,
+          "sha256": "90bf5d66b1038913fea37bd6d57292eb6ecd0e0ee3b2bc3e283facc033f4b2b0"
+        },
+        {
+          "path": "references/controls.md",
+          "size": 5018,
+          "sha256": "6ec427731a65ffd66b745733665bb2c00992750c7d3710893d1bbf70b427d541"
+        },
+        {
+          "path": "references/gradients.md",
+          "size": 2717,
+          "sha256": "63ced0392f67c41bf90e726613d139a389db609799bfcb91124e6e69b9a66e70"
+        },
+        {
+          "path": "references/icons.md",
+          "size": 5849,
+          "sha256": "2c0622d8a3f61626a72fa7829d3044f3391cbd8ca91806f4752926cf4e66be59"
+        },
+        {
+          "path": "references/media.md",
+          "size": 6229,
+          "sha256": "c964182dfbcaa5eef00b947e0425f5a39ee2cfc1b2a4e251ba51fc823e87b0dc"
+        },
+        {
+          "path": "references/storage.md",
+          "size": 2935,
+          "sha256": "265e8bc21adcd698062f18fa442e0e07e99e67868576f18aac2112e5381ffbf1"
+        },
+        {
+          "path": "references/visual-effects.md",
+          "size": 5201,
+          "sha256": "dcdcaa5e0bf5c20341455e39d91312ca5f3034391908f77eb2e577044283adcc"
+        },
+        {
+          "path": "references/webgpu-three.md",
+          "size": 14466,
+          "sha256": "3a247a7740e4bab4aea5dec8b81c7782a5918bb221838a05f6a94c669f145679"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-router": {
+      "id": "expo/skills/expo-router",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-router",
+      "source_path": "plugins/expo/skills/expo-router/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "93ff75501eb74e4982a93119ad3145499d400bb613260d2eb39be8008651f500",
+      "bundle_sha256": "b3e14642d537b973d5c21dce6e26aff6591792117c081db2ee92b1efb22d9e40",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 7035,
+          "sha256": "93ff75501eb74e4982a93119ad3145499d400bb613260d2eb39be8008651f500"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 422,
+          "sha256": "7b76d9331a33e06e61504db9af069bccc8ab4a02e2f8be92727e8e0f9ad7941d"
+        },
+        {
+          "path": "references/form-sheet.md",
+          "size": 6320,
+          "sha256": "947de9cf35a15aacf3f02e96e45942b5e4826e536e529570886e5ddbb7ec8591"
+        },
+        {
+          "path": "references/route-structure.md",
+          "size": 5106,
+          "sha256": "4c3d70edeb7e36d965c4d96fa150f23ee57e01be5f6c57dd3e34c6309aab7e87"
+        },
+        {
+          "path": "references/search.md",
+          "size": 5173,
+          "sha256": "bb4785df4757d84f1aff09d34cdb84043e7099684b9731a24a1d79cc3c0df172"
+        },
+        {
+          "path": "references/tabs.md",
+          "size": 13323,
+          "sha256": "c49081529a200bfc62c95d41229e5dd7368f2e35cd5775ccaaab3289ed1fd7eb"
+        },
+        {
+          "path": "references/toolbar-and-headers.md",
+          "size": 8061,
+          "sha256": "14d9a71dd949bd2b28a5bd531f6b9c1b4f3fa847a86db8c5218fee67b5295769"
+        },
+        {
+          "path": "references/zoom-transitions.md",
+          "size": 4848,
+          "sha256": "cacc1665e9f3044762765d2cd55fd1ead9627f06478f12dfa2280c6f9ae88ede"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "expo/skills/expo-upgrade": {
+      "id": "expo/skills/expo-upgrade",
+      "repo_url": "https://github.com/expo/skills",
+      "skills_url": "https://skills.sh/expo/skills/expo-upgrade",
+      "source_path": "plugins/expo/skills/expo-upgrade/SKILL.md",
+      "pinned_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
+      "lifecycle": "active",
+      "supersedes": [
+        "expo/skills/upgrading-expo"
+      ],
+      "entry_sha256": "a48788aa5cfcfb7c6bce72420a52a650510e4c5738a0a528d4fa1d2c81643275",
+      "bundle_sha256": "f047f7715b475ce24ad71ffb6ca11c0bf2379969024e003aff5be830148508cd",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 7683,
+          "sha256": "a48788aa5cfcfb7c6bce72420a52a650510e4c5738a0a528d4fa1d2c81643275"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "size": 373,
+          "sha256": "c0695e6a721f721e4d27c44df7b5adbf7602bf798862c6674ee3002c993edc20"
+        },
+        {
+          "path": "references/expo-av-to-audio.md",
+          "size": 3683,
+          "sha256": "b66df7e8722339e2b0ae5e22da225e313794744eb0648303ad6cfc43632cc6a1"
+        },
+        {
+          "path": "references/expo-av-to-video.md",
+          "size": 4262,
+          "sha256": "e222bf0e767baee721f7e42ce68d2c26a8b844d723e830d81cdfecac805564a2"
+        },
+        {
+          "path": "references/native-tabs.md",
+          "size": 3520,
+          "sha256": "bf945b38a970a556769d1c406f8089d8ece34b5f204fe32a0e10fbedc24fff83"
+        },
+        {
+          "path": "references/new-architecture.md",
+          "size": 2177,
+          "sha256": "32479e9be069c5e4931dfdf3e475119ddc7a879bac8a475e259e5193bcf32cff"
+        },
+        {
+          "path": "references/react-19.md",
+          "size": 1875,
+          "sha256": "bf600571e38dd7d114b58e0f6ace5a560792624dcfdc49c421134cd1669a0d77"
+        },
+        {
+          "path": "references/react-compiler.md",
+          "size": 1645,
+          "sha256": "ad485033650cff963abdfd8a98d5bbe5f0825a853ffebd6cfe11a4c80b3c63db"
+        },
+        {
+          "path": "references/react-navigation-to-expo-router.md",
+          "size": 4174,
+          "sha256": "083fb891adb87a1ab02aff92b1f322014ecb2427014e20194ff9e05f5d321ca9"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "getsentry/sentry-agent-skills/sentry-react-native-sdk": {
+      "id": "getsentry/sentry-agent-skills/sentry-react-native-sdk",
+      "repo_url": "https://github.com/getsentry/sentry-agent-skills",
+      "skills_url": "https://skills.sh/getsentry/sentry-agent-skills/sentry-react-native-sdk",
+      "source_path": "skills/sentry-react-native-sdk/SKILL.md",
+      "pinned_commit": "9f54eb021916a7cff2c04a9f4e4c1f9439f3202c",
+      "lifecycle": "active",
+      "supersedes": [
+        "getsentry/sentry-agent-skills/sentry-react-native-setup"
+      ],
+      "entry_sha256": "c299d701ea8de4abd4a8959efc4ea3a63791e3e1152021491fb5cdcc3f554797",
+      "bundle_sha256": "020792b301f144011fcc44e7c42bb4492d2d386883e869e3b4b219f0d6e566bb",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 31398,
+          "sha256": "c299d701ea8de4abd4a8959efc4ea3a63791e3e1152021491fb5cdcc3f554797"
+        },
+        {
+          "path": "references/error-monitoring.md",
+          "size": 44766,
+          "sha256": "e01f96cbe75d82c1385877d30a5858441c981d78d3378655081cee6e84d54b94"
+        },
+        {
+          "path": "references/logging.md",
+          "size": 13492,
+          "sha256": "3b94cb5beec92164d8c4309c9ae27f8bcb9fb643e9e2fd631934ed3e8f054534"
+        },
+        {
+          "path": "references/profiling.md",
+          "size": 14737,
+          "sha256": "627fa790420ce036f0813e9feeb57221e6d86ea372ebcb037bc3c9bb8f7066eb"
+        },
+        {
+          "path": "references/session-replay.md",
+          "size": 22591,
+          "sha256": "b58415b2d7b5e69e810a4a7bb8e91ec44d7718e28422732570358a57b8c53281"
+        },
+        {
+          "path": "references/tracing.md",
+          "size": 34462,
+          "sha256": "06643071a1acd805998098a56bf5572447b5c210ff68726740837e5fa8ce9fdb"
+        },
+        {
+          "path": "references/user-feedback.md",
+          "size": 22200,
+          "sha256": "fec0c65d6b1c8d8e04b00d66fd99987aa248c4fb315bd49ba6deba970d2d0d09"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/agent-skills/composition-patterns": {
+      "id": "vercel-labs/agent-skills/composition-patterns",
+      "repo_url": "https://github.com/vercel-labs/agent-skills",
+      "skills_url": "https://skills.sh/vercel-labs/agent-skills/composition-patterns",
+      "source_path": "skills/composition-patterns/SKILL.md",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "e38e0eaa609316b10423a9a138ed95e35099accd3f735585295c8a8f165c28a3",
+      "bundle_sha256": "206c74b30ef1e903e06b9451f6cf0a29d99341c0f6b5c0ae1030b54c0298db47",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "size": 22627,
+          "sha256": "89e3ddd58fcf99a53a50e25dfd21b8cde1be5f10b7df6bacd3dfa6796932f516"
+        },
+        {
+          "path": "README.md",
+          "size": 2140,
+          "sha256": "85915a43a6f0b4efe525e3cf6398dd866166da2025837c4460468a24a940da94"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 2886,
+          "sha256": "e38e0eaa609316b10423a9a138ed95e35099accd3f735585295c8a8f165c28a3"
+        },
+        {
+          "path": "metadata.json",
+          "size": 530,
+          "sha256": "49262ed5cb4186f31ee980cf8d990be0170c51efed4908d0464a1cff9905bd05"
+        },
+        {
+          "path": "rules/_sections.md",
+          "size": 829,
+          "sha256": "a174213b87e6911e2b766995a2cbaf8d1534057076e82fb79fe3f0ecb38047df"
+        },
+        {
+          "path": "rules/_template.md",
+          "size": 329,
+          "sha256": "587f7d16b0660eb61fee4a4d3d7df2b3077d6835de170602c7d6e60bee559131"
+        },
+        {
+          "path": "rules/architecture-avoid-boolean-props.md",
+          "size": 2267,
+          "sha256": "007555ebb020f4d552582a2c4db194db71a1fd33094012e5187bcfa4f8c392d5"
+        },
+        {
+          "path": "rules/architecture-compound-components.md",
+          "size": 2600,
+          "sha256": "f246af13dc269b521cf20eb8ad99a0cb645beac381c8c9b117262c34612c8457"
+        },
+        {
+          "path": "rules/patterns-children-over-render-props.md",
+          "size": 1886,
+          "sha256": "7c45a0d21b3c4126a32cba916ee31adeae195386ad1dbbe6634aedb7457aa0ad"
+        },
+        {
+          "path": "rules/patterns-explicit-variants.md",
+          "size": 2395,
+          "sha256": "8c19e596e61807549d01ce8c6954c6358199f97a8511c0c02c625ec0efda8c0e"
+        },
+        {
+          "path": "rules/react19-no-forwardref.md",
+          "size": 953,
+          "sha256": "881830adb7534c4b2d70db426556646ad9837f5478f744f35641f635ada22227"
+        },
+        {
+          "path": "rules/state-context-interface.md",
+          "size": 4974,
+          "sha256": "09e73afbf9285fa416679cc864a287b9e8b821d0969272ab784295386d8c9bc3"
+        },
+        {
+          "path": "rules/state-decouple-implementation.md",
+          "size": 2699,
+          "sha256": "76a8c1eb29a70d8996ab3f71260345af2f7bc89deab815a421d6c87c6591a9c3"
+        },
+        {
+          "path": "rules/state-lift-state.md",
+          "size": 3224,
+          "sha256": "74c54038a6c554c748fe31cec673b80861b5d920b7553cf78cdf10d18b4b759b"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/agent-skills/react-best-practices": {
+      "id": "vercel-labs/agent-skills/react-best-practices",
+      "repo_url": "https://github.com/vercel-labs/agent-skills",
+      "skills_url": "https://skills.sh/vercel-labs/agent-skills/react-best-practices",
+      "source_path": "skills/react-best-practices/SKILL.md",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "lifecycle": "active",
+      "supersedes": [
+        "vercel-labs/agent-skills/vercel-react-best-practices"
+      ],
+      "entry_sha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355",
+      "bundle_sha256": "cc4ebe61f1f36c91c87b1c3c32fb2ad73b8bd08c2976b7f74f508800a48696bb",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "size": 108261,
+          "sha256": "fc93e7421177bbf869cce892bc60a6c83a4517d974bc3bf65c4e2c1e58a6ccf6"
+        },
+        {
+          "path": "README.md",
+          "size": 3360,
+          "sha256": "9eafb2123d3b8b2aef41fba0db2648a3f4f49996f8c7c8bb2c86263befd8b48a"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 7251,
+          "sha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355"
+        },
+        {
+          "path": "metadata.json",
+          "size": 921,
+          "sha256": "c4e18bac3290fbe1b471a605867d4df68b03144ea26b8befdbe8f9d8fd124354"
+        },
+        {
+          "path": "rules/_sections.md",
+          "size": 1554,
+          "sha256": "01c59969e4e867f0708c8f8ef9c6d87fab9a07d0586244f429ff84013db8a115"
+        },
+        {
+          "path": "rules/_template.md",
+          "size": 631,
+          "sha256": "99df2a3ea088c6c22de2484ddc7e964d0e9923846f44c63380343ecc64455442"
+        },
+        {
+          "path": "rules/advanced-effect-event-deps.md",
+          "size": 1802,
+          "sha256": "55ed8f9f27a1bff803d6fa55828176207714b02123cbb97ddb8a90d88024a723"
+        },
+        {
+          "path": "rules/advanced-event-handler-refs.md",
+          "size": 1483,
+          "sha256": "a3097edeecfb2ff6851cd66ed8cdf0617c3c88180504bee824aa6e75a215bbbc"
+        },
+        {
+          "path": "rules/advanced-init-once.md",
+          "size": 958,
+          "sha256": "3e4dc22173eb0e2b6dcf583e3babd862b8696328f8f59aee7c4d746c5bc05f6c"
+        },
+        {
+          "path": "rules/advanced-use-latest.md",
+          "size": 1072,
+          "sha256": "8a3f64dfe5a77d1564248faf17fe662ae75b55d497a243cb30b38eb07ccbbf9a"
+        },
+        {
+          "path": "rules/async-api-routes.md",
+          "size": 1125,
+          "sha256": "523338540d73427dc14c0cbb19f2741ebccdf8b105a7b2c1b33d2905cf237a42"
+        },
+        {
+          "path": "rules/async-cheap-condition-before-await.md",
+          "size": 1220,
+          "sha256": "03107c1f70a293cd58a8abc5474c5548e20ea4efdf01b6d45aae7ad0ac1cb32c"
+        },
+        {
+          "path": "rules/async-defer-await.md",
+          "size": 2208,
+          "sha256": "f3c142d090615abdcc99d31c123be37b31f0f1ed8d9ec9f7789a3bc6883ae0fb"
+        },
+        {
+          "path": "rules/async-dependencies.md",
+          "size": 1293,
+          "sha256": "16ef469f877e30c6b8e1e1b4bc3e527312fa3c6318cb785a4eca186ea236131a"
+        },
+        {
+          "path": "rules/async-parallel.md",
+          "size": 654,
+          "sha256": "6d2f841896279e976dfcdc1ac89e70771ac188baadfd43c096b5706cb838b961"
+        },
+        {
+          "path": "rules/async-suspense-boundaries.md",
+          "size": 2510,
+          "sha256": "de05fedac2eb7ae563b887b5a424464ec3dfaf84e5b7797467ebe2a796ac8afc"
+        },
+        {
+          "path": "rules/bundle-analyzable-paths.md",
+          "size": 2382,
+          "sha256": "62090b5c815fd71bf1133dce754f51abc16a9456d0ccd025fd627de27726e92a"
+        },
+        {
+          "path": "rules/bundle-barrel-imports.md",
+          "size": 2795,
+          "sha256": "e648f6d54525f07a691357040ca5bff6ea3424788a91ff63812adb29622a671b"
+        },
+        {
+          "path": "rules/bundle-conditional.md",
+          "size": 949,
+          "sha256": "09c8259c3efb04fc0abb8e412ccbda217c222ae8118516283e571c995fe3a7d4"
+        },
+        {
+          "path": "rules/bundle-defer-third-party.md",
+          "size": 920,
+          "sha256": "3719fb47b191e8db4fe22686ec88448ad5af9e6838585425abbe103d0b642e37"
+        },
+        {
+          "path": "rules/bundle-dynamic-imports.md",
+          "size": 791,
+          "sha256": "401817a7369f315fc5a68a1095742ff7d53d0461906880dc9d64a41495ee1986"
+        },
+        {
+          "path": "rules/bundle-preload.md",
+          "size": 1149,
+          "sha256": "d1f7cc28da7cd5ab249acd287edc5b761afcfb194e9cb62cd44c5f3543db2de2"
+        },
+        {
+          "path": "rules/client-event-listeners.md",
+          "size": 1969,
+          "sha256": "242a873349febc1ce685e85617994784dbab92c2eaa68aed7fed5a83e7680e93"
+        },
+        {
+          "path": "rules/client-localstorage-schema.md",
+          "size": 1950,
+          "sha256": "0fb7cdf9dc93fdf22f87e3669f953fb9d4ac9b0be42eec4a29fe9a2560610b88"
+        },
+        {
+          "path": "rules/client-passive-event-listeners.md",
+          "size": 1644,
+          "sha256": "1f35016f9053de69e884ee9be00654e37979c2ca85f5e57764dc2626ff7acb4b"
+        },
+        {
+          "path": "rules/client-swr-dedup.md",
+          "size": 1159,
+          "sha256": "644652c39c6cc00de8d1c77a7273612e868dc3f7edda30764164c12ec0f764a3"
+        },
+        {
+          "path": "rules/js-batch-dom-css.md",
+          "size": 3266,
+          "sha256": "480b891b9eaf96e929dc1e964274a4828e3a78009b7d00ccd965a0d425215959"
+        },
+        {
+          "path": "rules/js-cache-function-results.md",
+          "size": 1949,
+          "sha256": "3daaa11d24f4295cb6be8bc6f407f2ce83cc7b5bd1f0e68891ea8ab835721dc7"
+        },
+        {
+          "path": "rules/js-cache-property-access.md",
+          "size": 532,
+          "sha256": "73e47431e74878a927061bf0ddc7cd91a7556cb35d2573f3421e82300d9ae311"
+        },
+        {
+          "path": "rules/js-cache-storage.md",
+          "size": 1651,
+          "sha256": "11b826b0433898c1ece2d3547010d8e77db9fb240185748c45db91493de9b6cc"
+        },
+        {
+          "path": "rules/js-combine-iterations.md",
+          "size": 753,
+          "sha256": "71add08aeeb43091d4ff4c0b2842cce8b4bdef8ad3e732cc034bb5a84827e746"
+        },
+        {
+          "path": "rules/js-early-exit.md",
+          "size": 1133,
+          "sha256": "925ce5ce87f3347186ca62212f29cc6baa2b8c85a96d2720ad07c3d0abf781c0"
+        },
+        {
+          "path": "rules/js-flatmap-filter.md",
+          "size": 1411,
+          "sha256": "9e5b166a41914d975bef7635467f8fb32cd98b5c3126c0bc6f163490812fb5f0"
+        },
+        {
+          "path": "rules/js-hoist-regexp.md",
+          "size": 1028,
+          "sha256": "f9e9aef2f7c2307dd7310f283df85dcada45fc43e9bb941b0c3aa414dec21ec4"
+        },
+        {
+          "path": "rules/js-index-maps.md",
+          "size": 837,
+          "sha256": "5df1bdc2cfabb2c98abd55d26762e5c18189535c2e686184f426082e62920391"
+        },
+        {
+          "path": "rules/js-length-check-first.md",
+          "size": 1747,
+          "sha256": "8b54a311c826b299272f29187fc58bc55772a04c4a72eeb29456ee96dc9fc624"
+        },
+        {
+          "path": "rules/js-min-max-loop.md",
+          "size": 2290,
+          "sha256": "87dfb67e2f39df6ad8bcfb5b78c5fb364d3c07554ad188a202408d99f3763421"
+        },
+        {
+          "path": "rules/js-request-idle-callback.md",
+          "size": 2647,
+          "sha256": "ee08f83905b4011abbc33d594033157d77561b5bbd9b36b04f0f409581ffec32"
+        },
+        {
+          "path": "rules/js-set-map-lookups.md",
+          "size": 532,
+          "sha256": "a7fd781a6ba9ad49065961b6f9a90ef486bf6b648390e1a08704025f98e1642b"
+        },
+        {
+          "path": "rules/js-tosorted-immutable.md",
+          "size": 1782,
+          "sha256": "d0a5e1b0fec48a0a81397957e2f068e224329f7c42cb5feeed8aae6fa64025e8"
+        },
+        {
+          "path": "rules/rendering-activity.md",
+          "size": 564,
+          "sha256": "1e5e7eaf3555e61d6a2e900089c676527d26259501db5594f59544b6c664f85a"
+        },
+        {
+          "path": "rules/rendering-animate-svg-wrapper.md",
+          "size": 1185,
+          "sha256": "9c6ae0ca7a51434e803887c64cded760956579a1452ccb80a461a03f9c937c77"
+        },
+        {
+          "path": "rules/rendering-conditional-render.md",
+          "size": 980,
+          "sha256": "2ec2fa23c4148285144687050c52369adba3da2fbe3d486f8d3e0aad8f06f2bc"
+        },
+        {
+          "path": "rules/rendering-content-visibility.md",
+          "size": 815,
+          "sha256": "64eee6d5b916fe74df33363994b27fc7f71bea3bcedc7ee04bda23107ca3e6e4"
+        },
+        {
+          "path": "rules/rendering-hoist-jsx.md",
+          "size": 1039,
+          "sha256": "93b229560fae92005ed9a2a829064607b39b2e984e92d221d05b2d41df2b7c0e"
+        },
+        {
+          "path": "rules/rendering-hydration-no-flicker.md",
+          "size": 2308,
+          "sha256": "dc7ab358c67c177bca6e6f360fbc935ebe4efa928c0ba3ebd3f9f3d9e2000ca3"
+        },
+        {
+          "path": "rules/rendering-hydration-suppress-warning.md",
+          "size": 872,
+          "sha256": "915bacb934e2927d84b37a3f3d225a47b309ac8f9e494ed2bcb66ce07c5676a2"
+        },
+        {
+          "path": "rules/rendering-resource-hints.md",
+          "size": 2549,
+          "sha256": "351b1095d641717b930f1b2253282b7120af3023bc74e06c17675168d4286864"
+        },
+        {
+          "path": "rules/rendering-script-defer-async.md",
+          "size": 1868,
+          "sha256": "4cea07b7875ba7fc2c7465ff23b63a2bb334f90aaf2d9293d38d67b05fdb32ab"
+        },
+        {
+          "path": "rules/rendering-svg-precision.md",
+          "size": 588,
+          "sha256": "ed468533f6e95f622859c884b122cf21f9f593ed6bb3d500a54de4b9f9bcb9fb"
+        },
+        {
+          "path": "rules/rendering-usetransition-loading.md",
+          "size": 2074,
+          "sha256": "3a1249c3f13026b6f54ab5712c388df219d6af01b12aa542749acd99a46f4bc1"
+        },
+        {
+          "path": "rules/rerender-defer-reads.md",
+          "size": 973,
+          "sha256": "234050a77faf50cb306be10a9e15bd4421134ab5907e75f13e6d78e2bd262dc9"
+        },
+        {
+          "path": "rules/rerender-dependencies.md",
+          "size": 824,
+          "sha256": "17eb5830956fb56486fd3cfc7431f5849d39751730c05ad9e77dd4f0c27169c5"
+        },
+        {
+          "path": "rules/rerender-derived-state-no-effect.md",
+          "size": 1201,
+          "sha256": "cb11ec76f50aa7b6847269f02d79b120c889a30d9ecd2c1d578f75144419c77a"
+        },
+        {
+          "path": "rules/rerender-derived-state.md",
+          "size": 728,
+          "sha256": "1c326bb67b01fb084eb00c8911b0a7cff54681c2315b629f88e49b64eaa6481d"
+        },
+        {
+          "path": "rules/rerender-functional-setstate.md",
+          "size": 2968,
+          "sha256": "5e68df6b2ae8058e67f476ff1ac67bde159f5a9d18df439e46eabcdeb7b52e58"
+        },
+        {
+          "path": "rules/rerender-lazy-state-init.md",
+          "size": 2016,
+          "sha256": "4ae844740f266fc8cbf050701230286624a2440ec5be67b9a63d9edc3c580573"
+        },
+        {
+          "path": "rules/rerender-memo-with-default-value.md",
+          "size": 1173,
+          "sha256": "81c47476564ad8a79fc68fc442734255ca7d6829424359464503fda0a9f9a0dd"
+        },
+        {
+          "path": "rules/rerender-memo.md",
+          "size": 1148,
+          "sha256": "1f258990c2f27ff6256b3cc5c43300631bb3f0d81f749aed08d07fcdcc131dd1"
+        },
+        {
+          "path": "rules/rerender-move-effect-to-event.md",
+          "size": 1268,
+          "sha256": "abc2cbf167bee056743023351e96806a411d3398da8802093620aecf0721f029"
+        },
+        {
+          "path": "rules/rerender-no-inline-components.md",
+          "size": 2135,
+          "sha256": "1cc32907a770272524ba682eef9e7efdd8ad4533b6f89b718a1fcd7d1d0eb6a3"
+        },
+        {
+          "path": "rules/rerender-simple-expression-in-memo.md",
+          "size": 1018,
+          "sha256": "5bdcf2d1558ba5204e643c887b7b4060f89630969425651eb68e96427d97f800"
+        },
+        {
+          "path": "rules/rerender-split-combined-hooks.md",
+          "size": 1844,
+          "sha256": "6f45d703343484ef9acef9388397f3642966ae6a5a258899a0cf1f9977cfbf6c"
+        },
+        {
+          "path": "rules/rerender-transitions.md",
+          "size": 1055,
+          "sha256": "60f4033909a62df5e5b8c601494f9e50a562e2f8c1c2d81eac24f38142265f1c"
+        },
+        {
+          "path": "rules/rerender-use-deferred-value.md",
+          "size": 1846,
+          "sha256": "8c3579576a61a949884167745dcfaf1d5426ba305cc61fd0a79602d70fda4909"
+        },
+        {
+          "path": "rules/rerender-use-ref-transient-values.md",
+          "size": 1742,
+          "sha256": "f1a649af9d1d0b5c762f6c9c4c1c70c90d7df82aa10296ee87aadb78c1b76c54"
+        },
+        {
+          "path": "rules/server-after-nonblocking.md",
+          "size": 2012,
+          "sha256": "d0b8d24a3db9f0f65f9e2bddbf230b0e03a5f60e1229d93a4a18f5e7a991c7c2"
+        },
+        {
+          "path": "rules/server-auth-actions.md",
+          "size": 2649,
+          "sha256": "a2ca8aa102839251c7971ec784560fab943c20b36fe6f80365d4110c13260c23"
+        },
+        {
+          "path": "rules/server-cache-lru.md",
+          "size": 1353,
+          "sha256": "1924b64561841923b88a657085097a0aeba3e0ba2d5470b9f5c15cc10d6ae70f"
+        },
+        {
+          "path": "rules/server-cache-react.md",
+          "size": 2228,
+          "sha256": "fddeea6c870bb3da4134b61d54b7d09b83d2603f929b7547cd3dc1dc269edd5c"
+        },
+        {
+          "path": "rules/server-dedup-props.md",
+          "size": 2060,
+          "sha256": "c2747424cdac46be62f835f245a0aa887b0090b416d28e2ac8676702645eeb37"
+        },
+        {
+          "path": "rules/server-hoist-static-io.md",
+          "size": 4423,
+          "sha256": "5abea4dd882b13661bd5f7dfb93f9e547d5f08176c61c448ade91b210ed5d49f"
+        },
+        {
+          "path": "rules/server-no-shared-module-state.md",
+          "size": 1766,
+          "sha256": "4d869bf1cd2f1632e5ca4c0e64b1cf0e71c5f5a0f940bc8a22174d205e735ed7"
+        },
+        {
+          "path": "rules/server-parallel-fetching.md",
+          "size": 1554,
+          "sha256": "569a2e9fc04f9606686cd75c5894ef8781b502786a7fffe241396846c7733472"
+        },
+        {
+          "path": "rules/server-parallel-nested-fetching.md",
+          "size": 992,
+          "sha256": "ad5d9656984d4a959997a2367bf59cc6632297b4634a1dd13a087939d83f30b3"
+        },
+        {
+          "path": "rules/server-serialization.md",
+          "size": 996,
+          "sha256": "f4c7d68b29c82381baad059c4a7f09e868e71ec9c3115a26ad3ae7d24c0dfe1f"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel-labs/agent-skills/react-native-skills": {
+      "id": "vercel-labs/agent-skills/react-native-skills",
+      "repo_url": "https://github.com/vercel-labs/agent-skills",
+      "skills_url": "https://skills.sh/vercel-labs/agent-skills/react-native-skills",
+      "source_path": "skills/react-native-skills/SKILL.md",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "lifecycle": "active",
+      "supersedes": [
+        "vercel-labs/agent-skills/vercel-react-native-skills"
+      ],
+      "entry_sha256": "4012750a5ccbe064ca04af3835d5d1b011979d2d09d9b6df1c8128fac58e0a66",
+      "bundle_sha256": "7b55155ebc449bcd47b9e83abb5798be9769d27af8ac31f4906c84c1c802fe37",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "size": 73771,
+          "sha256": "72996343b8260800fbeb9af63ddaed91f14b65dc547e0922f9f8e9bd72076cbf"
+        },
+        {
+          "path": "README.md",
+          "size": 5064,
+          "sha256": "d60d7623005a833b928be6a109ed9d14dea43d7217fb534e8f2e4de5fc1f0ddf"
+        },
+        {
+          "path": "SKILL.md",
+          "size": 4439,
+          "sha256": "4012750a5ccbe064ca04af3835d5d1b011979d2d09d9b6df1c8128fac58e0a66"
+        },
+        {
+          "path": "metadata.json",
+          "size": 896,
+          "sha256": "59ee2274cadbd95b2220727028f0dbc26d3e0251e7937226edc9e7640756ba21"
+        },
+        {
+          "path": "rules/_sections.md",
+          "size": 2228,
+          "sha256": "21d7445e92bd7d393b420118c3fb9ebbf30aaf123a15143afb6c0b1b562cfdfd"
+        },
+        {
+          "path": "rules/_template.md",
+          "size": 631,
+          "sha256": "99df2a3ea088c6c22de2484ddc7e964d0e9923846f44c63380343ecc64455442"
+        },
+        {
+          "path": "rules/animation-derived-value.md",
+          "size": 1373,
+          "sha256": "689228e9d59227934f296563963951aa9368be0afb2a188f650de161203b1862"
+        },
+        {
+          "path": "rules/animation-gesture-detector-press.md",
+          "size": 2559,
+          "sha256": "69408d4be669e74689d865c5f50a22fc3a802d521fe493371761abd20526e58e"
+        },
+        {
+          "path": "rules/animation-gpu-properties.md",
+          "size": 2059,
+          "sha256": "f885e4179445da27cbc225e0a4aa3ed9016fc3507ca6f864392ba7a9d0bd7516"
+        },
+        {
+          "path": "rules/design-system-compound-components.md",
+          "size": 1625,
+          "sha256": "dcb10900a58fcf57cca2e27c062d02df2325a7949e08fb45e9e05cc2b132b1a6"
+        },
+        {
+          "path": "rules/fonts-config-plugin.md",
+          "size": 1393,
+          "sha256": "b92568774064a604e7a479d4c8d7263aed5609740e9161d2f2764bfff761905d"
+        },
+        {
+          "path": "rules/imports-design-system-folder.md",
+          "size": 1418,
+          "sha256": "aa6337f7f2869a46a9141ec65e02c3da5c3bf051023899b82e0f0aef5bff8423"
+        },
+        {
+          "path": "rules/js-hoist-intl.md",
+          "size": 1645,
+          "sha256": "b4b08622465ffcd5e5961878eb8c6d7359aa242d16c990b59941c9111962fe46"
+        },
+        {
+          "path": "rules/list-performance-callbacks.md",
+          "size": 1059,
+          "sha256": "db800e9dfe0080eb4954b96e2a362ee8344d08e08b1ed06bc8059450f3e6f0dd"
+        },
+        {
+          "path": "rules/list-performance-function-references.md",
+          "size": 4133,
+          "sha256": "b54470e41d578b207ee3223f6853efb7fbf8e5f83d9aecf8da16989072f99544"
+        },
+        {
+          "path": "rules/list-performance-images.md",
+          "size": 1417,
+          "sha256": "e88f16ac113c29230d674b7aa2c66c31d5772a74b1ea378d48a97b1143fe6c19"
+        },
+        {
+          "path": "rules/list-performance-inline-objects.md",
+          "size": 2308,
+          "sha256": "e2a80aac0f29c6abaf0163c1cc273d09cc8a0030ec077ca2022bbf5c309e4625"
+        },
+        {
+          "path": "rules/list-performance-item-expensive.md",
+          "size": 2466,
+          "sha256": "a68cc8ec5dba3c55761bd5df9dfd3d98485f63076868d3e03af15f1e58907ce3"
+        },
+        {
+          "path": "rules/list-performance-item-memo.md",
+          "size": 2250,
+          "sha256": "38ec1d149ee485434d11c2b9e2101dfc914afadae4a0738ca905f26b05f708c1"
+        },
+        {
+          "path": "rules/list-performance-item-types.md",
+          "size": 2749,
+          "sha256": "eed225f4e9e504bfa7db01f5395d1402545cc47de8adf1829a9408cd5d158cf6"
+        },
+        {
+          "path": "rules/list-performance-virtualize.md",
+          "size": 1742,
+          "sha256": "98cad308118acb4d6e8e975c0168ce56e2d48ca52ed47f23bc9a30667c066ada"
+        },
+        {
+          "path": "rules/monorepo-native-deps-in-app.md",
+          "size": 1091,
+          "sha256": "8368b109027fcec1b8a81bfb99718aef2b64edaba77107f73d7c465cc5a14217"
+        },
+        {
+          "path": "rules/monorepo-single-dependency-versions.md",
+          "size": 1351,
+          "sha256": "61c01b9eaab1e319bf078204231fb573bdfea3c43a6eb99e7ef73ee95d474ccc"
+        },
+        {
+          "path": "rules/navigation-native-navigators.md",
+          "size": 4941,
+          "sha256": "6642dedb57e72f0b56df5fbc3d5b8aaa91fc4456932c12712cfd076d393f32c6"
+        },
+        {
+          "path": "rules/react-compiler-destructure-functions.md",
+          "size": 1274,
+          "sha256": "8048926a4fa3fbd28fc0ecf4ba4c383a2f0ed06c2fd7330dd4a15d7f4e548044"
+        },
+        {
+          "path": "rules/react-compiler-reanimated-shared-values.md",
+          "size": 1268,
+          "sha256": "3174303a72b6849ff0eda5cd9f9650f26baa5f31ed28d35a75076af714fb2ffc"
+        },
+        {
+          "path": "rules/react-state-dispatcher.md",
+          "size": 2255,
+          "sha256": "7ec5b653e3ff8d9ca97d8d66981cce5590c0e49fa79ab708fd6324542b588870"
+        },
+        {
+          "path": "rules/react-state-fallback.md",
+          "size": 1735,
+          "sha256": "eb76e386d71680bfdfc0ab64dba1221f4d3d0fdcb4980bb4a871381d58e9e58b"
+        },
+        {
+          "path": "rules/react-state-minimize.md",
+          "size": 1740,
+          "sha256": "31b989de61defda1c61d8578c4700efd64a427218c3f3dbb7062a1666e1cbe43"
+        },
+        {
+          "path": "rules/rendering-no-falsy-and.md",
+          "size": 1812,
+          "sha256": "7300fa45ac3a4968db144727a21052421bc62de9b5e9f6f59e28bd16d2fff001"
+        },
+        {
+          "path": "rules/rendering-text-in-text-component.md",
+          "size": 697,
+          "sha256": "fc67897b6126b6b5574f4d284a6c5b2282528fe89de8ec08e6cfd2a86ab5b235"
+        },
+        {
+          "path": "rules/scroll-position-no-state.md",
+          "size": 1936,
+          "sha256": "70aa1ee679e755556d7b01b326431fe898d3c23ddba40d0da6bdac23c87a1525"
+        },
+        {
+          "path": "rules/state-ground-truth.md",
+          "size": 2172,
+          "sha256": "9f3efc73d2e66a5deb3199c9774f42524cd6a0f69784af38301946be5d747cb5"
+        },
+        {
+          "path": "rules/ui-expo-image.md",
+          "size": 1648,
+          "sha256": "c3c13cce3dd2cc7f8a9b4861e5743af98f62e28f5699f72f492e79a335cfae55"
+        },
+        {
+          "path": "rules/ui-image-gallery.md",
+          "size": 2546,
+          "sha256": "b34d1ba03710ed9622187716541ae618968e7d03bc28895c2ac918d3cc5853f1"
+        },
+        {
+          "path": "rules/ui-measure-views.md",
+          "size": 2232,
+          "sha256": "170d058abc4900ea9e851e54f5e8b437ffffc2c9d3847ae35e30a515c8990c3d"
+        },
+        {
+          "path": "rules/ui-menus.md",
+          "size": 4598,
+          "sha256": "5964adbecfe9aeb28d736a4eaacec6469a1c4ca3f48779d243eb38b6d181cfe9"
+        },
+        {
+          "path": "rules/ui-native-modals.md",
+          "size": 1859,
+          "sha256": "d803493b3046ad31cbb2c189f1fffb948fd0055050e3c322589bd548421e23a8"
+        },
+        {
+          "path": "rules/ui-pressable.md",
+          "size": 1534,
+          "sha256": "52cdbad127d713d7d32c59ef74ab1bbd6dca211edc9b25993453f7f4545e79fa"
+        },
+        {
+          "path": "rules/ui-safe-area-scroll.md",
+          "size": 1579,
+          "sha256": "3dd776caef2344d73529010940b50042861d06d31a192122a4df64bc06aed0e8"
+        },
+        {
+          "path": "rules/ui-scrollview-content-inset.md",
+          "size": 1317,
+          "sha256": "89e4bbe5e9a602660f4155e9d4c0dee09db1adf21c73f47213cd67ec896e5a13"
+        },
+        {
+          "path": "rules/ui-styling.md",
+          "size": 2212,
+          "sha256": "cdef4d8b1a097b844e5992ab78e66a2dc604faf1e90f8d325a0eb116e8ef6a7e"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel/next.js/next-cache-components-optimizer": {
+      "id": "vercel/next.js/next-cache-components-optimizer",
+      "repo_url": "https://github.com/vercel/next.js",
+      "skills_url": "https://skills.sh/vercel/next.js/next-cache-components-optimizer",
+      "source_path": "skills/next-cache-components-optimizer/SKILL.md",
+      "pinned_commit": "59ad3de65441f7ee360bb5fd0707d69aee386fde",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "f6e9c8deff1ae9864acffc83d8d261d487dcc66afbae1aee1feb4acbb636c30b",
+      "bundle_sha256": "a5c194d19504725ddd1e94b2b9402d2f1e66063f8730daa09652d341cc2ffae5",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 25280,
+          "sha256": "f6e9c8deff1ae9864acffc83d8d261d487dcc66afbae1aee1feb4acbb636c30b"
+        },
+        {
+          "path": "reference/patterns.md",
+          "size": 14756,
+          "sha256": "18342f107289cee068c68b1beae2fa8634864263468518a3d6ceeb400bb78c30"
+        },
+        {
+          "path": "reference/real-app-patterns.md",
+          "size": 6935,
+          "sha256": "4beddcc70ee153a0a804e10cd84220901a1ea2efa6d86214b831d84929374890"
+        },
+        {
+          "path": "reference/red-test-robustness.md",
+          "size": 10609,
+          "sha256": "71fa3a45a09fcaad676b0fcd6d07a19e92ef8fb587bdc129f71faeb3ddfcda28"
+        },
+        {
+          "path": "rig-template.md",
+          "size": 7520,
+          "sha256": "3f3a3bbfc44896cfa7f0ed642d76831e4a3fbd143822feb25882c32e7cc6a0ed"
+        },
+        {
+          "path": "test-template.md",
+          "size": 8134,
+          "sha256": "7e58cf538ce3c42dcbc084fa4ae702d5e8a42fc4015a0c1eda2305de4bc614d1"
+        }
+      ],
+      "scan_exceptions": []
+    },
+    "vercel/next.js/next-dev-loop": {
+      "id": "vercel/next.js/next-dev-loop",
+      "repo_url": "https://github.com/vercel/next.js",
+      "skills_url": "https://skills.sh/vercel/next.js/next-dev-loop",
+      "source_path": "skills/next-dev-loop/SKILL.md",
+      "pinned_commit": "59ad3de65441f7ee360bb5fd0707d69aee386fde",
+      "lifecycle": "active",
+      "supersedes": [],
+      "entry_sha256": "e3221747c12a26952e67ca7bca07d3c61dcd647b2167f0ff71b1b25d910591a9",
+      "bundle_sha256": "b41ba0d7dc8d7d4010a85c52aa9e37e34cd0710d237c65768937ada22f9fe35c",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "size": 8993,
+          "sha256": "e3221747c12a26952e67ca7bca07d3c61dcd647b2167f0ff71b1b25d910591a9"
+        }
+      ],
+      "scan_exceptions": []
+    }
+  }
+}

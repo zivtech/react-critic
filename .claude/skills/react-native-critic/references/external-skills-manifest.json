@@ -1,0 +1,250 @@
+{
+  "version": 2,
+  "consumer": "react-native-critic",
+  "generated_at": "2026-09-19T17:46:26Z",
+  "skills": [
+    {
+      "id": "vercel-labs/agent-skills/react-native-skills",
+      "categories": [
+        "core-review",
+        "react-native",
+        "expo"
+      ],
+      "audiences_supported": [
+        "security",
+        "new-hire",
+        "ops",
+        "performance-engineer"
+      ],
+      "priority": 100,
+      "jtbd": "Load for any RN review \u2014 core cross-platform patterns, performance fundamentals, and native rendering guidance.",
+      "enabled": true
+    },
+    {
+      "id": "callstackincubator/agent-skills/react-native-best-practices",
+      "categories": [
+        "react-native",
+        "performance"
+      ],
+      "audiences_supported": [
+        "ops",
+        "performance-engineer"
+      ],
+      "priority": 95,
+      "jtbd": "Load when reviewing RN performance \u2014 native modules, bridge optimization, and rendering best practices from Callstack.",
+      "enabled": true
+    },
+    {
+      "id": "callstackincubator/agent-skills/upgrading-react-native",
+      "categories": [
+        "react-native",
+        "upgrade"
+      ],
+      "audiences_supported": [
+        "ops",
+        "dx-maintainer"
+      ],
+      "priority": 92,
+      "jtbd": "Load when reviewing RN version upgrades \u2014 native dependency alignment, breaking changes, and migration guidance from Callstack.",
+      "enabled": true
+    },
+    {
+      "id": "react-native-community/skills/upgrade-react-native",
+      "categories": [
+        "react-native",
+        "upgrade"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 88,
+      "jtbd": "Load when reviewing RN upgrades \u2014 community migration patterns, compatibility matrices, and upgrade tooling.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/react-native-architecture",
+      "categories": [
+        "react-native",
+        "architecture"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 84,
+      "jtbd": "Load when reviewing RN app architecture \u2014 module boundaries, navigation patterns, and state management for mobile.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/react-native-design",
+      "categories": [
+        "react-native",
+        "design"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 80,
+      "jtbd": "Load when reviewing RN UI/UX patterns \u2014 cross-platform styling, responsive layouts, and platform-specific design.",
+      "enabled": true
+    },
+    {
+      "id": "callstack/react-native-testing-library/react-native-testing",
+      "categories": [
+        "react-native",
+        "testing"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 86,
+      "jtbd": "Load when reviewing RN tests \u2014 React Native Testing Library patterns, native module mocking, and component testing.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/expo-native-ui",
+      "categories": [
+        "expo",
+        "ui"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 84,
+      "jtbd": "Load when reviewing Expo native UI \u2014 platform APIs, native components, and UI composition patterns.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/expo-data-fetching",
+      "categories": [
+        "expo",
+        "data"
+      ],
+      "audiences_supported": [
+        "ops",
+        "security"
+      ],
+      "priority": 86,
+      "jtbd": "Load when reviewing Expo data fetching \u2014 caching, offline patterns, and server communication.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/expo-upgrade",
+      "categories": [
+        "expo",
+        "upgrade"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 90,
+      "jtbd": "Load when reviewing Expo SDK upgrades \u2014 version migration, breaking changes, and compatibility.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/eas-workflows",
+      "categories": [
+        "expo",
+        "operations"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 82,
+      "jtbd": "Load when reviewing Expo CI/CD \u2014 EAS Build/Submit pipelines, OTA updates, and release automation.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/expo-dom",
+      "categories": [
+        "expo",
+        "webview"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 74,
+      "jtbd": "Load when reviewing Expo DOM components \u2014 web-native bridging, WebView patterns, and cross-runtime rendering.",
+      "enabled": true
+    },
+    {
+      "id": "getsentry/sentry-agent-skills/sentry-react-native-sdk",
+      "categories": [
+        "react-native",
+        "observability"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 78,
+      "jtbd": "Load when code integrates Sentry \u2014 error monitoring setup, source maps, and crash reporting for React Native.",
+      "enabled": true
+    },
+    {
+      "id": "auth0/agent-skills/auth0",
+      "categories": [
+        "react-native",
+        "auth"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 76,
+      "jtbd": "Load when code uses Auth0 \u2014 authentication SDK integration, token management, and session patterns for RN.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/javascript-testing-patterns",
+      "categories": [
+        "shared",
+        "testing"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 86,
+      "jtbd": "Load when reviewing test strategy, async test patterns, or coverage gaps in JavaScript/TypeScript projects.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/modern-javascript-patterns",
+      "categories": [
+        "shared",
+        "javascript"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 76,
+      "jtbd": "Load when reviewing modern JS idioms \u2014 ESM usage, async patterns, and contemporary language features.",
+      "enabled": true
+    },
+    {
+      "id": "sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "categories": [
+        "shared",
+        "security"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 72,
+      "jtbd": "Load when code handles API boundaries, auth tokens, user input, or sensitive data \u2014 trust boundary and input validation patterns.",
+      "enabled": true
+    },
+    {
+      "id": "expo/skills/expo-router",
+      "categories": [
+        "expo",
+        "routing"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 88,
+      "jtbd": "Load for Expo Router navigation and route structure; not an API-routes replacement.",
+      "enabled": true
+    }
+  ]
+}

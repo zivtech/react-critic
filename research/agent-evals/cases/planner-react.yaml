@@ -1,0 +1,15 @@
+id: planner-react
+agent: react-planner
+files:
+  package.json: '{"dependencies":{"react":"19.1.0"}}'
+  src/Card.tsx: "export function Card() { return <article>Card</article>; }\n"
+prompt: >-
+  Inspect the fixture at {workspace}. Plan adding a dismissible Card without editing it.
+  Return status completed, the detected framework, required critic, and a short reason.
+expect:
+  status: completed
+  framework: react
+  critic: react-critic
+assert_files:
+  - path: src/Card.tsx
+    changed: false

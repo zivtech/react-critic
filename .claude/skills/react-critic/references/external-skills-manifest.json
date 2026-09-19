@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "consumer": "react-critic",
+  "generated_at": "2026-09-19T17:46:26Z",
+  "skills": [
+    {
+      "id": "vercel-labs/agent-skills/react-best-practices",
+      "categories": [
+        "core-review",
+        "react"
+      ],
+      "audiences_supported": [
+        "security",
+        "new-hire",
+        "ops",
+        "performance-engineer"
+      ],
+      "priority": 100,
+      "jtbd": "Load for any React review \u2014 core performance patterns, component design, and rendering optimization from Vercel engineering.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/react-state-management",
+      "categories": [
+        "react",
+        "state"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 90,
+      "jtbd": "Load when code touches state management (Redux, Zustand, Context, atoms) \u2014 covers state ownership, boundaries, and mutation safety.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/react-modernization",
+      "categories": [
+        "react",
+        "upgrade"
+      ],
+      "audiences_supported": [
+        "ops",
+        "dx-maintainer"
+      ],
+      "priority": 88,
+      "jtbd": "Load when reviewing React version upgrades, migration paths, deprecated API usage, or codemod application.",
+      "enabled": true
+    },
+    {
+      "id": "millionco/react-doctor/react-doctor",
+      "categories": [
+        "react",
+        "analysis"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 82,
+      "jtbd": "Load when investigating React performance issues \u2014 application analysis, anti-pattern detection, and rendering diagnosis.",
+      "enabled": true
+    },
+    {
+      "id": "dotneet/claude-code-marketplace/typescript-react-reviewer",
+      "categories": [
+        "react",
+        "review"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 70,
+      "jtbd": "Load when reviewing TypeScript + React patterns \u2014 type safety, generic components, and API design correctness.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/javascript-testing-patterns",
+      "categories": [
+        "shared",
+        "testing"
+      ],
+      "audiences_supported": [
+        "ops"
+      ],
+      "priority": 86,
+      "jtbd": "Load when reviewing test strategy, async test patterns, or coverage gaps in JavaScript/TypeScript projects.",
+      "enabled": true
+    },
+    {
+      "id": "github/awesome-copilot/javascript-typescript-jest",
+      "categories": [
+        "shared",
+        "testing"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 70,
+      "jtbd": "Load when reviewing Jest test implementations \u2014 assertion patterns, mocking, and test organization.",
+      "enabled": true
+    },
+    {
+      "id": "wshobson/agents/modern-javascript-patterns",
+      "categories": [
+        "shared",
+        "javascript"
+      ],
+      "audiences_supported": [
+        "new-hire"
+      ],
+      "priority": 76,
+      "jtbd": "Load when reviewing modern JS idioms \u2014 ESM usage, async patterns, and contemporary language features.",
+      "enabled": true
+    },
+    {
+      "id": "sickn33/antigravity-awesome-skills/api-security-best-practices",
+      "categories": [
+        "shared",
+        "security"
+      ],
+      "audiences_supported": [
+        "security"
+      ],
+      "priority": 72,
+      "jtbd": "Load when code handles API boundaries, auth tokens, user input, or sensitive data \u2014 trust boundary and input validation patterns.",
+      "enabled": true
+    },
+    {
+      "id": "vercel-labs/agent-skills/composition-patterns",
+      "categories": [
+        "react",
+        "architecture"
+      ],
+      "audiences_supported": [
+        "new-hire",
+        "ops"
+      ],
+      "priority": 96,
+      "jtbd": "Load for component API design, compound components, and state/provider boundaries.",
+      "enabled": true
+    }
+  ]
+}

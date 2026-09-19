@@ -1,0 +1,15 @@
+id: planner-next
+agent: react-planner
+files:
+  package.json: '{"dependencies":{"next":"16.3.0","react":"19.1.0"}}'
+  app/page.tsx: "export default function Page() { return <main>Home</main>; }\n"
+prompt: >-
+  Inspect the fixture at {workspace}. Plan adding cached server data without editing it.
+  Return status completed, the detected framework, required critic, and a short reason.
+expect:
+  status: completed
+  framework: next
+  critic: next-critic
+assert_files:
+  - path: app/page.tsx
+    changed: false

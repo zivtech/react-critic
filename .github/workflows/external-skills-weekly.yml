@@ -1,0 +1,39 @@
+name: External Skills Weekly
+
+on:
+  schedule:
+    - cron: '17 13 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - name: Verify pinned content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/verify_no_copied_skills.py --verify-content | tee external-skill-content-verification.txt
+      - name: Check upstream freshness
+        id: freshness
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/refresh_external_skills.py --check | tee external-skill-freshness.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: external-skill-weekly-evidence
+          path: |
+            external-skill-content-verification.txt
+            external-skill-freshness.txt
+          retention-days: 30
+      - name: Fail on stale pins
+        if: steps.freshness.outcome == 'failure'
+        run: exit 1

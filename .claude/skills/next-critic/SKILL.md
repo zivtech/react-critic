@@ -26,13 +26,15 @@ The router (`js-critic-router`) dispatches here when it detects: `next` in packa
 ## External Skill References (No Copy Policy)
 Use external skills as references only.
 
-- Canonical reference file: [external-skills-manifest.yaml](references/external-skills-manifest.yaml)
+- Canonical routing manifest: [external-skills-manifest.json](references/external-skills-manifest.json)
+- Central integrity lock: [../shared-js-core/references/external-skills-lock.json](../shared-js-core/references/external-skills-lock.json)
 - Routing policy: [skill-routing-map.md](references/skill-routing-map.md)
 
 Rules:
 - Do not copy external skill body content into this repository.
-- Use manifest IDs/URLs and pinned commit metadata for traceability.
-- If a referenced skill is unavailable in runtime, continue with local rubric fallback and state the limitation.
+- Load a selected reference only with `python3 ../shared-js-core/scripts/resolve_external_skill.py load --consumer next-critic --id ID` from the skills directory. Never infer a raw-content URL.
+- The resolver verifies the explicit source path, pinned commit, file size/hash, bundle digest, consumer enablement, and prompt-injection scan before returning content.
+- If resolution fails, do not use unverified external text. Continue with the local rubric and report the resolver error code as a limitation.
 
 ## References
 - Shared rubric: [../shared-js-core/references/js-review-rubric.md](../shared-js-core/references/js-review-rubric.md)

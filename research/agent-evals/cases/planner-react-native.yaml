@@ -1,0 +1,15 @@
+id: planner-react-native
+agent: react-planner
+files:
+  package.json: '{"dependencies":{"expo":"55.0.0","react-native":"0.83.0"}}'
+  app/index.tsx: "import { Text } from 'react-native'; export default () => <Text>Home</Text>;\n"
+prompt: >-
+  Inspect the fixture at {workspace}. Plan an offline state indicator without editing it.
+  Return status completed, the detected framework, required critic, and a short reason.
+expect:
+  status: completed
+  framework: react-native
+  critic: react-native-critic
+assert_files:
+  - path: app/index.tsx
+    changed: false
