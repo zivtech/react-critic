@@ -57,6 +57,9 @@ but should be verified before adding a new owner to `TRUSTED_OWNERS`.
 
 - Fixtures: `research/benchmarks/fixtures/{react,next,react-native}/` (8 per critic)
 - Results: `research/benchmarks/results/`
-- Model scoring: exact rule-and-line response matching from self-attested repository-native capture blobs at an exact Git commit.
+- Corpus status: reviewed descriptive foundation only; no provider pilot or committed captures exist.
+- Controls: `react-06`, `next-02`, `rn-01`, `rn-02`, and `rn-07` are intentional-clean restraint controls.
+- Candidate treatment: only the committed inline `SKILL.md`; referenced rubrics, agents, router material, and external skills are excluded.
+- Future model scoring: exact rule-and-line response matching from self-attested repository-native capture blobs at an exact Git commit.
 - Windows: deterministic jackknife sensitivity references, never additional samples or provider/model seeds.
-- Custody: provider/model/runtime values are self-attested labels, not independent authenticity proof.
+- Boundaries: this corpus supports no performance, authenticity, severity-quality, full-skill, or statistical claim. Historical reports remain rejected.

@@ -1,36 +1,44 @@
+schema_version: 2
 id: rn-01
 category: render-performance
-description: inline style objects and anonymous functions recreated on every render
-code: |
-  function ProductCard({ product, onAddToCart }) {
-    return (
-      <View style={{ flex: 1, padding: 16, backgroundColor: '#fff' }}>
-        <Image
-          source={{ uri: product.imageUrl }}
-          style={{ width: 200, height: 200 }}
-        />
-        <TouchableOpacity
-          onPress={() => onAddToCart(product.id)}
-          style={{ backgroundColor: '#007AFF', padding: 12 }}
-        >
-          <Text>Add to Cart</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-issues:
-  - severity: MAJOR
-    category: render-performance
-    description: "inline style objects create new object references on every render; FlatList/memo optimization is fully defeated because style props never shallowEqual"
-    evidence: "style={{ flex: 1, padding: 16, backgroundColor: '#fff' }}"
-    expected_checks: [render-performance, native-styling]
-  - severity: MAJOR
-    category: render-performance
-    description: "anonymous arrow function in onPress recreates on every render; if ProductCard is used in a FlatList, every item re-renders on any parent state change"
-    evidence: "onPress={() => onAddToCart(product.id)}"
-    expected_checks: [render-performance]
-  - severity: MINOR
-    category: render-performance
-    description: "Image has no resizeMode; default 'cover' may not match container; no loading/error placeholder"
-    evidence: "style={{ width: 200, height: 200 }}"
-    expected_checks: [native-styling]
+description: A simple product card uses ordinary inline values without a stated performance defect.
+intentional_clean: true
+public:
+  file_path: src/ProductCard.tsx
+  language: TypeScript JSX
+  frameworks:
+    react-native: '0.76'
+  runtime: hermes
+  assumptions:
+    - ProductCard is not rendered by a virtualized list.
+    - Its parent does not rely on referential equality for its style or handler props.
+  requirements: []
+  code: |
+    function ProductCard({ product, onAddToCart }) {
+      return (
+        <View style={{ padding: 16, backgroundColor: '#fff' }}>
+          <Image source={{ uri: product.imageUrl }} style={{ width: 200, height: 200 }} />
+          <TouchableOpacity onPress={() => onAddToCart(product.id)}>
+            <Text>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React Native performance documentation
+    revision_reason: Replaced generic inline-object and callback claims with a clean restraint control.
+  difficulty: ADVERSARIAL
+  domains: [rendering, performance]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://reactnative.dev/docs/performance
+        supports: React Native performance work is context-dependent.
+    notes: No catalog rule is established by the shown ordinary component.
+    excluded_claims: [Memoization, StyleSheet extraction, image placeholders, and FlatList behavior are not scored.]
+issues: []

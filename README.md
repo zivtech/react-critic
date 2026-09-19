@@ -60,25 +60,31 @@ python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit>
 python3 -m unittest discover
 ```
 
-## Exact structured defect-detection benchmark
+## Reviewed benchmark corpus and future exact scorer
 
-The runner never calls a provider. It reads a run-specific, immutable
-`captures/{critic}/{run-id}/run.json` and eight candidate plus eight baseline
-capture blobs from an exact Git commit. Custody is `self-attested-repo-native`:
-provider/model/runtime/tool labels in `run.json` are not independent proof of
-execution authenticity.
+`research/benchmarks/` is a reviewed descriptive foundation for a future exact
+structured defect-detection benchmark. It has eight synthetic fixtures per
+critic, including five intentional-clean restraint controls: `react-06`,
+`next-02`, `rn-01`, `rn-02`, and `rn-07`. Each fixture exposes the source
+context, assumptions, requirements, rule, span-level evidence, and official
+source used for adjudication. It does not represent provider execution or human
+expert certification.
 
-Prompts expose only neutral numbered source lines and a committed rule catalog.
-Candidate prompts also include the committed critic skill; baseline prompts do
-not. Gold issue IDs, severity, descriptions, remediation, and annotations stay
-private. Each response is strict JSON containing only findings with a known
-`rule_id`, sorted unique in-range `evidence_lines`, and `assertion: "present"`.
+Candidate and baseline prompts have identical substantive instructions, rule
+definitions, source context, evidence-span contract, anti-speculation guard,
+and permission to return no findings. Candidate treatment adds only the
+committed inline `SKILL.md`; referenced rubrics, agents, router material, and
+external skills are excluded from both treatments. Each response is strict JSON
+containing only findings with a known `rule_id`, sorted unique in-range
+`evidence_lines`, and `assertion: "present"`.
 
-The primary metric is micro exact-match precision, recall, and F1 across eight
-unique captures per role. Jackknife windows provide sensitivity references only;
-they do not increase sample size. The benchmark is not evidence of prose or
-remediation quality, severity judgment, novel-finding ability, provider
-authenticity, or statistical superiority. Historical reports remain rejected.
+The future runner never calls a provider. It requires run-specific immutable
+captures before it can score any execution; provider/model/runtime/tool labels
+would remain self-attested repository-native custody rather than independent
+proof of authenticity. No provider pilot or capture set exists now. The corpus
+therefore supports no performance, full-skill, prose/remediation, severity,
+provider-authenticity, or statistical-superiority claim. Historical reports
+remain rejected.
 
 Publication reserves the exact bundle directory before writing and adds a final
 `COMPLETE` marker only after both report and manifest are in place. This is a

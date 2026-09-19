@@ -1,8 +1,44 @@
+schema_version: 2
 rules:
-  - {id: react.async-correctness, category: async-correctness}
-  - {id: react.hook-correctness, category: hook-correctness}
-  - {id: react.operability, category: operability}
-  - {id: react.render-behavior, category: render-behavior}
-  - {id: react.security, category: security}
-  - {id: react.state-ownership, category: state-ownership}
-  - {id: react.upgrade-safety, category: upgrade-safety}
+  - id: react.async-correctness
+    category: async-correctness
+    title: Async lifecycle correctness
+    definition: Identify an asynchronous operation that can publish a stale result or outlive the component when the provided source and context establish that risk.
+    exclusions:
+      - Do not require cancellation merely because an effect performs a fetch; do not score latency preferences as correctness defects.
+  - id: react.hook-correctness
+    category: hook-correctness
+    title: Hook dependency correctness
+    definition: Identify an effect or callback that reads a reactive value but omits it from the dependency list in the shown source.
+    exclusions:
+      - Do not infer missing dependencies not read by the shown hook, or require dependencies for values intentionally outside the component scope.
+  - id: react.operability
+    category: operability
+    title: Recoverable user-visible failure
+    definition: Identify a shown path that leaves a required user-visible failure state unavailable.
+    exclusions:
+      - Do not require retries, caching, telemetry, or a particular error presentation unless the public requirements establish it.
+  - id: react.render-behavior
+    category: render-behavior
+    title: Render identity or cost defect
+    definition: Identify a shown render path whose keys or synchronous work violate the stated rendering requirement.
+    exclusions:
+      - Do not require memoization, virtualization, or callback memoization without a stated performance requirement.
+  - id: react.security
+    category: security
+    title: Unsafe HTML rendering
+    definition: Identify rendering of untrusted HTML through dangerouslySetInnerHTML without the stated trusted or sanitized boundary.
+    exclusions:
+      - Do not flag ordinary React text interpolation, or claim a sanitizer is inadequate unless its behavior is established by the source.
+  - id: react.state-ownership
+    category: state-ownership
+    title: Immutable state update
+    definition: Identify direct mutation of a value held in React state before it is supplied to a setter.
+    exclusions:
+      - Do not treat a fresh local object as state, or require a particular state-management library.
+  - id: react.upgrade-safety
+    category: upgrade-safety
+    title: Legacy lifecycle migration risk
+    definition: Identify use of a deprecated legacy class lifecycle that the supplied framework version still supports but documents as requiring migration.
+    exclusions:
+      - Do not claim that the lifecycle has been removed, or infer a runtime failure solely from its presence.

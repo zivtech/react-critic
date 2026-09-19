@@ -1,32 +1,66 @@
+schema_version: 2
 id: react-01
 category: hook-correctness
-description: stale closure in useEffect with missing dependency array
-code: |
-  function SearchResults({ query }) {
-    const [results, setResults] = useState([]);
-    const [page, setPage] = useState(1);
+description: Search results must follow the current query and page.
+intentional_clean: false
+public:
+  file_path: src/SearchResults.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - Changing page updates the page prop without remounting the component.
+    - A response for an earlier query or page may resolve after a later request.
+  requirements:
+    - The visible results must correspond to the current query and page.
+  code: |
+    function SearchResults({ query, page }) {
+      const [results, setResults] = useState([]);
 
-    useEffect(() => {
-      fetch(`/api/search?q=${query}&page=${page}`)
-        .then(r => r.json())
-        .then(data => setResults(prev => [...prev, ...data]));
-    }, [query]); // page is missing from deps
+      useEffect(() => {
+        fetch(`/api/search?q=${query}&page=${page}`)
+          .then((response) => response.json())
+          .then((data) => setResults(data));
+      }, [query]);
 
-    return <div>{results.map(r => <div key={r.id}>{r.title}</div>)}</div>;
-  }
+      return <div>{results.map((result) => <div key={result.id}>{result.title}</div>)}</div>;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React effect dependency documentation
+    revision_reason: Re-adjudicated to expose the changing page and response-order assumptions publicly.
+  difficulty: HAS-BUGS
+  domains: [hooks, async]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/useEffect
+        supports: Effects must declare reactive values they read.
+      - url: https://react.dev/reference/react/useEffect#fetching-data-with-effects
+        supports: Effect cleanup can prevent a later response from being overwritten by an earlier request.
+    notes: The missing page dependency and stale-result path are independently reviewable from the public assumptions and shown effect.
+    excluded_claims: [No particular stale-result guard or cancellation mechanism is required.]
 issues:
-  - severity: MAJOR
+  - id: react-01-missing-page-dependency
+    rule_id: react.hook-correctness
     category: hook-correctness
-    description: "page missing from useEffect dependency array causes stale closure; changing page silently fetches with wrong value"
-    evidence: "}, [query]); // page is missing from deps"
-    expected_checks: [hook-correctness, async-correctness]
-  - severity: MAJOR
+    severity: MAJOR
+    description: The effect reads page but its dependency list excludes page, so a page change does not start the required request.
+    evidence_spans:
+      - lines: [5, 8]
+        rationale: The request interpolates page and the dependency list contains only query.
+  - id: react-01-stale-response
+    rule_id: react.async-correctness
     category: async-correctness
-    description: "no cancellation/teardown: concurrent fetches race and stale responses overwrite newer ones"
-    evidence: "fetch(`/api/search?q=${query}&page=${page}`)"
-    expected_checks: [async-correctness]
-  - severity: MINOR
-    category: render-behavior
-    description: "results array grows unboundedly on re-render without reset on query change"
-    evidence: "setResults(prev => [...prev, ...data])"
-    expected_checks: [state-ownership, render-behavior]
+    severity: MAJOR
+    description: An earlier request can resolve last and publish results that do not correspond to the current query or page.
+    evidence_spans:
+      - lines: [5, 7]
+        rationale: Each effect invocation starts a request whose completion writes results without checking that it is still current.
+      - lines: [4, 5, 7]
+        rationale: The effect starts the request and unconditionally publishes its eventual result.

@@ -1,33 +1,63 @@
+schema_version: 2
 id: next-03
 category: server-actions-safety
-description: server action with no input validation or CSRF protection
-code: |
-  // app/actions/updateProfile.ts
-  'use server';
+description: A Server Action accepts identity and privilege from form data.
+intentional_clean: false
+public:
+  file_path: app/actions/updateProfile.ts
+  language: TypeScript
+  frameworks:
+    next: '15'
+  runtime: nodejs
+  assumptions:
+    - The authenticated session identifies the only profile the caller may update.
+    - Only an administrator may change a user's role.
+  requirements:
+    - The action must derive the target profile and authorization from the authenticated session.
+  code: |
+    'use server';
 
-  export async function updateProfile(formData: FormData) {
-    const userId = formData.get('userId') as string;
-    const bio = formData.get('bio') as string;
-    const role = formData.get('role') as string; // should never come from user
+    export async function updateProfile(formData: FormData) {
+      const userId = formData.get('userId') as string;
+      const bio = formData.get('bio') as string;
+      const role = formData.get('role') as string;
 
-    await db.user.update({
-      where: { id: userId },
-      data: { bio, role }, // role written directly from form input
-    });
-  }
+      await db.user.update({
+        where: { id: userId },
+        data: { bio, role },
+      });
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js Server Actions documentation
+    revision_reason: Limited the fixture to explicit authorization authority; removed CSRF and stored-XSS speculation.
+  difficulty: FUNDAMENTALLY-FLAWED
+  domains: [authorization, server-actions]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#authentication-and-authorization
+        supports: Server Actions should verify authentication and authorization.
+    notes: Both authority violations are established by the supplied session requirements.
+    excluded_claims: [CSRF, validation-library choice, and HTML rendering behavior are not scored.]
 issues:
-  - severity: CRITICAL
+  - id: next-03-form-target-identity
+    rule_id: next.server-actions-safety
     category: server-actions-safety
-    description: "role is written directly from form input with no authorization check; any user can elevate their own role to admin"
-    evidence: "const role = formData.get('role') as string;"
-    expected_checks: [server-actions-safety, security]
-  - severity: CRITICAL
+    severity: CRITICAL
+    description: The update target is taken from user-controlled form data instead of the authenticated session.
+    evidence_spans:
+      - lines: [4, 9]
+        rationale: userId comes from formData and becomes the database where clause.
+  - id: next-03-form-role
+    rule_id: next.server-actions-safety
     category: server-actions-safety
-    description: "no session/auth check: any unauthenticated caller can update any user's profile by supplying an arbitrary userId"
-    evidence: "const userId = formData.get('userId') as string;"
-    expected_checks: [server-actions-safety, security]
-  - severity: MAJOR
-    category: server-actions-safety
-    description: "no input validation or sanitization on bio; stored XSS if bio is rendered with dangerouslySetInnerHTML elsewhere"
-    evidence: "const bio = formData.get('bio') as string;"
-    expected_checks: [server-actions-safety, security]
+    severity: CRITICAL
+    description: The privileged role field is taken from user-controlled form data without the required administrator authorization.
+    evidence_spans:
+      - lines: [6, 10]
+        rationale: role comes from formData and is written directly to the database.

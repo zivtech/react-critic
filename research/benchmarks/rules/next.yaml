@@ -1,10 +1,56 @@
+schema_version: 2
 rules:
-  - {id: next.app-router-conventions, category: app-router-conventions}
-  - {id: next.cache-correctness, category: cache-correctness}
-  - {id: next.operability, category: operability}
-  - {id: next.route-handler-safety, category: route-handler-safety}
-  - {id: next.rsc-boundary, category: rsc-boundary}
-  - {id: next.runtime-choice, category: runtime-choice}
-  - {id: next.server-actions-safety, category: server-actions-safety}
-  - {id: next.suspense-boundary, category: suspense-boundary}
-  - {id: next.upgrade-safety, category: upgrade-safety}
+  - id: next.app-router-conventions
+    category: app-router-conventions
+    title: App Router route behavior
+    definition: Identify a route that violates an explicit App Router requirement in the shown source.
+    exclusions:
+      - Do not require dynamic metadata or static generation merely as a preference.
+  - id: next.cache-correctness
+    category: cache-correctness
+    title: Deliberate data freshness
+    definition: Identify a cache directive that contradicts the stated freshness requirement.
+    exclusions:
+      - 'Do not infer that cache: no-store is incorrect without a stated cacheability or freshness requirement.'
+  - id: next.operability
+    category: operability
+    title: Required route recovery
+    definition: Identify an omitted route-level recovery required by the supplied public requirements.
+    exclusions:
+      - Do not require generic error boundaries, retries, or telemetry without a stated requirement.
+  - id: next.route-handler-safety
+    category: route-handler-safety
+    title: Route-handler information disclosure
+    definition: Identify a route response that directly returns a sensitive detail created from request-controlled input or an internal error.
+    exclusions:
+      - Do not infer missing rate limits, authentication, or anti-automation controls without public route policy.
+  - id: next.rsc-boundary
+    category: rsc-boundary
+    title: Server and Client Component boundary
+    definition: Identify a Client Component boundary that directly conflicts with server-only imports or server-side work shown in the same module.
+    exclusions:
+      - Do not assume that every interactive descendant makes a parent Client Component, or claim a server import is sent to the browser.
+  - id: next.runtime-choice
+    category: runtime-choice
+    title: Runtime API compatibility
+    definition: Identify a Node.js-only API used in a route explicitly configured for the Edge runtime.
+    exclusions:
+      - Do not require Edge or Node.js without an explicit runtime declaration.
+  - id: next.server-actions-safety
+    category: server-actions-safety
+    title: Server Action authorization
+    definition: Identify a privileged field or target identity taken from form data where the stated requirement assigns that authority to the authenticated session.
+    exclusions:
+      - Do not claim CSRF protection, validation library choice, or stored XSS risk without corresponding public context.
+  - id: next.suspense-boundary
+    category: suspense-boundary
+    title: Intentional streaming boundary
+    definition: Identify an awaited Server Component omitted from a Suspense boundary when the stated requirement requires surrounding content to stream first.
+    exclusions:
+      - Do not require Suspense around every async Server Component without a stated streaming requirement.
+  - id: next.upgrade-safety
+    category: upgrade-safety
+    title: App Router API compatibility
+    definition: Identify Pages Router APIs used in an App Router module where the source makes the route type explicit.
+    exclusions:
+      - Do not infer routing mode from a filename alone when public context does not establish it.

@@ -1,24 +1,41 @@
+schema_version: 2
 id: next-02
 category: cache-correctness
-description: overly aggressive no-store on every fetch disabling PPR
-code: |
-  // app/products/page.tsx
-  export default async function ProductsPage() {
-    const [products, categories, featuredBanner] = await Promise.all([
-      fetch('/api/products', { cache: 'no-store' }),
-      fetch('/api/categories', { cache: 'no-store' }),
-      fetch('/api/banner/featured', { cache: 'no-store' }),
-    ]);
-    // ...render
-  }
-issues:
-  - severity: MAJOR
-    category: cache-correctness
-    description: "cache: 'no-store' on all fetches disables PPR; categories and banner are stable data and should use revalidate or force-cache; every page visit re-fetches all three even if data hasn't changed"
-    evidence: "fetch('/api/categories', { cache: 'no-store' })"
-    expected_checks: [cache-correctness, ppr-correctness]
-  - severity: MINOR
-    category: cache-correctness
-    description: "no granular revalidate tags; cache invalidation requires a full page re-build rather than targeted revalidatePath/revalidateTag"
-    evidence: "fetch('/api/products', { cache: 'no-store' })"
-    expected_checks: [cache-correctness]
+description: Product data is intentionally uncached because it must reflect immediate writes.
+intentional_clean: true
+public:
+  file_path: app/products/page.tsx
+  language: TypeScript JSX
+  frameworks:
+    next: '15'
+    react: '19'
+  runtime: nodejs
+  assumptions:
+    - Inventory and prices can change immediately after a completed purchase.
+    - This route is the canonical confirmation view following a purchase.
+  requirements:
+    - The confirmation view must not serve a cached inventory or price response.
+  code: |
+    export default async function ProductsPage() {
+      const response = await fetch('https://catalog.example.test/products', { cache: 'no-store' });
+      const products = await response.json();
+      return <ProductList products={products} />;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js data fetching documentation
+    revision_reason: Replaced a generic no-store performance preference with a clean freshness control.
+  difficulty: ADVERSARIAL
+  domains: [caching, freshness]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching
+        supports: Next.js supports cache configuration for fetch requests.
+    notes: The stated requirement supports no-store for this route.
+    excluded_claims: [PPR, tags, and broader catalog caching policy are not scored.]
+issues: []

@@ -1,32 +1,56 @@
+schema_version: 2
 id: next-01
 category: rsc-boundary
-description: use client placed too high, blocking RSC optimization
-code: |
-  // app/dashboard/page.tsx
-  'use client';
-  import { getServerSession } from 'next-auth';
-  import { db } from '@/lib/db';
-  import RevenueChart from './RevenueChart'; // needs interactivity
-  import StatCard from './StatCard';          // pure display
+description: A Client Component directive conflicts with server-only work in the same module.
+intentional_clean: false
+public:
+  file_path: app/dashboard/page.tsx
+  language: TypeScript JSX
+  frameworks:
+    next: '15'
+    react: '19'
+  runtime: nodejs
+  assumptions:
+    - db is a server-only database client.
+    - RevenueChart is an interactive Client Component.
+  requirements:
+    - The dashboard page must load its session and database data on the server.
+  code: |
+    'use client';
 
-  export default async function DashboardPage() {
-    const session = await getServerSession();
-    const stats = await db.query.stats.findMany();
-    return (
-      <div>
-        <StatCard value={stats.revenue} />
-        <RevenueChart data={stats.chartData} />
-      </div>
-    );
-  }
+    import { getServerSession } from 'next-auth';
+    import { db } from '@/lib/db';
+    import RevenueChart from './RevenueChart';
+    import StatCard from './StatCard';
+
+    export default async function DashboardPage() {
+      const session = await getServerSession();
+      const stats = await db.query.stats.findMany();
+      return <RevenueChart data={stats.chartData} session={session} />;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js Server and Client Components documentation
+    revision_reason: Narrowed the label to the direct client-boundary conflict; no browser-leak claim is made.
+  difficulty: HAS-BUGS
+  domains: [server-components, boundaries]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/app/building-your-application/rendering/client-components
+        supports: The use client directive marks a Client Component entry point.
+    notes: The directive and server-only assumption make the incompatibility explicit.
+    excluded_claims: [Bundle contents and the placement of child component directives are not scored.]
 issues:
-  - severity: MAJOR
+  - id: next-01-client-server-conflict
+    rule_id: next.rsc-boundary
     category: rsc-boundary
-    description: "'use client' on the page prevents server-side data fetching; getServerSession and db.query will fail or be called client-side, leaking db access to the browser bundle"
-    evidence: "'use client';"
-    expected_checks: [rsc-boundary, server-actions-safety]
-  - severity: MAJOR
-    category: rsc-boundary
-    description: "StatCard is a pure display component forced into the client bundle unnecessarily; only RevenueChart needs 'use client'"
-    evidence: "import StatCard from './StatCard';"
-    expected_checks: [rsc-boundary, runtime-choice]
+    severity: MAJOR
+    description: The use client entry point conflicts with the stated server-only session and database work in the same module.
+    evidence_spans:
+      - lines: [1, 3, 4, 9, 10]
+        rationale: The module is marked as a Client Component while importing and awaiting server-only services.

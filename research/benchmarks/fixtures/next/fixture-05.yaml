@@ -1,26 +1,51 @@
+schema_version: 2
 id: next-05
 category: runtime-choice
-description: edge runtime using Node.js-only APIs
-code: |
-  // app/api/pdf/route.ts
-  export const runtime = 'edge';
+description: An Edge route uses Node.js filesystem APIs.
+intentional_clean: false
+public:
+  file_path: app/api/pdf/route.ts
+  language: TypeScript
+  frameworks:
+    next: '15'
+  runtime: edge
+  assumptions:
+    - The route must run in the configured Edge runtime.
+  requirements:
+    - The route must not use Node.js-only filesystem APIs.
+  code: |
+    export const runtime = 'edge';
 
-  import { readFileSync } from 'fs'; // Node.js only
-  import path from 'path';
+    import { readFileSync } from 'fs';
+    import path from 'path';
 
-  export async function GET() {
-    const template = readFileSync(path.join(process.cwd(), 'templates/invoice.pdf'));
-    const pdf = await generatePDF(template);
-    return new Response(pdf, { headers: { 'Content-Type': 'application/pdf' } });
-  }
+    export async function GET() {
+      const template = readFileSync(path.join(process.cwd(), 'templates/invoice.pdf'));
+      return new Response(template, { headers: { 'Content-Type': 'application/pdf' } });
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js Edge runtime documentation
+    revision_reason: Merged duplicate filesystem and process claims into one runtime incompatibility.
+  difficulty: HAS-BUGS
+  domains: [runtime, deployment]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/pages/api-reference/edge
+        supports: The Edge runtime does not support all Node.js APIs.
+    notes: The declared runtime and filesystem imports are both shown in the source.
+    excluded_claims: [A replacement PDF implementation is not scored.]
 issues:
-  - severity: CRITICAL
+  - id: next-05-edge-filesystem-api
+    rule_id: next.runtime-choice
     category: runtime-choice
-    description: "runtime='edge' is incompatible with fs.readFileSync and path.join; these are Node.js APIs unavailable in the Edge Runtime; route will fail at deploy time"
-    evidence: "export const runtime = 'edge';"
-    expected_checks: [runtime-choice]
-  - severity: MINOR
-    category: runtime-choice
-    description: "process.cwd() is also unavailable in Edge Runtime; file access patterns require Node.js runtime or static imports"
-    evidence: "path.join(process.cwd(), 'templates/invoice.pdf')"
-    expected_checks: [runtime-choice]
+    severity: CRITICAL
+    description: The explicitly Edge-configured route imports and calls Node.js filesystem APIs.
+    evidence_spans:
+      - lines: [1, 3, 4, 7]
+        rationale: The route declares edge while importing fs and path and calling readFileSync.

@@ -1,39 +1,58 @@
+schema_version: 2
 id: react-07
 category: upgrade-safety
-description: class component using deprecated lifecycle in React 18 concurrent mode
-code: |
-  class DataLoader extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { data: null };
-    }
+description: A React 18 class component retains a deprecated legacy lifecycle.
+intentional_clean: false
+public:
+  file_path: src/DataLoader.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - This component is maintained on React 18.
+    - The project must migrate deprecated APIs before its next major React upgrade.
+  requirements:
+    - Deprecated React lifecycle APIs must be replaced as part of upgrade maintenance.
+  code: |
+    class DataLoader extends React.Component {
+      state = { data: null };
 
-    componentWillMount() { // deprecated
-      this.fetchData(this.props.url);
-    }
+      componentWillMount() {
+        this.fetchData(this.props.url);
+      }
 
-    componentWillReceiveProps(nextProps) { // deprecated
-      if (nextProps.url !== this.props.url) {
-        this.fetchData(nextProps.url);
+      fetchData(url) {
+        fetch(url).then((response) => response.json()).then((data) => this.setState({ data }));
+      }
+
+      render() {
+        return this.state.data ? <Display data={this.state.data} /> : null;
       }
     }
-
-    fetchData(url) {
-      fetch(url).then(r => r.json()).then(data => this.setState({ data }));
-    }
-
-    render() {
-      return this.state.data ? <Display data={this.state.data} /> : null;
-    }
-  }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React legacy lifecycle documentation
+    revision_reason: Corrected the former false claim that componentWillMount had been removed in React 18.
+  difficulty: HAS-BUGS
+  domains: [upgrade, lifecycle]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/Component#unsafe_componentwillmount
+        supports: componentWillMount is a legacy lifecycle and its replacement is componentDidMount.
+    notes: The fixture scores the documented migration requirement, not a claimed current runtime failure.
+    excluded_claims: [Removal, Strict Mode double invocation, and fetch cancellation are not scored.]
 issues:
-  - severity: CRITICAL
+  - id: react-07-legacy-lifecycle
+    rule_id: react.upgrade-safety
     category: upgrade-safety
-    description: "componentWillMount and componentWillReceiveProps are removed in React 18 strict mode concurrent renders; component will double-fire fetch and produce undefined behavior"
-    evidence: "componentWillMount() { // deprecated"
-    expected_checks: [upgrade-safety, async-correctness]
-  - severity: MAJOR
-    category: async-correctness
-    description: "fetch in componentWillMount has no cancellation; concurrent mode may call it multiple times before mount"
-    evidence: "this.fetchData(this.props.url);"
-    expected_checks: [async-correctness, upgrade-safety]
+    severity: MINOR
+    description: The component uses the deprecated componentWillMount lifecycle despite the stated upgrade-maintenance requirement.
+    evidence_spans:
+      - lines: [4]
+        rationale: The legacy lifecycle is declared directly in the maintained React 18 component.

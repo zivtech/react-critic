@@ -1,34 +1,67 @@
+schema_version: 2
 id: rn-04
 category: native-bridge
-description: synchronous native module call blocking JS thread
-code: |
-  function useDeviceInfo() {
-    const [info, setInfo] = useState({});
+description: A synchronous optional native module call runs on startup without a guard.
+intentional_clean: false
+public:
+  file_path: src/useDeviceInfo.ts
+  language: TypeScript JSX
+  frameworks:
+    react-native: '0.76'
+  runtime: hermes
+  assumptions:
+    - DeviceInfo.getInfo is a synchronous native method and may block while it gathers device data.
+    - DeviceInfo is optional and is unavailable in the project's web preview target.
+  requirements:
+    - The startup header must not synchronously block on optional native work.
+    - The web preview must show a fallback when DeviceInfo is unavailable.
+  code: |
+    function useDeviceInfo() {
+      const [info, setInfo] = useState({});
 
-    useEffect(() => {
-      // NativeModules.DeviceInfo.getInfo() is synchronous
-      const deviceInfo = NativeModules.DeviceInfo.getInfo();
-      setInfo(deviceInfo);
-    }, []);
+      useEffect(() => {
+        const deviceInfo = NativeModules.DeviceInfo.getInfo();
+        setInfo(deviceInfo);
+      }, []);
 
-    return info;
-  }
+      return info;
+    }
 
-  function AppHeader() {
-    const info = useDeviceInfo();
-    return <View><Text>{info.model}</Text></View>;
-  }
+    function AppHeader() {
+      const info = useDeviceInfo();
+      return <View><Text>{info.model}</Text></View>;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React Native NativeModules documentation
+    revision_reason: Made synchrony and availability public; split bridge performance from bridge failure handling.
+  difficulty: HAS-BUGS
+  domains: [native-modules, startup]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://reactnative.dev/docs/next/legacy/native-modules-ios
+        supports: Native modules expose native functionality to JavaScript.
+    notes: The source does not infer the module's behavior; the public assumptions define the benchmark conditions.
+    excluded_claims: [ANR, a specific fallback implementation, and native-module architecture changes are not scored.]
 issues:
-  - severity: MAJOR
+  - id: rn-04-blocking-device-info
+    rule_id: react-native.native-bridge
     category: native-bridge
-    description: "NativeModules synchronous call blocks the JS thread; on startup this can cause frame drops and ANR on Android if the native implementation is slow"
-    evidence: "const deviceInfo = NativeModules.DeviceInfo.getInfo();"
-    evidence_lines: [6]
-    expected_checks: [native-bridge, render-performance]
-  - severity: MINOR
-    category: native-bridge
+    severity: MAJOR
+    description: The startup effect synchronously calls the known blocking DeviceInfo method, contrary to the startup requirement.
+    evidence_spans:
+      - lines: [5]
+        rationale: The synchronous native call is executed directly by the startup effect.
+  - id: rn-04-unguarded-device-info
     rule_id: react-native.native-bridge.error-handling
-    description: "no error handling around NativeModules call; if the native module is unavailable (web target, storybook), throws uncaught TypeError"
-    evidence: "NativeModules.DeviceInfo.getInfo();"
-    evidence_lines: [6]
-    expected_checks: [native-bridge, operability]
+    category: native-bridge.error-handling
+    severity: MAJOR
+    description: The optional DeviceInfo call is unguarded even though the web preview target can lack that module.
+    evidence_spans:
+      - lines: [5]
+        rationale: The optional native module is accessed directly with no availability branch or fallback.

@@ -1,26 +1,51 @@
+schema_version: 2
 id: react-04
 category: security
-description: XSS via dangerouslySetInnerHTML with unescaped user input
-code: |
-  function CommentBody({ comment }) {
-    // "safe" because we strip <script> tags
-    const sanitized = comment.body.replace(/<script[^>]*>.*?<\/script>/gi, '');
-
-    return (
-      <div
-        className="comment-body"
-        dangerouslySetInnerHTML={{ __html: sanitized }}
-      />
-    );
-  }
+description: Untrusted comment HTML is rendered without a stated sanitization boundary.
+intentional_clean: false
+public:
+  file_path: src/CommentBody.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - comment.body is authored by untrusted users.
+    - No sanitization occurs before this component receives comment.body.
+  requirements:
+    - Untrusted comment content must not be interpreted as arbitrary HTML.
+  code: |
+    function CommentBody({ comment }) {
+      return (
+        <div
+          className="comment-body"
+          dangerouslySetInnerHTML={{ __html: comment.body }}
+        />
+      );
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React dangerouslySetInnerHTML documentation
+    revision_reason: Merged duplicate XSS labels into one direct rendering defect.
+  difficulty: HAS-BUGS
+  domains: [security, rendering]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html
+        supports: dangerouslySetInnerHTML requires extreme caution with untrusted data.
+    notes: The public assumptions establish both untrusted origin and absence of a sanitization boundary.
+    excluded_claims: [No particular sanitizer or exploit payload is asserted.]
 issues:
-  - severity: CRITICAL
+  - id: react-04-untrusted-html
+    rule_id: react.security
     category: security
-    description: "regex strip does not prevent XSS: <img src=x onerror=alert(1)>, <svg onload=...>, <a href=javascript:...> all survive; sanitization must use a library (DOMPurify) not homebrew regex"
-    evidence: "const sanitized = comment.body.replace(/<script[^>]*>.*?<\\/script>/gi, '');"
-    expected_checks: [security, operability]
-  - severity: MAJOR
-    category: security
-    description: "dangerouslySetInnerHTML with any user-supplied content requires a vetted HTML sanitizer, not string replacement"
-    evidence: "dangerouslySetInnerHTML={{ __html: sanitized }}"
-    expected_checks: [security]
+    severity: CRITICAL
+    description: The component passes untrusted, unsanitized comment.body to dangerouslySetInnerHTML.
+    evidence_spans:
+      - lines: [5]
+        rationale: The sink receives comment.body directly.

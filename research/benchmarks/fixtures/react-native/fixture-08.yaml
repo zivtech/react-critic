@@ -1,33 +1,54 @@
+schema_version: 2
 id: rn-08
 category: release-safety
-description: over-the-air update with no version gate or rollback strategy
-code: |
-  // App.tsx
-  import * as Updates from 'expo-updates';
-
-  useEffect(() => {
-    async function checkUpdate() {
-      const update = await Updates.checkForUpdateAsync();
-      if (update.isAvailable) {
-        await Updates.fetchUpdateAsync();
-        await Updates.reloadAsync(); // immediate reload, no user prompt
+description: An update check reloads immediately despite a user-initiated activation requirement.
+intentional_clean: false
+public:
+  file_path: App.tsx
+  language: TypeScript JSX
+  frameworks:
+    expo: '52'
+    expo-updates: '0.26'
+  runtime: hermes
+  assumptions:
+    - expo-updates is configured for this application.
+    - checkForUpdateAsync can report an available update.
+  requirements:
+    - The application must tell the user about an available update and let the user initiate any reload.
+  code: |
+    useEffect(() => {
+      async function checkUpdate() {
+        const update = await Updates.checkForUpdateAsync();
+        if (update.isAvailable) {
+          await Updates.fetchUpdateAsync();
+          await Updates.reloadAsync();
+        }
       }
-    }
-    checkUpdate();
-  }, []);
+      checkUpdate();
+    }, []);
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Expo Updates documentation
+    revision_reason: Removed unsupported native-version and rollback claims; retained only the explicit activation-choice requirement.
+  difficulty: HAS-BUGS
+  domains: [updates, release]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://docs.expo.dev/versions/latest/sdk/updates/
+        supports: expo-updates provides update checking, fetching, and reload APIs.
+    notes: The source shows an immediate reload and the requirement establishes the forbidden behavior.
+    excluded_claims: [Native version gates, rollback, release channels, and network-error handling are not scored.]
 issues:
-  - severity: MAJOR
+  - id: rn-08-immediate-reload
+    rule_id: react-native.release-safety
     category: release-safety
-    description: "OTA update reloads the app immediately without user consent; if update introduces a crash, users are forced into a broken state with no rollback path"
-    evidence: "await Updates.reloadAsync(); // immediate reload, no user prompt"
-    expected_checks: [release-safety, operability]
-  - severity: MAJOR
-    category: release-safety
-    description: "no minimum app version check before applying OTA update; update might target a different native binary version and cause incompatibility crashes"
-    evidence: "await Updates.fetchUpdateAsync();"
-    expected_checks: [release-safety, upgrade-safety]
-  - severity: MINOR
-    category: operability
-    description: "no error handling on checkForUpdateAsync/fetchUpdateAsync; network errors during update check throw and crash the app on startup"
-    evidence: "const update = await Updates.checkForUpdateAsync();"
-    expected_checks: [operability]
+    severity: MAJOR
+    description: The available-update branch fetches and reloads immediately instead of waiting for the required user-initiated activation.
+    evidence_spans:
+      - lines: [3, 4, 5, 6]
+        rationale: An available update directly leads to fetchUpdateAsync followed by reloadAsync without a user action.
