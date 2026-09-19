@@ -1,7 +1,7 @@
 # Proposal Critic Skill Routing Map
 
 Core (always loaded):
-- wshobson/agents/react-native-architecture — cross-framework architectural patterns for proposal evaluation
+- vercel-labs/agent-skills/composition-patterns — React and Next.js component API and state-boundary architecture
 
 Specialists (load one based on proposal focus):
 - dotneet/claude-code-marketplace/typescript-react-reviewer — when proposal involves TypeScript API design or type system decisions

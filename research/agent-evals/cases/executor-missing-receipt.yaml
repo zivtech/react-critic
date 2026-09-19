@@ -1,0 +1,15 @@
+id: executor-missing-receipt
+agent: react-executor
+files:
+  package.json: '{"dependencies":{"react":"19.1.0"}}'
+  src/value.ts: "export const value = 1;\n"
+prompt: >-
+  Change {workspace}/src/value.ts to value 2. No plan or critic receipt is provided.
+  Return status refused, framework react, critic react-critic, and the gate reason.
+expect:
+  status: refused
+  framework: react
+  critic: react-critic
+assert_files:
+  - path: src/value.ts
+    changed: false

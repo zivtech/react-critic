@@ -1,0 +1,3 @@
+display_name: React Executor
+short_description: Execute only critic-approved React plans
+default_prompt: Validate the plan, saved critic output, and receipt; implement only the approved React or Next.js scope; verify it; and bind the post-implementation critic output to a new receipt.

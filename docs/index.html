@@ -794,18 +794,21 @@
     </div>
 
     <p class="card-desc anim" style="--i:16; margin-bottom:16px; max-width:680px">
-      43 external skills across 15 trusted GitHub organizations. Each critic loads at most 3 per run:
+      45 locked identities across 16 trusted GitHub organizations, including 14 immutable deprecated tombstones. Each critic loads at most 3 active references per run:
       <strong>1 core</strong> (always loaded), <strong>1 specialist</strong> (context-matched), and <strong>1 shared support</strong> skill.
     </p>
 
     <!-- react-critic skills -->
     <div class="ve-card anim" style="--i:17; border-top:2px solid var(--accent); margin-bottom:14px">
       <div class="card-title" style="display:flex; align-items:center; gap:8px">
-        <span class="badge badge--accent">react-critic</span> 9 skills from 6 orgs
+        <span class="badge badge--accent">react-critic</span> 10 skills from 6 orgs
       </div>
       <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
         <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
-        <span><strong>vercel-react-best-practices</strong> &mdash; React performance patterns, component design, rendering optimization (Vercel)</span>
+        <span><strong>react-best-practices</strong> &mdash; React performance patterns, component design, rendering optimization (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">architecture</span>
+        <span><strong>composition-patterns</strong> &mdash; Component API design, compound components, and provider boundaries (Vercel)</span>
 
         <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
         <span><strong>react-state-management</strong> &mdash; State ownership, local vs shared vs server state, mutation safety</span>
@@ -836,17 +839,20 @@
     <!-- next-critic skills -->
     <div class="ve-card anim" style="--i:18; border-top:2px solid var(--teal); margin-bottom:14px">
       <div class="card-title" style="display:flex; align-items:center; gap:8px">
-        <span class="badge badge--teal">next-critic</span> 11 skills from 7 orgs
+        <span class="badge badge--teal">next-critic</span> 12 skills from 7 orgs
       </div>
       <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
         <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
-        <span><strong>next-best-practices</strong> &mdash; Next.js App Router, RSC boundaries, data fetching, caching (Vercel)</span>
+        <span><strong>react-best-practices</strong> &mdash; React and Next.js performance guidance (Vercel)</span>
 
         <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
-        <span><strong>next-cache-components</strong> &mdash; Cache invalidation, revalidation strategies, ISR patterns (Vercel)</span>
+        <span><strong>composition-patterns</strong> &mdash; Component API and server/client composition decisions (Vercel)</span>
 
         <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
-        <span><strong>next-upgrade</strong> &mdash; Next.js version migration, breaking changes, codemods (Vercel)</span>
+        <span><strong>next-dev-loop</strong> &mdash; Executor-only runtime loop for Next 16.3+ with explicit environment gates (Vercel)</span>
+
+        <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
+        <span><strong>next-cache-components-optimizer</strong> &mdash; Executor-only Cache Components navigation optimization with explicit gates (Vercel)</span>
 
         <span class="badge badge--gold" style="font-size:10px; justify-self:end">specialist</span>
         <span><strong>nextjs-app-router-patterns</strong> &mdash; App Router architecture, layout nesting, parallel routes</span>
@@ -858,7 +864,7 @@
         <span><strong>clerk-nextjs-patterns</strong> &mdash; Clerk auth integration for Next.js (Clerk)</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">auth</span>
-        <span><strong>auth0-nextjs</strong> &mdash; Auth0 integration patterns for Next.js (Auth0)</span>
+        <span><strong>auth0</strong> &mdash; Consolidated Auth0 guidance, selecting its Next.js section (Auth0)</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">auth</span>
         <span><strong>nextauth-authentication</strong> &mdash; NextAuth.js / Auth.js session and provider patterns</span>
@@ -881,7 +887,7 @@
       </div>
       <div style="margin-top:12px; display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:12px; line-height:1.7">
         <span class="badge badge--green" style="font-size:10px; justify-self:end">core</span>
-        <span><strong>vercel-react-native-skills</strong> &mdash; React Native cross-platform patterns and performance (Vercel)</span>
+        <span><strong>react-native-skills</strong> &mdash; React Native cross-platform patterns and performance (Vercel)</span>
 
         <span class="badge badge--gold" style="font-size:10px; justify-self:end">RN</span>
         <span><strong>react-native-best-practices</strong> &mdash; RN performance, native modules, bridge optimization (Callstack)</span>
@@ -902,28 +908,28 @@
         <span><strong>react-native-testing</strong> &mdash; React Native Testing Library patterns (Callstack)</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>building-native-ui</strong> &mdash; Expo native UI components and platform APIs</span>
+        <span><strong>expo-native-ui</strong> &mdash; Expo native UI components and platform APIs</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>native-data-fetching</strong> &mdash; Expo data fetching, caching, offline patterns</span>
+        <span><strong>expo-data-fetching</strong> &mdash; Expo data fetching, caching, offline patterns</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>upgrading-expo</strong> &mdash; Expo SDK version upgrades and migration</span>
+        <span><strong>expo-upgrade</strong> &mdash; Expo SDK version upgrades and migration</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>expo-api-routes</strong> &mdash; Expo API routes, server functions, backend patterns</span>
+        <span><strong>expo-router</strong> &mdash; Expo Router navigation and route structure; not an API-routes replacement</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>expo-cicd-workflows</strong> &mdash; Expo CI/CD, EAS Build/Submit, OTA updates</span>
+        <span><strong>eas-workflows</strong> &mdash; Expo CI/CD, EAS Build/Submit, OTA updates</span>
 
         <span class="badge badge--teal" style="font-size:10px; justify-self:end">Expo</span>
-        <span><strong>use-dom</strong> &mdash; Expo DOM components and web-native bridging</span>
+        <span><strong>expo-dom</strong> &mdash; Expo DOM components and web-native bridging</span>
 
         <span class="badge" style="font-size:10px; justify-self:end; background:var(--accent-dim); color:var(--accent)">platform</span>
-        <span><strong>sentry-react-native-setup</strong> &mdash; Sentry error monitoring integration for RN (Sentry)</span>
+        <span><strong>sentry-react-native-sdk</strong> &mdash; Sentry error monitoring integration for RN (Sentry)</span>
 
         <span class="badge" style="font-size:10px; justify-self:end; background:var(--accent-dim); color:var(--accent)">platform</span>
-        <span><strong>auth0-react-native</strong> &mdash; Auth0 authentication for React Native (Auth0)</span>
+        <span><strong>auth0</strong> &mdash; Consolidated Auth0 guidance, selecting its React Native section (Auth0)</span>
 
         <span class="badge" style="font-size:10px; justify-self:end; background:var(--slate-dim); color:var(--slate)">shared</span>
         <span><strong>javascript-testing-patterns</strong> &mdash; Test strategy, async testing, coverage patterns</span>
@@ -973,7 +979,7 @@
       <div class="ve-card" style="border-left:3px solid var(--accent)">
         <div class="card-title" style="color:var(--accent)">react-critic activates when&hellip;</div>
         <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
-          <li><strong>Reviewing React components</strong> &mdash; hooks, JSX, component composition &rarr; loads <em>vercel-react-best-practices</em></li>
+          <li><strong>Reviewing React components</strong> &mdash; hooks, JSX, component composition &rarr; loads <em>react-best-practices</em></li>
           <li><strong>State management changes</strong> &mdash; Redux, Zustand, Context, atoms &rarr; loads <em>react-state-management</em></li>
           <li><strong>Upgrading React versions</strong> &mdash; migration, deprecations, codemods &rarr; loads <em>react-modernization</em></li>
           <li><strong>Performance investigation</strong> &mdash; re-renders, memoization, virtualization &rarr; loads <em>react-doctor</em></li>
@@ -983,9 +989,9 @@
       <div class="ve-card" style="border-left:3px solid var(--teal)">
         <div class="card-title" style="color:var(--teal)">next-critic activates when&hellip;</div>
         <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:2; color:var(--text-dim)">
-          <li><strong>App Router work</strong> &mdash; <code>app/</code> pages, layouts, loading states &rarr; loads <em>next-best-practices</em></li>
-          <li><strong>Caching / revalidation</strong> &mdash; ISR, on-demand revalidation, fetch cache &rarr; loads <em>next-cache-components</em></li>
-          <li><strong>Next.js version upgrade</strong> &mdash; breaking changes, migration guides &rarr; loads <em>next-upgrade</em></li>
+          <li><strong>App Router work</strong> &mdash; <code>app/</code> pages, layouts, loading states &rarr; loads <em>react-best-practices</em> plus an App Router specialist</li>
+          <li><strong>Cache Components optimization</strong> &mdash; loads <em>next-cache-components-optimizer</em> only when every Next 16.3+ runtime gate is verified</li>
+          <li><strong>Runtime iteration</strong> &mdash; loads <em>next-dev-loop</em> only with the required dev server, MCP endpoint, Turbopack, and browser tooling</li>
           <li><strong>Auth integration</strong> &mdash; detects Clerk/Auth0/NextAuth imports &rarr; loads matching auth skill</li>
           <li><strong>RSC boundary decisions</strong> &mdash; <code>'use client'</code>/<code>'use server'</code> directives &rarr; loads <em>app-router-patterns</em></li>
         </ul>
@@ -1029,8 +1035,8 @@
         <div class="ve-card" style="margin-bottom:16px">
           <div class="card-title">Manifest-Based Loading</div>
           <div class="card-desc">
-            Each critic has an <code>external-skills-manifest.yaml</code> listing the upstream skills it can load.
-            Skills are referenced by <strong>pinned commit SHA</strong> and verified by <strong>content SHA-256 hash</strong>.
+            Each critic has a v2 <code>external-skills-manifest.json</code> listing the locked IDs it may load.
+            A central lock records explicit source paths, <strong>pinned commit SHAs</strong>, per-file hashes, and a deterministic <strong>bundle SHA-256</strong>.
             At most <strong>3 skills</strong> are loaded per review run, selected by priority and category relevance.
           </div>
         </div>
@@ -1045,14 +1051,13 @@
         </div>
       </div>
       <div>
-        <div class="manifest-block"><span class="key">id:</span> <span class="val">vercel-labs/agent-skills/vercel-react-best-practices</span>
+        <div class="manifest-block"><span class="key">id:</span> <span class="val">vercel-labs/agent-skills/react-best-practices</span>
 <span class="key">repo_url:</span> <span class="val">https://github.com/vercel-labs/agent-skills</span>
-<span class="key">pinned_commit:</span> <span class="val">cc8bd7a5b51e41270f20b...</span>
-<span class="key">content_sha256:</span> <span class="hash">a3f8c9e2d1b4...</span> <span class="comment"># new</span>
-<span class="key">categories:</span> <span class="val">[core-review, react]</span>
-<span class="key">audiences_supported:</span> <span class="val">[security, new-hire, ops]</span>
-<span class="key">priority:</span> <span class="val">100</span>
-<span class="key">status:</span> <span class="val">active</span></div>
+<span class="key">source_path:</span> <span class="val">skills/react-best-practices/SKILL.md</span>
+<span class="key">pinned_commit:</span> <span class="val">063bee94c3f4df8453406...</span>
+<span class="key">entry_sha256:</span> <span class="hash">per-file SHA-256</span>
+<span class="key">bundle_sha256:</span> <span class="hash">deterministic bundle SHA-256</span>
+<span class="key">lifecycle:</span> <span class="val">active</span></div>
       </div>
     </div>
 
@@ -1066,7 +1071,7 @@
         <div class="layer-num" style="color:var(--accent)">Layer 1</div>
         <div class="layer-title">Org Allowlist</div>
         <div class="layer-desc">
-          <code>TRUSTED_OWNERS</code> in <code>skill_security.py</code> &mdash; 15 vetted GitHub organizations.
+          <code>TRUSTED_OWNERS</code> in <code>skill_security.py</code> &mdash; 16 vetted GitHub organizations.
           The verify script rejects any manifest entry from an unknown owner. New sources require explicit approval.
         </div>
       </div>
@@ -1074,15 +1079,15 @@
         <div class="layer-num" style="color:var(--teal)">Layer 2</div>
         <div class="layer-title">Content Hashing</div>
         <div class="layer-desc">
-          SHA-256 of each SKILL.md stored as <code>content_sha256</code> in the manifest.
-          Detect tampering even when the commit SHA hasn't changed (e.g., force-push or history rewrite).
+          Per-file size and SHA-256 plus a deterministic instruction-bundle digest are stored in the central v2 lock.
+          Runtime loading rechecks them before returning any external text.
         </div>
       </div>
       <div class="layer-card" style="border-left-color:var(--red)">
         <div class="layer-num" style="color:var(--red)">Layer 3</div>
         <div class="layer-title">Injection Scanning</div>
         <div class="layer-desc">
-          10 regex patterns checked against fetched SKILL.md content: instruction overrides, identity hijacking,
+          10 regex patterns checked against every fetched text instruction/resource file: instruction overrides, identity hijacking,
           script injection, base64 payloads, tool invocation injection, and more.
         </div>
       </div>
@@ -1091,23 +1096,23 @@
         <div class="layer-title">Scan Gate</div>
         <div class="layer-desc">
           If content scanning finds warnings, <code>--approve</code> is blocked.
-          Requires <code>--approve --force</code> to override after manual review. Exit code 2 on gate failure.
+          An exception must name the exact skill ID and finding hash and is recorded in the lock. There is no global force switch.
         </div>
       </div>
       <div class="layer-card" style="border-left-color:var(--green)">
         <div class="layer-num" style="color:var(--green)">Layer 5</div>
         <div class="layer-title">Approval Gate</div>
         <div class="layer-desc">
-          <code>refresh_external_skills.py</code> is dry-run by default. Shows unified diffs of upstream changes
-          and requires <code>--approve</code> to write. No silent auto-updates.
+          <code>refresh_external_skills.py</code> is dry-run by default and requires an explicit
+          <code>--approve --ids ...</code> or <code>--approve --all</code> transaction. No silent auto-updates.
         </div>
       </div>
       <div class="layer-card" style="border-left-color:var(--slate)">
         <div class="layer-num" style="color:var(--slate)">Layer 6</div>
-        <div class="layer-title">Compare URLs</div>
+        <div class="layer-title">Immutable Lineage</div>
         <div class="layer-desc">
-          Refresh report includes clickable GitHub compare links for every pin change:
-          <code>github.com/.../compare/old...new</code>. Reviewers see the full upstream diff.
+          Renamed and retired identities remain as deprecated tombstones linked to active replacements.
+          Consumer manifests cannot enable deprecated entries.
         </div>
       </div>
     </div>
@@ -1145,14 +1150,14 @@
         <div class="pipeline-arrow">&#x2192;</div>
         <div class="pipeline-step step--teal">
           <div class="step-num" style="color:var(--teal)">Step 2</div>
-          <div class="step-name">Fetch Content</div>
-          <div class="step-detail">Download old + new<br>SKILL.md from GitHub</div>
+          <div class="step-name">Resolve Tree</div>
+          <div class="step-detail">Enumerate explicit<br>instruction bundle</div>
         </div>
         <div class="pipeline-arrow">&#x2192;</div>
         <div class="pipeline-step step--gold">
           <div class="step-num" style="color:var(--gold)">Step 3</div>
-          <div class="step-name">Show Diff</div>
-          <div class="step-detail">Unified diff +<br>SHA-256 hash</div>
+          <div class="step-name">Hash Bundle</div>
+          <div class="step-detail">Per-file size/hash +<br>bundle SHA-256</div>
         </div>
         <div class="pipeline-arrow">&#x2192;</div>
         <div class="pipeline-step step--red">
@@ -1163,8 +1168,8 @@
         <div class="pipeline-arrow">&#x2192;</div>
         <div class="pipeline-step step--green">
           <div class="step-num" style="color:var(--green)">Step 5</div>
-          <div class="step-name">Write Manifest</div>
-          <div class="step-detail">Only with<br><code style="font-size:10px;font-family:var(--font-mono)">--approve</code></div>
+          <div class="step-name">Write Lock</div>
+          <div class="step-detail">Only after explicit<br>transaction approval</div>
         </div>
       </div>
     </div>
@@ -1181,22 +1186,22 @@
       <div class="ve-card ve-card--recessed">
         <div class="card-title" style="font-size:13px"><span class="badge badge--green" style="margin-right:4px">approve</span> Write</div>
         <div class="card-desc" style="font-size:12px; margin-top:6px">
-          Applies pin + hash updates after review.<br>
-          <code>python3 scripts/refresh_external_skills.py --approve</code>
+          Applies a focused pin + bundle update after review.<br>
+          <code>python3 scripts/refresh_external_skills.py --approve --ids ID</code>
         </div>
       </div>
       <div class="ve-card ve-card--recessed">
-        <div class="card-title" style="font-size:13px"><span class="badge badge--red" style="margin-right:4px">force</span> Override</div>
+        <div class="card-title" style="font-size:13px"><span class="badge badge--red" style="margin-right:4px">exception</span> Exact finding</div>
         <div class="card-desc" style="font-size:12px; margin-top:6px">
-          Bypasses scan gate after manual review.<br>
-          <code>python3 scripts/refresh_external_skills.py --approve --force</code>
+          Records one reviewed ID + finding hash.<br>
+          <code>--allow-scan-warning ID:HASH</code>
         </div>
       </div>
     </div>
 
     <div class="callout anim" style="--i:18">
       <strong>Scan gate.</strong> If content scanning finds warnings, <code>--approve</code> alone returns exit code 2 and writes nothing.
-      The report still generates with <code># UNVERIFIED</code> markers. Use <code>--approve --force</code> only after reviewing the specific warnings.
+      No lock or report is written. A human may approve only the exact skill ID and finding hash after reviewing the source context.
     </div>
 
     <!-- ==================== SECTION 9: VERIFY WORKFLOW ==================== -->
@@ -1212,9 +1217,9 @@
           <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:1.8">
             <li>Skill ID format: <code>owner/repo/name</code></li>
             <li>Valid 40-char commit SHA</li>
-            <li>Valid <code>content_sha256</code> format (64-char hex) if present</li>
+            <li>Valid source path, pin, per-file size/hash, and bundle digest</li>
             <li>Owner in <code>TRUSTED_OWNERS</code> allowlist</li>
-            <li>No duplicate IDs within or across manifests</li>
+            <li>Valid active/deprecated lineage and consumer enablement</li>
             <li>No forbidden tracked files (no copied upstream content)</li>
           </ul>
         </div>
@@ -1224,12 +1229,11 @@
         <div class="card-desc" style="margin-top:8px">
           Optional deep verification. Requires network. For each skill:
           <ul style="margin-top:8px; padding-left:16px; font-size:12px; line-height:1.8">
-            <li>Fetches SKILL.md from <code>raw.githubusercontent.com</code> at pinned commit</li>
-            <li>Computes SHA-256 of fetched content</li>
-            <li>Compares to stored <code>content_sha256</code></li>
-            <li>Runs 10-pattern injection scan on fetched content</li>
+            <li>Fetches every locked instruction/resource file at the pinned commit</li>
+            <li>Checks size, per-file SHA-256, entry hash, and bundle digest</li>
+            <li>Runs the injection scan again at runtime</li>
             <li>Fails on any mismatch or scan warning</li>
-            <li>Warns (but doesn't fail) if hash is missing &mdash; migration path</li>
+            <li>Fails closed if any hash, resource, lifecycle, or scan gate does not match</li>
           </ul>
         </div>
       </div>

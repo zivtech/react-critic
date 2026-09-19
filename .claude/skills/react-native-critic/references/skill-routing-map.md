@@ -1,7 +1,7 @@
 # React Native Critic Skill Routing Map
 
 Core (always loaded):
-- vercel-labs/agent-skills/vercel-react-native-skills — core cross-platform patterns and native rendering guidance
+- vercel-labs/agent-skills/react-native-skills — core cross-platform patterns and native rendering guidance
 
 RN specialists (load one based on context):
 - callstackincubator/agent-skills/react-native-best-practices — when reviewing RN performance or native module usage
@@ -12,16 +12,16 @@ RN specialists (load one based on context):
 - callstack/react-native-testing-library/react-native-testing — when reviewing RN test implementations or native module mocking
 
 Expo specialists (load one when Expo detected):
-- expo/skills/building-native-ui — when reviewing Expo native UI components or platform APIs
-- expo/skills/native-data-fetching — when reviewing Expo data fetching, caching, or offline patterns
-- expo/skills/upgrading-expo — when reviewing Expo SDK version upgrades
-- expo/skills/expo-api-routes — when reviewing Expo API routes or server functions
-- expo/skills/expo-cicd-workflows — when reviewing Expo CI/CD pipelines or release automation
-- expo/skills/use-dom — when reviewing Expo DOM components or web-native bridging
+- expo/skills/expo-native-ui — when reviewing Expo native UI components or platform APIs
+- expo/skills/expo-data-fetching — when reviewing Expo data fetching, caching, or offline patterns
+- expo/skills/expo-upgrade — when reviewing Expo SDK version upgrades
+- expo/skills/eas-workflows — when reviewing Expo CI/CD pipelines or release automation
+- expo/skills/expo-dom — when reviewing Expo DOM components or web-native bridging
+- expo/skills/expo-router — when reviewing Expo Router navigation and route structure; it is not an API-routes replacement
 
 Platform integrations (load when specific SDK detected):
-- getsentry/sentry-agent-skills/sentry-react-native-setup — when Sentry imports detected
-- auth0/agent-skills/auth0-react-native — when Auth0 imports detected
+- getsentry/sentry-agent-skills/sentry-react-native-sdk — when Sentry imports are detected
+- auth0/agent-skills/auth0 — when Auth0 imports are detected; select the React Native section after verified loading
 
 Shared support (load one):
 - wshobson/agents/javascript-testing-patterns — when reviewing test strategy or coverage gaps

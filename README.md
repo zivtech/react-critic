@@ -1,13 +1,15 @@
 # react-critic
 
-A multi-critic review suite for React, Next.js, and React Native/Expo work, built in the same orchestration style as drupal-critic.
+A critic-gated planner, executor, and review suite for React, Next.js, and React Native/Expo work.
 
 [**Architecture Visual Explainer**](https://zivtech.github.io/react-critic/) &mdash; interactive diagram of the critic system and supply chain security model.
 
 ## Included Critics
 
-- `react-critic`: React component and architecture review (9 external skills)
-- `next-critic`: Next.js App Router and cache/runtime review (11 external skills)
+- `react-planner`: inspect and emit a deterministic framework-routed plan contract
+- `react-executor`: validate an accepted receipt, implement the bounded plan, verify, and re-submit for review
+- `react-critic`: React component and architecture review (10 external skills)
+- `next-critic`: Next.js App Router and cache/runtime review (12 external skills)
 - `react-native-critic`: React Native + Expo review (18 external skills)
 - `proposal-critic`: Plan-first review for proposals, ADRs, RFCs, and migration specs (5 external skills)
 
@@ -17,7 +19,7 @@ All four critics:
 - load a maximum of 3 external specialist skills per run
 - apply a Security Exploitability Gate to all security findings
 
-A router agent (`js-critic-router`) dispatches to the correct critic based on framework signals.
+A router agent (`js-critic-router`) dispatches plans and implementations to the framework critic based on repository signals. Framework routing precedes generic proposal routing.
 
 ## Install
 
@@ -27,37 +29,48 @@ cp -r react-critic/.claude/skills/react-critic ~/.claude/skills/
 cp -r react-critic/.claude/skills/next-critic ~/.claude/skills/
 cp -r react-critic/.claude/skills/react-native-critic ~/.claude/skills/
 cp -r react-critic/.claude/skills/proposal-critic ~/.claude/skills/
+cp -r react-critic/.claude/skills/react-planner ~/.claude/skills/
+cp -r react-critic/.claude/skills/react-executor ~/.claude/skills/
 cp -r react-critic/.claude/skills/shared-js-core ~/.claude/skills/
 cp react-critic/.claude/agents/js-critic-router.md ~/.claude/agents/
 cp react-critic/.claude/agents/react-critic.md ~/.claude/agents/
 cp react-critic/.claude/agents/next-critic.md ~/.claude/agents/
 cp react-critic/.claude/agents/react-native-critic.md ~/.claude/agents/
 cp react-critic/.claude/agents/proposal-critic.md ~/.claude/agents/
+cp react-critic/.claude/agents/react-planner.md ~/.claude/agents/
+cp react-critic/.claude/agents/react-executor.md ~/.claude/agents/
 ```
 
 ## Supply Chain Security
 
 External skills are prompt text loaded from third-party GitHub repos into Claude's context. A compromised upstream repo means arbitrary prompt injection. This repo hardens against that:
 
-- **Org allowlist**: `TRUSTED_OWNERS` (15 orgs) in `scripts/skill_security.py` — unknown owners are rejected
-- **Pinned commits + content hashes**: each skill pinned to a commit SHA with SHA-256 of the SKILL.md content
-- **Injection scanning**: 10 prompt injection patterns checked on every refresh
-- **Scan gate**: manifest updates blocked if scan warnings found (`--force` to override after review)
-- **Approval gate**: `refresh_external_skills.py` is dry-run by default — shows diffs, requires `--approve`
-- **Compare URLs**: refresh report includes clickable GitHub diff links for every pin change
+- **Org allowlist**: `TRUSTED_OWNERS` in `scripts/skill_security.py`; unknown owners are rejected.
+- **Explicit source paths**: no raw-content path is inferred from a skills.sh ID.
+- **Pinned instruction bundles**: the v2 lock records every text instruction/resource file, its size and SHA-256, plus a deterministic bundle digest.
+- **Runtime verification**: critics load external text only through `resolve_external_skill.py`, which rechecks consumer enablement, lifecycle, hashes, and injection findings.
+- **Immutable lineage**: renamed and retired IDs remain as deprecated tombstones linked to active replacements.
+- **Scan gate**: refresh is all-or-nothing. Exact, human-reviewed findings can be accepted only by ID and finding hash; there is no global force switch.
+- **Approval gate**: refresh is dry-run by default and writes only with `--approve`.
+- **CI split**: offline structure and unit tests run on every change; live content verification runs when lock/resolver inputs change and weekly freshness checks detect upstream movement.
 
 See the [visual explainer](https://zivtech.github.io/react-critic/) for the full architecture diagram.
 
 ## Commands
 
 ```bash
-python3 scripts/refresh_external_skills.py              # dry-run: show diffs
-python3 scripts/refresh_external_skills.py --approve     # apply pin + hash updates
-python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
-python3 scripts/verify_no_copied_skills.py               # validate manifest structure
+python3 scripts/refresh_external_skills.py                        # dry-run: report moved active pins
+python3 scripts/refresh_external_skills.py --approve --ids ID     # focused verified refresh
+python3 scripts/refresh_external_skills.py --approve --all        # explicit full transaction
+python3 scripts/refresh_external_skills.py --check                 # fail when active upstream HEADs moved
+python3 scripts/verify_no_copied_skills.py                         # offline schema, lineage, and no-copy checks
 python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
 python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit> --run-id <uuid>
 python3 -m unittest discover
+python3 .claude/skills/shared-js-core/scripts/resolve_external_skill.py doctor
+python3 scripts/run_agent_eval.py                            # list real-agent eval cases without spending
+python3 scripts/run_agent_eval.py --run --ids planner-react  # opt-in Claude CLI run with a per-case budget
+python3 scripts/migrate_external_skills_v2.py                # dry-run guard; one-time migration requires --write
 ```
 
 ## Reviewed benchmark corpus and future exact scorer

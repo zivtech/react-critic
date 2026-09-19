@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-react-critic is a multi-critic orchestration repo for JavaScript ecosystems:
+react-critic is a critic-gated planner/executor and review repo for JavaScript ecosystems:
+- react-planner
+- react-executor
 - react-critic
 - next-critic
 - react-native-critic
@@ -10,18 +12,20 @@ react-critic is a multi-critic orchestration repo for JavaScript ecosystems:
 
 Each critic is read-only and uses external specialist skills by reference only.
 
-A router agent (`js-critic-router`) dispatches to the correct critic based on framework signals.
+A router agent (`js-critic-router`) dispatches plans and implementations to the correct framework critic. Framework signals take precedence over generic proposal routing.
 
 ## Commands
 
 ```bash
-python3 scripts/refresh_external_skills.py              # dry-run: show diffs
-python3 scripts/refresh_external_skills.py --approve     # apply pin + hash updates
-python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
+python3 scripts/refresh_external_skills.py                        # dry-run: show moved pins
+python3 scripts/refresh_external_skills.py --approve --ids ID     # explicit focused transaction
+python3 scripts/refresh_external_skills.py --approve --all        # explicit full transaction
+python3 scripts/refresh_external_skills.py --check                 # fail if active pins moved
 python3 scripts/verify_no_copied_skills.py               # validate manifest structure
 python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
 python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit> --run-id <uuid>
 python3 -m unittest discover
+python3 scripts/run_agent_eval.py
 ```
 
 ## Design Rules
@@ -36,12 +40,13 @@ python3 -m unittest discover
 
 [Visual explainer](https://zivtech.github.io/react-critic/) — interactive architecture diagram hosted on GitHub Pages.
 
-External skills are loaded by reference (pinned commit SHA + content SHA-256 hash).
+External skills are loaded only through the verified v2 resolver (explicit source path, pinned commit, per-file size/SHA-256, and deterministic bundle digest).
 
-- `content_sha256` in manifests stores the SHA-256 of each skill's SKILL.md at the pinned commit.
-- `refresh_external_skills.py` shows content diffs and requires `--approve` to write updates.
+- The central v2 lock stores immutable lineage and instruction-bundle hashes; per-critic v2 manifests only route enabled IDs.
+- `refresh_external_skills.py` is dry-run by default and requires `--approve --ids ...` or `--approve --all` to write an all-or-nothing transaction.
+- Prompt-injection exceptions are exact ID/finding-hash pairs; there is no global force switch.
 - `verify_no_copied_skills.py --verify-content` fetches and re-hashes to detect tampering.
-- CI validates manifest structure; full content verification available via `--verify-content`.
+- CI validates offline structure on every change, verifies live content when lock/resolver inputs change, and runs weekly freshness/content checks.
 
 ### GitHub Repository Settings (manual setup)
 

@@ -1,7 +1,10 @@
 # React Critic Skill Routing Map
 
 Core (always loaded):
-- vercel-labs/agent-skills/vercel-react-best-practices — core React performance and component design patterns from Vercel
+- vercel-labs/agent-skills/react-best-practices — core React and Next.js performance guidance
+
+Architecture conditional:
+- vercel-labs/agent-skills/composition-patterns — component API design, compound components, and provider/state boundaries
 
 Specialists (load one based on context):
 - wshobson/agents/react-state-management — when code touches state management (Redux, Zustand, Context, atoms)

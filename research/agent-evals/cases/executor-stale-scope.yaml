@@ -1,0 +1,22 @@
+id: executor-stale-scope
+agent: react-executor
+gate: stale
+framework: react
+critic: react-critic
+objective: Change value to 2.
+scope: [src]
+steps: [Change src/value.ts to export value 2.]
+validation: [Inspect src/value.ts.]
+files:
+  package.json: '{"dependencies":{"react":"19.1.0"}}'
+  src/value.ts: "export const value = 1;\n"
+prompt: >-
+  Execute {workspace}/plan.json using {workspace}/scope.json, {workspace}/review.txt, and {workspace}/receipt.json.
+  Return status refused because the reviewed scope is stale, framework react, critic react-critic, and the reason.
+expect:
+  status: refused
+  framework: react
+  critic: react-critic
+assert_files:
+  - path: src/value.ts
+    changed: false
