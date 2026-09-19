@@ -56,9 +56,40 @@ python3 scripts/refresh_external_skills.py --approve     # apply pin + hash upda
 python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
 python3 scripts/verify_no_copied_skills.py               # validate manifest structure
 python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
-python3 scripts/run_benchmark.py --all
-python3 scripts/aggregate_stability.py
+python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit> --run-id <uuid>
+python3 -m unittest discover
 ```
+
+## Reviewed benchmark corpus and future exact scorer
+
+`research/benchmarks/` is a reviewed descriptive foundation for a future exact
+structured defect-detection benchmark. It has eight synthetic fixtures per
+critic, including five intentional-clean restraint controls: `react-06`,
+`next-02`, `rn-01`, `rn-02`, and `rn-07`. Each fixture exposes the source
+context, assumptions, requirements, rule, span-level evidence, and official
+source used for adjudication. It does not represent provider execution or human
+expert certification.
+
+Candidate and baseline prompts have identical substantive instructions, rule
+definitions, source context, evidence-span contract, anti-speculation guard,
+and permission to return no findings. Candidate treatment adds only the
+committed inline `SKILL.md`; referenced rubrics, agents, router material, and
+external skills are excluded from both treatments. Each response is strict JSON
+containing only findings with a known `rule_id`, sorted unique in-range
+`evidence_lines`, and `assertion: "present"`.
+
+The future runner never calls a provider. It requires run-specific immutable
+captures before it can score any execution; provider/model/runtime/tool labels
+would remain self-attested repository-native custody rather than independent
+proof of authenticity. No provider pilot or capture set exists now. The corpus
+therefore supports no performance, full-skill, prose/remediation, severity,
+provider-authenticity, or statistical-superiority claim. Historical reports
+remain rejected.
+
+Publication reserves the exact bundle directory before writing and adds a final
+`COMPLETE` marker only after both report and manifest are in place. This is a
+fail-closed local publication guard; it does not claim crash-durable or
+independently witnessed publication.
 
 ## License
 

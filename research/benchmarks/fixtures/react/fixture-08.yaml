@@ -1,33 +1,56 @@
+schema_version: 2
 id: react-08
 category: operability
-description: error boundary missing from async data path with no loading state
-code: |
-  function Dashboard() {
-    const data = useSuspenseQuery({ queryKey: ['dashboard'], queryFn: fetchDashboard });
-    return (
-      <div>
-        <RevenueChart data={data.revenue} />
-        <OrderTable orders={data.orders} />
-        <UserMetrics metrics={data.metrics} />
-      </div>
-    );
-  }
+description: A Suspense data path lacks the required error presentation.
+intentional_clean: false
+public:
+  file_path: src/App.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+    tanstack-query: '5'
+  runtime: browser
+  assumptions:
+    - fetchDashboard can reject.
+    - useSuspenseQuery supplies data after the Suspense fallback resolves.
+  requirements:
+    - Dashboard request failures must show an in-app error state instead of escaping to the root.
+  code: |
+    function Dashboard() {
+      const { data } = useSuspenseQuery({ queryKey: ['dashboard'], queryFn: fetchDashboard });
+      return <RevenueChart data={data.revenue} />;
+    }
 
-  function App() {
-    return (
-      <Suspense fallback={<Skeleton />}>
-        <Dashboard />
-      </Suspense>
-    );
-  }
+    function App() {
+      return (
+        <Suspense fallback={<Skeleton />}>
+          <Dashboard />
+        </Suspense>
+      );
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React Suspense documentation
+    revision_reason: Corrected the TanStack Query result destructuring and removed the unsupported retry claim.
+  difficulty: HAS-BUGS
+  domains: [operability, async]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary
+        supports: Error boundaries provide fallback UI for rendering errors.
+    notes: The requirement makes the missing failure presentation a bounded operability finding.
+    excluded_claims: [Retry defaults, cache behavior, and a particular ErrorBoundary implementation are not scored.]
 issues:
-  - severity: MAJOR
+  - id: react-08-missing-error-presentation
+    rule_id: react.operability
     category: operability
-    description: "no ErrorBoundary wrapping the Suspense; fetch errors propagate to root React error handler, crashing the full app instead of showing an inline error state"
-    evidence: "<Suspense fallback={<Skeleton />}><Dashboard /></Suspense>"
-    expected_checks: [operability]
-  - severity: MINOR
-    category: operability
-    description: "no stale-while-revalidate or retry config on useSuspenseQuery; transient API errors immediately suspend with no retry"
-    evidence: "queryFn: fetchDashboard"
-    expected_checks: [operability, async-correctness]
+    severity: MAJOR
+    description: The shown Suspense boundary provides only a loading fallback, not the required in-app error state for a rejected dashboard request.
+    evidence_spans:
+      - lines: [7, 8, 9]
+        rationale: Dashboard is wrapped only by Suspense and no error boundary or error-state branch is shown.

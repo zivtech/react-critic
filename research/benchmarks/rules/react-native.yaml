@@ -1,0 +1,62 @@
+schema_version: 2
+rules:
+  - id: react-native.expo-workflow
+    category: expo-workflow
+    title: Expo Go native-module compatibility
+    definition: Identify a custom native module that the stated deployment target cannot load in Expo Go.
+    exclusions:
+      - Do not infer config-plugin support, permissions, or EAS Build behavior from an import alone.
+  - id: react-native.gesture-handling
+    category: gesture-handling
+    title: Required Android back behavior
+    definition: Identify a custom flow that lacks the shown handling required for Android hardware-back behavior.
+    exclusions:
+      - Do not require BackHandler when navigation ownership or the required behavior is not established.
+  - id: react-native.hermes-compatibility
+    category: hermes-compatibility
+    title: Hermes language compatibility
+    definition: Identify syntax unsupported by the Hermes version explicitly supplied in public context.
+    exclusions:
+      - Do not flag modern JavaScript syntax without a version-specific incompatibility.
+  - id: react-native.list-performance
+    category: list-performance
+    title: List identity or layout requirement
+    definition: Identify a FlatList configuration that contradicts a stated identity or layout requirement.
+    exclusions:
+      - Do not require tuning props, getItemLayout, or removeClippedSubviews as generic defaults.
+  - id: react-native.memory-leak
+    category: memory-leak
+    title: Effect resource cleanup
+    definition: Identify an interval or subscription created in an effect without a cleanup that releases it.
+    exclusions:
+      - Do not require cleanup for resources demonstrably owned and released elsewhere in the shown source.
+  - id: react-native.native-bridge
+    category: native-bridge
+    title: Blocking native bridge call
+    definition: Identify a native call explicitly documented in public context as synchronous and potentially blocking on a user-visible path.
+    exclusions:
+      - Do not infer synchrony or performance impact from a NativeModules call alone.
+  - id: react-native.native-bridge.error-handling
+    category: native-bridge.error-handling
+    title: Native bridge availability failure
+    definition: Identify an unguarded native call when public context establishes that the module can be unavailable.
+    exclusions:
+      - Do not require error handling for every native call without a stated unavailability mode.
+  - id: react-native.operability
+    category: operability
+    title: Required user-visible recovery
+    definition: Identify a missing user-visible recovery path required by the supplied public requirements.
+    exclusions:
+      - Do not require placeholders, confirmation dialogs, or error telemetry without a stated requirement.
+  - id: react-native.release-safety
+    category: release-safety
+    title: Required update activation choice
+    definition: Identify an update path that reloads immediately when public requirements say the user must initiate the reload.
+    exclusions:
+      - Do not infer version-gating, rollback, or release-channel requirements from an expo-updates call.
+  - id: react-native.render-performance
+    category: render-performance
+    title: Render performance requirement
+    definition: Identify a render behavior that violates an explicit performance requirement.
+    exclusions:
+      - Do not flag inline objects or callback functions as defects without a stated measured or contractual impact.

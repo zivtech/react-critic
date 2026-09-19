@@ -1,31 +1,69 @@
+schema_version: 2
 id: react-03
 category: state-ownership
-description: direct state mutation and unsafe reducer pattern
-code: |
-  function useCart() {
-    const [items, setItems] = useState([]);
+description: Cart state is mutated before React receives an update.
+intentional_clean: false
+public:
+  file_path: src/useCart.ts
+  language: TypeScript
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - items is state owned by this hook.
+    - Consumers may memoize individual cart items by object identity.
+  requirements:
+    - Cart updates must use immutable state transitions.
+  code: |
+    function useCart() {
+      const [items, setItems] = useState([]);
 
-    const addItem = (item) => {
-      items.push(item); // direct mutation
-      setItems(items);
-    };
+      const addItem = (item) => {
+        items.push(item);
+        setItems(items);
+      };
 
-    const updateQty = (id, qty) => {
-      const found = items.find(i => i.id === id);
-      if (found) found.qty = qty; // mutates object in place
-      setItems([...items]);
-    };
+      const updateQty = (id, qty) => {
+        const found = items.find((item) => item.id === id);
+        if (found) found.qty = qty;
+        setItems([...items]);
+      };
 
-    return { items, addItem, updateQty };
-  }
+      return { items, addItem, updateQty };
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React state update documentation
+    revision_reason: Converted answer comments to public ownership assumptions and span-level evidence.
+  difficulty: FUNDAMENTALLY-FLAWED
+  domains: [state, rendering]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/learn/updating-arrays-in-state
+        supports: Arrays held in state should be treated as immutable.
+      - url: https://react.dev/learn/updating-objects-in-state
+        supports: Objects held in state should be treated as immutable.
+    notes: Both mutations occur before the setter call in the displayed state owner.
+    excluded_claims: [Exact rendering consequences for every consumer are not scored.]
 issues:
-  - severity: CRITICAL
+  - id: react-03-array-mutation
+    rule_id: react.state-ownership
     category: state-ownership
-    description: "items.push(item) mutates state array in place; React bailout means re-renders are skipped unpredictably"
-    evidence: "items.push(item); // direct mutation"
-    expected_checks: [state-ownership]
-  - severity: MAJOR
+    severity: MAJOR
+    description: addItem mutates the items state array before supplying it to setItems.
+    evidence_spans:
+      - lines: [5, 6]
+        rationale: items.push changes the state array and the same array reference is passed to the setter.
+  - id: react-03-object-mutation
+    rule_id: react.state-ownership
     category: state-ownership
-    description: "found.qty = qty mutates an object inside state; spread setItems([...items]) creates new array but keeps same object references; memoized children won't re-render"
-    evidence: "if (found) found.qty = qty; // mutates object in place"
-    expected_checks: [state-ownership, render-behavior]
+    severity: MAJOR
+    description: updateQty mutates an object already held in items before copying only the array.
+    evidence_spans:
+      - lines: [11, 12]
+        rationale: found references an item in state and its qty property is assigned directly.

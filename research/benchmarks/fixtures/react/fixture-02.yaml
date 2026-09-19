@@ -1,38 +1,58 @@
+schema_version: 2
 id: react-02
 category: render-behavior
-description: expensive computation in render path without memoization
-code: |
-  function DataGrid({ rows, filters }) {
-    const visibleRows = rows.filter(r => {
-      return filters.every(f => {
-        const val = getNestedValue(r, f.path); // O(depth) traversal
-        return matchFilter(val, f); // regex compile on every call
-      });
-    });
+description: A large editable grid uses unstable row keys.
+intentional_clean: false
+public:
+  file_path: src/DataGrid.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - rows can be reordered after a filter changes.
+    - Each row has a stable id.
+  requirements:
+    - Editing state must remain associated with the same row after reordering.
+  code: |
+    function DataGrid({ rows, filters }) {
+      const visibleRows = rows.filter((row) => filters.every((filter) => matchFilter(row[filter.key], filter)));
 
-    return (
-      <table>
-        {visibleRows.map((row, i) => (
-          <tr key={i}>
-            {row.cells.map(c => <td>{c}</td>)}
-          </tr>
-        ))}
-      </table>
-    );
-  }
+      return (
+        <table>
+          <tbody>
+            {visibleRows.map((row, index) => (
+              <tr key={index}>
+                {row.cells.map((cell) => <td key={cell.name}>{cell.value}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React list rendering documentation
+    revision_reason: Replaced generic memoization and virtualization preferences with a stated identity requirement.
+  difficulty: HAS-BUGS
+  domains: [rendering, list-identity]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/learn/rendering-lists
+        supports: Keys identify list items when their order changes.
+    notes: The row id assumption makes the keyed identity defect assessable.
+    excluded_claims: [Filtering cost and virtualization are not scored without a performance requirement.]
 issues:
-  - severity: MAJOR
+  - id: react-02-index-key
+    rule_id: react.render-behavior
     category: render-behavior
-    description: "filter + nested traversal + regex compile runs synchronously on every render; O(rows × filters × depth) in the render path"
-    evidence: "const visibleRows = rows.filter(r => { return filters.every(f => {"
-    expected_checks: [render-behavior, hook-correctness]
-  - severity: MAJOR
-    category: render-behavior
-    description: "key=index on list items: row reorder causes full re-render and lost input state"
-    evidence: "<tr key={i}>"
-    expected_checks: [render-behavior]
-  - severity: MINOR
-    category: render-behavior
-    description: "no virtualization for potentially large row sets"
-    evidence: "{visibleRows.map((row, i) =>"
-    expected_checks: [render-behavior]
+    severity: MAJOR
+    description: The index key changes row identity when the filtered order changes, contrary to the stated editing-state requirement.
+    evidence_spans:
+      - lines: [8]
+        rationale: The mapped rows have a stable id but use index as their key.

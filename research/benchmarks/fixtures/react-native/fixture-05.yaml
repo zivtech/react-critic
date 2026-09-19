@@ -1,29 +1,56 @@
+schema_version: 2
 id: rn-05
 category: expo-workflow
-description: bare-workflow native module used in managed Expo project
-code: |
-  // app.json shows "expo": { "workflow": "managed" }
-  import { NativeModules } from 'react-native';
-  import RNBluetoothClassic from 'react-native-bluetooth-classic'; // native module, no Expo config plugin
+description: An Expo Go target imports a module requiring custom native code.
+intentional_clean: false
+public:
+  file_path: src/useBluetooth.ts
+  language: TypeScript JSX
+  frameworks:
+    expo: '52'
+    react-native: '0.76'
+  runtime: hermes
+  assumptions:
+    - The application is launched in Expo Go, not a development build or custom native client.
+    - RNBluetoothClassic requires custom native code that Expo Go does not include.
+  requirements:
+    - The Bluetooth feature must run in the stated Expo Go deployment target.
+  code: |
+    import RNBluetoothClassic from 'react-native-bluetooth-classic';
 
-  export function useBluetooth() {
-    const [devices, setDevices] = useState([]);
+    export function useBluetooth() {
+      const [devices, setDevices] = useState([]);
 
-    useEffect(() => {
-      RNBluetoothClassic.startDiscovery().then(setDevices);
-      return () => RNBluetoothClassic.cancelDiscovery();
-    }, []);
+      useEffect(() => {
+        RNBluetoothClassic.startDiscovery().then(setDevices);
+        return () => RNBluetoothClassic.cancelDiscovery();
+      }, []);
 
-    return devices;
-  }
+      return devices;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Expo Go and development-build documentation
+    revision_reason: Replaced unverified config-plugin and permission claims with explicit Expo Go native-code context.
+  difficulty: HAS-BUGS
+  domains: [expo, native-modules]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://docs.expo.dev/develop/development-builds/introduction/
+        supports: Development builds allow custom native code not available in Expo Go.
+    notes: The requirement and assumptions make the deployment incompatibility explicit.
+    excluded_claims: [Config-plugin availability, permission declarations, EAS Build behavior, and store review are not scored.]
 issues:
-  - severity: CRITICAL
+  - id: rn-05-expo-go-native-module
+    rule_id: react-native.expo-workflow
     category: expo-workflow
-    description: "react-native-bluetooth-classic has no Expo config plugin; managed workflow EAS Build will fail because the native module requires bare workflow or a custom plugin to modify native files"
-    evidence: "import RNBluetoothClassic from 'react-native-bluetooth-classic'; // native module, no Expo config plugin"
-    expected_checks: [expo-workflow, upgrade-safety]
-  - severity: MAJOR
-    category: expo-workflow
-    description: "no Bluetooth permission declaration in app.json (ios.infoPlist, android.permissions); app will crash or be rejected at store review"
-    evidence: "RNBluetoothClassic.startDiscovery().then(setDevices);"
-    expected_checks: [expo-workflow, security]
+    severity: CRITICAL
+    description: The stated Expo Go target cannot load the imported module because it requires custom native code absent from Expo Go.
+    evidence_spans:
+      - lines: [1, 7]
+        rationale: The custom native module is imported and called by the required feature.

@@ -1,31 +1,57 @@
+schema_version: 2
 id: next-06
 category: suspense-boundary
-description: missing Suspense boundary around async RSC in streaming layout
-code: |
-  // app/feed/page.tsx
-  export default async function FeedPage() {
-    return (
-      <main>
-        <Header />
-        <AsyncFeedItems />   {/* async RSC, no Suspense */}
-        <Recommendations />  {/* async RSC, no Suspense */}
-        <Footer />
-      </main>
-    );
-  }
+description: A feed route must stream its shell before a slow Server Component resolves.
+intentional_clean: false
+public:
+  file_path: app/feed/page.tsx
+  language: TypeScript JSX
+  frameworks:
+    next: '15'
+    react: '19'
+  runtime: nodejs
+  assumptions:
+    - AsyncFeedItems awaits a slow database query.
+  requirements:
+    - Header and footer must stream before the feed items resolve.
+  code: |
+    export default function FeedPage() {
+      return (
+        <main>
+          <Header />
+          <AsyncFeedItems />
+          <Footer />
+        </main>
+      );
+    }
 
-  async function AsyncFeedItems() {
-    const items = await db.feed.findMany({ take: 50 }); // slow query
-    return items.map(i => <FeedItem key={i.id} item={i} />);
-  }
+    async function AsyncFeedItems() {
+      const items = await db.feed.findMany({ take: 50 });
+      return items.map((item) => <FeedItem key={item.id} item={item} />);
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js loading UI and streaming documentation
+    revision_reason: Added an explicit streaming requirement and removed unsupported cache advice.
+  difficulty: HAS-BUGS
+  domains: [streaming, server-components]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming
+        supports: Suspense boundaries support streaming UI.
+    notes: The slow await is shown and the streaming ordering is a public requirement.
+    excluded_claims: [Caching and the performance of a particular query are not scored.]
 issues:
-  - severity: MAJOR
+  - id: next-06-missing-streaming-boundary
+    rule_id: next.suspense-boundary
     category: suspense-boundary
-    description: "no Suspense boundary around AsyncFeedItems; the slow db query blocks streaming of the entire page including Header and Footer"
-    evidence: "<AsyncFeedItems />   {/* async RSC, no Suspense */}"
-    expected_checks: [suspense-boundary, cache-correctness]
-  - severity: MINOR
-    category: cache-correctness
-    description: "db.feed.findMany with no cache directive; each request re-queries even for the same user; revalidate or React cache() should be applied"
-    evidence: "const items = await db.feed.findMany({ take: 50 });"
-    expected_checks: [cache-correctness]
+    severity: MAJOR
+    description: AsyncFeedItems has no Suspense boundary even though the route must stream its shell before the slow component resolves.
+    evidence_spans:
+      - lines: [5, 11]
+        rationale: The awaited component is rendered directly between Header and Footer.

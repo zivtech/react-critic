@@ -1,30 +1,45 @@
+schema_version: 2
 id: rn-02
 category: list-performance
-description: FlatList without keyExtractor, removeClippedSubviews, or windowing config
-code: |
-  function NotificationList({ notifications }) {
-    return (
-      <FlatList
-        data={notifications}
-        renderItem={({ item }) => <NotificationRow item={item} />}
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.5}
-      />
-    );
-  }
-issues:
-  - severity: MAJOR
-    category: list-performance
-    description: "no keyExtractor: FlatList falls back to index-based keys causing broken diffing on list mutations (insert/delete reorders)"
-    evidence: "renderItem={({ item }) => <NotificationRow item={item} />}"
-    expected_checks: [list-performance, render-performance]
-  - severity: MAJOR
-    category: list-performance
-    description: "no removeClippedSubviews or windowSize config; on large lists all items stay mounted, causing memory pressure on low-end Android devices"
-    evidence: "<FlatList data={notifications}"
-    expected_checks: [list-performance]
-  - severity: MINOR
-    category: list-performance
-    description: "no getItemLayout: scroll position recovery and scrollToIndex are O(n) without it"
-    evidence: "onEndReachedThreshold={0.5}"
-    expected_checks: [list-performance]
+description: A FlatList supplies stable keys and relies on documented defaults.
+intentional_clean: true
+public:
+  file_path: src/NotificationList.tsx
+  language: TypeScript JSX
+  frameworks:
+    react-native: '0.76'
+  runtime: hermes
+  assumptions:
+    - Every notification has a stable id.
+    - Notification rows have variable height and do not need programmatic scrollToIndex.
+  requirements: []
+  code: |
+    function NotificationList({ notifications, loadMore }) {
+      return (
+        <FlatList
+          data={notifications}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <NotificationRow item={item} />}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
+        />
+      );
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React Native FlatList documentation
+    revision_reason: Replaced unsupported tuning-prop defaults with a clean list-identity control.
+  difficulty: ADVERSARIAL
+  domains: [lists, performance]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://reactnative.dev/docs/flatlist
+        supports: FlatList accepts a keyExtractor and is a performant interface for flat lists.
+    notes: The stable key requirement is met and no tuning requirement is supplied.
+    excluded_claims: [removeClippedSubviews, windowSize, and getItemLayout are not scored.]
+issues: []

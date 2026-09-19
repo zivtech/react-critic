@@ -1,34 +1,63 @@
+schema_version: 2
 id: next-07
 category: upgrade-safety
-description: Pages Router patterns used in App Router without migration
-code: |
-  // app/shop/[id]/page.tsx  (App Router file)
-  import { useRouter } from 'next/router'; // Pages Router import
+description: An App Router page uses Pages Router APIs.
+intentional_clean: false
+public:
+  file_path: app/shop/[id]/page.tsx
+  language: TypeScript JSX
+  frameworks:
+    next: '15'
+    react: '19'
+  runtime: nodejs
+  assumptions:
+    - The file is an App Router page.
+  requirements:
+    - The route must use App Router-compatible routing and data APIs.
+  code: |
+    'use client';
 
-  export default function ShopPage({ params }) {
-    const router = useRouter();
+    import { useRouter } from 'next/router';
 
-    const handleBack = () => router.back();
+    export default function ShopPage({ params }) {
+      const router = useRouter();
+      return <button onClick={() => router.back()}>{params.id}</button>;
+    }
 
-    return (
-      <div>
-        <button onClick={handleBack}>Back</button>
-        <Product id={params.id} />
-      </div>
-    );
-  }
-
-  export async function getServerSideProps(ctx) { // Pages Router API
-    return { props: { id: ctx.params.id } };
-  }
+    export async function getServerSideProps(context) {
+      return { props: { id: context.params.id } };
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: Next.js App Router migration documentation
+    revision_reason: Retained only the explicit Pages Router API incompatibilities.
+  difficulty: FUNDAMENTALLY-FLAWED
+  domains: [routing, upgrade]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://nextjs.org/docs/app/guides/migrating/app-router-migration
+        supports: App Router migration replaces next/router and getServerSideProps patterns.
+    notes: The routing mode is a supplied assumption, not inferred from the filename.
+    excluded_claims: [The fixture does not score component design or params typing.]
 issues:
-  - severity: CRITICAL
+  - id: next-07-pages-router-hook
+    rule_id: next.upgrade-safety
     category: upgrade-safety
-    description: "next/router is the Pages Router hook; App Router requires next/navigation (useRouter from next/navigation); will throw at runtime"
-    evidence: "import { useRouter } from 'next/router';"
-    expected_checks: [upgrade-safety, app-router-conventions]
-  - severity: CRITICAL
+    severity: MAJOR
+    description: The App Router page imports useRouter from next/router instead of the App Router API.
+    evidence_spans:
+      - lines: [3, 6]
+        rationale: The Pages Router hook import is invoked by the App Router page.
+  - id: next-07-get-server-side-props
+    rule_id: next.upgrade-safety
     category: upgrade-safety
-    description: "getServerSideProps is a Pages Router API; App Router ignores it silently; params are already available via the page's props in App Router"
-    evidence: "export async function getServerSideProps(ctx) {"
-    expected_checks: [upgrade-safety, app-router-conventions]
+    severity: MAJOR
+    description: The App Router page exports the Pages Router getServerSideProps API.
+    evidence_spans:
+      - lines: [10]
+        rationale: getServerSideProps is declared directly in the App Router module.

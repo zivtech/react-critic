@@ -20,8 +20,8 @@ python3 scripts/refresh_external_skills.py --approve     # apply pin + hash upda
 python3 scripts/refresh_external_skills.py --check       # CI: fail if updates needed
 python3 scripts/verify_no_copied_skills.py               # validate manifest structure
 python3 scripts/verify_no_copied_skills.py --verify-content  # fetch + hash verification
-python3 scripts/run_benchmark.py --all
-python3 scripts/aggregate_stability.py
+python3 scripts/run_benchmark.py --critic react --capture-commit <40-hex-commit> --run-id <uuid>
+python3 -m unittest discover
 ```
 
 ## Design Rules
@@ -57,5 +57,9 @@ but should be verified before adding a new owner to `TRUSTED_OWNERS`.
 
 - Fixtures: `research/benchmarks/fixtures/{react,next,react-native}/` (8 per critic)
 - Results: `research/benchmarks/results/`
-- Scoring: rubric-coverage evaluation (prompt checklist vs annotated fixture issues)
-- Seeds: 3 jackknife windows per critic; aggregate stability in `stability-report.md`
+- Corpus status: reviewed descriptive foundation only; no provider pilot or committed captures exist.
+- Controls: `react-06`, `next-02`, `rn-01`, `rn-02`, and `rn-07` are intentional-clean restraint controls.
+- Candidate treatment: only the committed inline `SKILL.md`; referenced rubrics, agents, router material, and external skills are excluded.
+- Future model scoring: exact rule-and-line response matching from self-attested repository-native capture blobs at an exact Git commit.
+- Windows: deterministic jackknife sensitivity references, never additional samples or provider/model seeds.
+- Boundaries: this corpus supports no performance, authenticity, severity-quality, full-skill, or statistical claim. Historical reports remain rejected.

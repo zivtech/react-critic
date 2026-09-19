@@ -1,38 +1,54 @@
+schema_version: 2
 id: react-05
 category: async-correctness
-description: waterfall data fetching and missing AbortController teardown
-code: |
-  function UserProfile({ userId }) {
-    const [user, setUser] = useState(null);
-    const [posts, setPosts] = useState([]);
+description: A profile request can publish an obsolete response.
+intentional_clean: false
+public:
+  file_path: src/UserProfile.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - userId can change while an earlier request is pending.
+    - Earlier requests may resolve after later requests.
+  requirements:
+    - The displayed profile must belong to the current userId.
+  code: |
+    function UserProfile({ userId }) {
+      const [user, setUser] = useState(null);
 
-    useEffect(() => {
-      fetch(`/api/users/${userId}`)
-        .then(r => r.json())
-        .then(user => {
-          setUser(user);
-          return fetch(`/api/posts?author=${user.id}`); // waterfall
-        })
-        .then(r => r.json())
-        .then(setPosts);
-    }, [userId]);
+      useEffect(() => {
+        fetch(`/api/users/${userId}`)
+          .then((response) => response.json())
+          .then((nextUser) => setUser(nextUser));
+      }, [userId]);
 
-    if (!user) return <Spinner />;
-    return <div>{user.name}: {posts.length} posts</div>;
-  }
+      return user ? <div>{user.name}</div> : <Spinner />;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React effect cleanup documentation
+    revision_reason: Removed the unsupported waterfall label and kept only the stated stale-publication risk.
+  difficulty: HAS-BUGS
+  domains: [async, effects]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/useEffect#fetching-data-with-effects
+        supports: Effect data fetching needs a cleanup strategy to avoid race conditions.
+    notes: Response ordering and the required displayed identity are explicit public assumptions.
+    excluded_claims: [Latency, parallel fetching, retries, and unmount warnings are not scored.]
 issues:
-  - severity: MAJOR
+  - id: react-05-stale-response
+    rule_id: react.async-correctness
     category: async-correctness
-    description: "sequential fetches create a waterfall: posts request waits for user response; both requests could run in parallel with Promise.all"
-    evidence: "return fetch(`/api/posts?author=${user.id}`); // waterfall"
-    expected_checks: [async-correctness, render-behavior]
-  - severity: MAJOR
-    category: async-correctness
-    description: "no AbortController: if userId changes or component unmounts during fetch, stale setState calls fire on unmounted component"
-    evidence: ".then(r => r.json()).then(setPosts);"
-    expected_checks: [async-correctness, hook-correctness]
-  - severity: MINOR
-    category: operability
-    description: "no error handling: fetch rejections are silently swallowed, user sees infinite spinner"
-    evidence: ".then(r => r.json())"
-    expected_checks: [operability]
+    severity: MAJOR
+    description: An earlier request can call setUser after userId changes and replace the current profile with an obsolete response.
+    evidence_spans:
+      - lines: [5, 7]
+        rationale: The effect publishes every resolved response and has no cleanup or current-request guard.

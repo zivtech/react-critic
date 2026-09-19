@@ -1,29 +1,43 @@
+schema_version: 2
 id: react-06
 category: state-ownership
-description: context misuse causing full-tree re-render on any change
-code: |
-  const AppContext = createContext();
+description: A shared context value is memoized and only exposes related account state.
+intentional_clean: true
+public:
+  file_path: src/AccountProvider.tsx
+  language: TypeScript JSX
+  frameworks:
+    react: '18.3'
+  runtime: browser
+  assumptions:
+    - Account consumers need both user and signOut.
+    - Theme and cart state are owned by separate providers.
+  requirements: []
+  code: |
+    const AccountContext = createContext(null);
 
-  function AppProvider({ children }) {
-    const [user, setUser] = useState(null);
-    const [theme, setTheme] = useState('light');
-    const [cart, setCart] = useState([]);
-    const [notifications, setNotifications] = useState([]);
+    function AccountProvider({ children }) {
+      const [user, setUser] = useState(null);
+      const signOut = useCallback(() => setUser(null), []);
+      const value = useMemo(() => ({ user, signOut }), [user, signOut]);
 
-    return (
-      <AppContext.Provider value={{ user, setUser, theme, setTheme, cart, setCart, notifications, setNotifications }}>
-        {children}
-      </AppContext.Provider>
-    );
-  }
-issues:
-  - severity: MAJOR
-    category: state-ownership
-    description: "single context value object is recreated on every state change; all consumers re-render when any slice changes (e.g., notification push re-renders cart checkout)"
-    evidence: "value={{ user, setUser, theme, setTheme, cart, setCart, notifications, setNotifications }}"
-    expected_checks: [state-ownership, render-behavior]
-  - severity: MINOR
-    category: state-ownership
-    description: "unrelated concerns (auth, theme, cart, notifications) colocated in one provider; should be split into separate contexts"
-    evidence: "const [user, setUser] = useState(null); const [theme..."
-    expected_checks: [state-ownership]
+      return <AccountContext.Provider value={value}>{children}</AccountContext.Provider>;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React context documentation
+    revision_reason: Replaced a generic context-performance preference with a clean restraint control.
+  difficulty: ADVERSARIAL
+  domains: [state, context]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/useContext
+        supports: Context provides a value to descendant consumers.
+    notes: The source establishes no catalog defect.
+    excluded_claims: [Splitting context further or avoiding all consumer rerenders is not a benchmark requirement.]
+issues: []

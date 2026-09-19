@@ -1,32 +1,66 @@
+schema_version: 2
 id: rn-03
 category: memory-leak
-description: setInterval without cleanup and subscription without teardown
-code: |
-  function LivePriceTicker({ symbol }) {
-    const [price, setPrice] = useState(null);
+description: A ticker effect creates resources without cleanup.
+intentional_clean: false
+public:
+  file_path: src/LivePriceTicker.tsx
+  language: TypeScript JSX
+  frameworks:
+    react-native: '0.76'
+  runtime: hermes
+  assumptions:
+    - priceSocket.subscribe returns a subscription that requires unsubscribe.
+    - The component can unmount or receive a new symbol.
+  requirements:
+    - Effects must release timers and subscriptions that they create.
+  code: |
+    function LivePriceTicker({ symbol }) {
+      const [price, setPrice] = useState(null);
 
-    useEffect(() => {
-      const id = setInterval(() => {
-        fetchPrice(symbol).then(setPrice);
-      }, 1000);
-      // no cleanup return
-    }, [symbol]);
+      useEffect(() => {
+        const timer = setInterval(() => {
+          fetchPrice(symbol).then(setPrice);
+        }, 1000);
+      }, [symbol]);
 
-    useEffect(() => {
-      const sub = priceSocket.subscribe(symbol, setPrice);
-      // no unsubscribe
-    }, [symbol]);
+      useEffect(() => {
+        const subscription = priceSocket.subscribe(symbol, setPrice);
+      }, [symbol]);
 
-    return <Text>{price}</Text>;
-  }
+      return <Text>{price}</Text>;
+    }
+metadata:
+  provenance:
+    kind: synthetic
+    origin: React effect cleanup documentation
+    revision_reason: Replaced answer comments with ownership assumptions and specific cleanup labels.
+  difficulty: FUNDAMENTALLY-FLAWED
+  domains: [effects, resource-lifecycle]
+  adjudication:
+    status: reviewed
+    method: Source-and-context rule adjudication
+    reviewer: codex-test-builder-review
+    reviewed_on: '2026-09-19'
+    sources:
+      - url: https://react.dev/reference/react/useEffect
+        supports: Effects may return cleanup functions for external systems.
+    notes: Both external resources are created by their effects and neither effect returns cleanup.
+    excluded_claims: [Exact memory growth and unmounted-state warnings are not scored.]
 issues:
-  - severity: CRITICAL
+  - id: rn-03-interval-cleanup
+    rule_id: react-native.memory-leak
     category: memory-leak
-    description: "setInterval not cleared on unmount or symbol change; interval fires indefinitely after navigation away, calling setState on unmounted component"
-    evidence: "const id = setInterval(() => { ... // no cleanup return"
-    expected_checks: [memory-leak, hook-correctness]
-  - severity: CRITICAL
+    severity: MAJOR
+    description: The effect creates a repeating timer but returns no cleanup to clear it.
+    evidence_spans:
+      - lines: [5, 6, 7]
+        rationale: setInterval is called inside an effect whose body has no returned cleanup.
+  - id: rn-03-subscription-cleanup
+    rule_id: react-native.memory-leak
     category: memory-leak
-    description: "priceSocket subscription not unsubscribed on unmount; multiple subscriptions stack on each symbol change"
-    evidence: "const sub = priceSocket.subscribe(symbol, setPrice); // no unsubscribe"
-    expected_checks: [memory-leak, hook-correctness]
+    severity: MAJOR
+    description: The effect creates a socket subscription but returns no cleanup to unsubscribe it.
+    evidence_spans:
+      - lines: [10, 11]
+        rationale: subscribe is called inside an effect whose body has no returned cleanup.

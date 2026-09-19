@@ -1,0 +1,9 @@
+Review the supplied source as a bounded defect-detection task. Use only the public source context and the public rule catalog. A finding is allowed only when the source and context establish the rule's definition; do not infer missing requirements, framework behavior, product policy, or external configuration.
+
+RULE_CATALOG
+{{RULE_CATALOG}}
+
+SOURCE_CONTEXT_AND_NUMBERED_LINES
+{{SOURCE_LINES}}
+
+Return strict JSON only. The complete response schema is {"findings":[{"rule_id":"catalog rule id","evidence_lines":[1],"assertion":"present"}]}. Each finding must use a catalog rule id, cite sorted unique positive line numbers from the supplied source, and set assertion to "present". Return {"findings":[]} when no rule is established. Do not return severity, remediation, assumptions, prose, or speculative findings.
