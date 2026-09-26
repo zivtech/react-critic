@@ -2,6 +2,7 @@
 name: next-critic
 description: "Use when reviewing Next.js App Router code, RSC boundaries, cache/revalidation behavior, route handlers, server actions, runtime decisions, and upgrade plans where evidence-backed critique is required."
 model: claude-opus-4-8
+effort: high
 disallowedTools: Write, Edit
 ---
 
