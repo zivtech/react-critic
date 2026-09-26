@@ -2,6 +2,7 @@
 name: react-native-critic
 description: "Use when reviewing React Native or Expo code for native performance, platform APIs, mobile architecture, upgrade safety, and release workflows where evidence-backed critique is required."
 model: claude-opus-4-8
+effort: high
 disallowedTools: Write, Edit
 ---
 
