@@ -1,4 +1,5 @@
 import copy
+import errno
 import json
 import os
 import subprocess
@@ -6,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest.mock import patch
 
@@ -338,63 +340,43 @@ class ContractAndCustodyTests(ExactBenchmarkRepo):
         with self.assertRaises(run_benchmark.IntegrityError):
             self.execute_benchmark(capture_root="../captures")
 
-    def test_publication_failure_preserves_incomplete_reservation(self):
+    def test_publication_failure_preserves_private_evidence_and_allows_retry(self):
         results = self.repo / "fault-results"
-        with patch.object(run_benchmark.os, "replace", side_effect=OSError("fault")):
-            with self.assertRaises(OSError):
+        failure = OSError(errno.EIO, "fault")
+        with patch.object(benchmark_scorer, "atomic_rename_no_replace", side_effect=failure):
+            with self.assertRaises(OSError) as raised:
                 self.execute_benchmark(results)
         bundle = results / f"model-benchmark-{self.critic}-{self.run_id}"
-        self.assertTrue(bundle.is_dir())
-        self.assertFalse((bundle / "COMPLETE").exists())
-        with self.assertRaises(run_benchmark.IntegrityError):
-            self.execute_benchmark(results)
+        pending = list(results.glob(".pending-model-benchmark-*"))
+        self.assertFalse(bundle.exists())
+        self.assertEqual(1, len(pending))
+        self.assertTrue((pending[0] / "report.md").is_file())
+        self.assertTrue((pending[0] / "manifest.json").is_file())
+        self.assertFalse((pending[0] / "COMPLETE").exists())
+        self.assertIn(str(pending[0]), "\n".join(raised.exception.__notes__))
+        self.execute_benchmark(results)
+        self.assertEqual("complete\n", (bundle / "COMPLETE").read_text())
 
-    def test_substituted_bundle_is_never_deleted_or_completed(self):
-        results = self.repo / "substitution-results"
+    def test_destination_created_at_publish_is_preserved(self):
+        results = self.repo / "destination-race-results"
         bundle = results / f"model-benchmark-{self.critic}-{self.run_id}"
-        moved = results / "original-reservation"
-        original_replace = os.replace
-        replaced = False
+        original_publish = benchmark_scorer.atomic_rename_no_replace
 
-        def substitute(source, destination, *args, **kwargs):
-            nonlocal replaced
-            if not replaced:
-                replaced = True
-                original_replace(bundle, moved)
-                bundle.mkdir()
-                (bundle / "other-writer.txt").write_text("preserve\n")
-                raise OSError("substituted")
-            return original_replace(source, destination, *args, **kwargs)
+        def create_other_writer(source, destination):
+            destination.mkdir()
+            (destination / "report.md").write_text("other report\n")
+            (destination / "manifest.json").write_text("other manifest\n")
+            return original_publish(source, destination)
 
-        with patch.object(run_benchmark.os, "replace", side_effect=substitute):
-            with self.assertRaises(OSError):
-                self.execute_benchmark(results)
-        self.assertEqual("preserve\n", (bundle / "other-writer.txt").read_text())
-        self.assertFalse((bundle / "COMPLETE").exists())
-        self.assertTrue(moved.is_dir())
-
-    def test_bundle_substituted_before_open_is_rejected_before_writes(self):
-        results = self.repo / "pre-open-substitution-results"
-        bundle = results / f"model-benchmark-{self.critic}-{self.run_id}"
-        moved = results / "original-reservation"
-        original_open = os.open
-        replaced = False
-
-        def substitute(path, flags, *args, **kwargs):
-            nonlocal replaced
-            if not replaced and Path(path) == bundle:
-                replaced = True
-                os.replace(bundle, moved)
-                bundle.mkdir()
-                (bundle / "other-writer.txt").write_text("preserve\n")
-            return original_open(path, flags, *args, **kwargs)
-
-        with patch.object(run_benchmark.os, "open", side_effect=substitute):
+        with patch.object(benchmark_scorer, "atomic_rename_no_replace", side_effect=create_other_writer):
             with self.assertRaises(run_benchmark.IntegrityError):
                 self.execute_benchmark(results)
-        self.assertEqual("preserve\n", (bundle / "other-writer.txt").read_text())
+        self.assertEqual("other report\n", (bundle / "report.md").read_text())
+        self.assertEqual("other manifest\n", (bundle / "manifest.json").read_text())
         self.assertFalse((bundle / "COMPLETE").exists())
-        self.assertEqual([], list(moved.iterdir()))
+        pending = list(results.glob(".pending-model-benchmark-*"))
+        self.assertEqual(1, len(pending))
+        self.assertFalse((pending[0] / "COMPLETE").exists())
 
     def test_annotated_tag_and_unrelated_capture_commit_are_rejected(self):
         git(self.repo, "tag", "-a", "capture-tag", "-m", "capture", self.capture_commit)
@@ -451,6 +433,121 @@ class ContractAndCustodyTests(ExactBenchmarkRepo):
         dirty = subprocess.run(command, cwd=self.repo, capture_output=True, text=True)
         self.assertNotEqual(0, dirty.returncode)
         self.assertIn("Refusing to execute dirty scorer", dirty.stderr)
+
+
+class AtomicNoReplaceTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def source(self, name="source"):
+        source = self.root / name
+        source.mkdir()
+        (source / "owner.txt").write_text(name)
+        return source
+
+    def test_atomic_publish_exposes_only_complete_bundle(self):
+        bundle = self.root / "bundle"
+        report, manifest = run_benchmark.atomic_publish(bundle, "report", {"valid": True})
+        self.assertEqual("report\n", report.read_text())
+        self.assertEqual({"valid": True}, json.loads(manifest.read_text()))
+        self.assertEqual("complete\n", (bundle / "COMPLETE").read_text())
+        self.assertEqual([], list(self.root.glob(".pending-model-benchmark-*")))
+
+    def test_native_no_replace_rejects_every_existing_destination_type(self):
+        for kind in ("empty-dir", "nonempty-dir", "file", "symlink", "dangling-symlink"):
+            with self.subTest(kind=kind):
+                case = self.root / kind
+                case.mkdir()
+                source = case / "source"; source.mkdir()
+                destination = case / "destination"
+                if kind.endswith("dir"):
+                    destination.mkdir()
+                    if kind == "nonempty-dir":
+                        (destination / "other.txt").write_text("preserve")
+                elif kind == "file":
+                    destination.write_text("preserve")
+                else:
+                    target = case / ("target" if kind == "symlink" else "missing")
+                    if kind == "symlink":
+                        target.write_text("preserve")
+                    destination.symlink_to(target)
+                with self.assertRaises(FileExistsError):
+                    run_benchmark.atomic_rename_no_replace(source, destination)
+                self.assertTrue(source.is_dir())
+                self.assertTrue(os.path.lexists(destination))
+
+    def test_two_publishers_have_exactly_one_winner(self):
+        destination = self.root / "winner"
+        sources = [self.source("source-one"), self.source("source-two")]
+
+        def publish(source):
+            try:
+                run_benchmark.atomic_rename_no_replace(source, destination)
+                return "won"
+            except FileExistsError:
+                return "lost"
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            outcomes = list(pool.map(publish, sources))
+        self.assertEqual(["lost", "won"], sorted(outcomes))
+        self.assertIn((destination / "owner.txt").read_text(), {"source-one", "source-two"})
+        self.assertEqual(1, sum(source.exists() for source in sources))
+
+    def test_unsupported_platform_and_missing_symbol_fail_closed(self):
+        with patch.object(benchmark_scorer.sys, "platform", "win32"):
+            with self.assertRaises(run_benchmark.IntegrityError):
+                run_benchmark.atomic_rename_no_replace(self.source("unsupported"), self.root / "unsupported-dest")
+        with patch.object(benchmark_scorer.ctypes, "CDLL", return_value=object()):
+            with self.assertRaises(run_benchmark.IntegrityError):
+                run_benchmark.atomic_rename_no_replace(self.source("missing-symbol"), self.root / "missing-dest")
+
+    @unittest.skipUnless(sys.platform == "darwin", "Darwin ACL behavior")
+    def test_inherited_delete_acl_cannot_leave_complete_on_failed_stage(self):
+        results = self.root / "deny-results"
+        results.mkdir()
+        subprocess.run(
+            ["/bin/chmod", "+a", "everyone deny delete_child,directory_inherit", str(results)],
+            check=True,
+        )
+        bundle = results / "bundle"
+        try:
+            with self.assertRaises(PermissionError):
+                run_benchmark.atomic_publish(bundle, "report", {"valid": True})
+            pending = list(results.glob(".pending-model-benchmark-*"))
+            self.assertEqual(1, len(pending))
+            self.assertFalse(bundle.exists())
+            self.assertTrue((pending[0] / "report.md").is_file())
+            self.assertTrue((pending[0] / "manifest.json").is_file())
+            self.assertFalse((pending[0] / "COMPLETE").exists())
+        finally:
+            subprocess.run(["/bin/chmod", "-N", str(results)], check=True)
+
+    @unittest.skipUnless(sys.platform == "darwin", "Darwin ACL behavior")
+    def test_inherited_allow_acl_is_removed_before_payload_creation(self):
+        results = self.root / "allow-results"
+        results.mkdir()
+        subprocess.run(
+            [
+                "/bin/chmod",
+                "+a",
+                "everyone allow list,search,readattr,readextattr,readsecurity,directory_inherit,file_inherit",
+                str(results),
+            ],
+            check=True,
+        )
+        bundle = results / "bundle"
+        try:
+            self.assertTrue(benchmark_scorer.darwin_has_extended_acl(results))
+            run_benchmark.atomic_publish(bundle, "report", {"valid": True})
+            self.assertEqual(0o700, bundle.stat().st_mode & 0o777)
+            for path in (bundle, bundle / "report.md", bundle / "manifest.json", bundle / "COMPLETE"):
+                self.assertFalse(benchmark_scorer.darwin_has_extended_acl(path), path)
+        finally:
+            subprocess.run(["/bin/chmod", "-N", str(results)], check=True)
 
 
 class RealRepoIntegrationTests(unittest.TestCase):

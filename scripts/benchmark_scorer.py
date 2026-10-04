@@ -6,12 +6,14 @@ exact committed bytes of this module.
 """
 
 import argparse
+import ctypes
+import errno
 import hashlib
 import json
 import os
 import re
-import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path, PurePosixPath
 
@@ -554,39 +556,100 @@ def build_window_references(run_id: str, artifacts: list[dict], fixtures: list[d
     return refs
 
 
+def atomic_rename_no_replace(source: Path, destination: Path) -> None:
+    """Atomically publish a directory without replacing any destination."""
+    libc = ctypes.CDLL(None, use_errno=True)
+    source_bytes = os.fsencode(source)
+    destination_bytes = os.fsencode(destination)
+    if sys.platform == "darwin":
+        function = getattr(libc, "renamex_np", None)
+        signature = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_uint]
+        arguments = (source_bytes, destination_bytes, 0x4)  # RENAME_EXCL
+    elif sys.platform.startswith("linux"):
+        function = getattr(libc, "renameat2", None)
+        signature = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint]
+        arguments = (-100, source_bytes, -100, destination_bytes, 0x1)  # AT_FDCWD, RENAME_NOREPLACE
+    else:
+        raise IntegrityError(f"Atomic no-replace directory publication is unsupported on {sys.platform}")
+    if function is None:
+        raise IntegrityError(f"Atomic no-replace directory publication is unavailable on {sys.platform}")
+    function.argtypes = signature
+    function.restype = ctypes.c_int
+    ctypes.set_errno(0)
+    if function(*arguments) == 0:
+        return
+    error_number = ctypes.get_errno()
+    if error_number in {errno.EEXIST, errno.ENOTEMPTY}:
+        raise FileExistsError(error_number, os.strerror(error_number), destination)
+    unsupported = {errno.EINVAL, errno.ENOSYS, errno.EOPNOTSUPP, errno.ENOTSUP}
+    if error_number in unsupported:
+        raise IntegrityError(f"Atomic no-replace directory publication is unsupported by {destination.parent}")
+    raise OSError(error_number, os.strerror(error_number), destination)
+
+
+def darwin_has_extended_acl(path: Path) -> bool:
+    """Return whether a Darwin path has an extended ACL, failing closed on errors."""
+    libc = ctypes.CDLL(None, use_errno=True)
+    acl_get_file = getattr(libc, "acl_get_file", None)
+    acl_free = getattr(libc, "acl_free", None)
+    if acl_get_file is None or acl_free is None:
+        raise IntegrityError("Darwin ACL inspection is unavailable")
+    acl_get_file.argtypes = [ctypes.c_char_p, ctypes.c_int]
+    acl_get_file.restype = ctypes.c_void_p
+    acl_free.argtypes = [ctypes.c_void_p]
+    acl_free.restype = ctypes.c_int
+    ctypes.set_errno(0)
+    acl = acl_get_file(os.fsencode(path), 0x100)  # ACL_TYPE_EXTENDED
+    if acl:
+        if acl_free(acl) != 0:
+            error_number = ctypes.get_errno()
+            raise OSError(error_number, os.strerror(error_number), path)
+        return True
+    error_number = ctypes.get_errno()
+    if error_number == errno.ENOENT and os.path.lexists(path):
+        return False
+    raise OSError(error_number, os.strerror(error_number), path)
+
+
+def harden_private_stage(stage: Path) -> None:
+    """Make a fresh staging directory effectively owner-only before writing."""
+    stage.chmod(0o700)
+    if sys.platform == "darwin":
+        result = subprocess.run(["/bin/chmod", "-N", os.fspath(stage)], capture_output=True, text=True)
+        if result.returncode:
+            raise IntegrityError(result.stderr.strip() or f"Could not remove inherited ACLs from {stage}")
+        if darwin_has_extended_acl(stage):
+            raise IntegrityError(f"Could not verify ACL removal from {stage}")
+    if stage.stat().st_mode & 0o777 != 0o700:
+        raise IntegrityError(f"Private staging directory is not mode 0700: {stage}")
+
+
+def preserve_unpublished_stage(stage: Path, error: BaseException) -> None:
+    """Remove the success marker while retaining unpublished diagnostic evidence."""
+    try:
+        (stage / "COMPLETE").unlink(missing_ok=True)
+    except OSError as marker_error:
+        error.add_note(f"Could not remove unpublished COMPLETE marker: {marker_error}")
+    error.add_note(f"Unpublished benchmark evidence preserved at {stage}")
+
+
 def atomic_publish(bundle: Path, report: str, manifest: dict) -> tuple[Path, Path]:
     if os.path.lexists(bundle):
         raise IntegrityError(f"Refusing to overwrite existing bundle: {bundle}")
     bundle.parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix=".pending-model-benchmark-", dir=bundle.parent))
     try:
-        bundle.mkdir()
+        harden_private_stage(stage)
+        (stage / "report.md").write_text(report + "\n")
+        (stage / "manifest.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")
+        (stage / "COMPLETE").write_text("complete\n")
+        atomic_rename_no_replace(stage, bundle)
     except FileExistsError as error:
-        raise IntegrityError(f"Refusing to overwrite existing bundle: {bundle}") from error
-    reservation = bundle.lstat()
-    temp = None
-    bundle_fd = None
-    try:
-        bundle_fd = os.open(bundle, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-        opened = os.fstat(bundle_fd)
-        if (opened.st_dev, opened.st_ino) != (reservation.st_dev, reservation.st_ino):
-            raise IntegrityError("Reserved publication bundle was substituted before it was opened")
-        temp = Path(tempfile.mkdtemp(prefix=".pending-model-benchmark-", dir=bundle.parent))
-        (temp / "report.md").write_text(report + "\n")
-        (temp / "manifest.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")
-        (temp / "COMPLETE").write_text("complete\n")
-        for name in ("report.md", "manifest.json", "COMPLETE"):
-            os.replace(temp / name, name, dst_dir_fd=bundle_fd)
-        temp.rmdir()
-        current = bundle.lstat()
-        if (current.st_dev, current.st_ino) != (reservation.st_dev, reservation.st_ino):
-            raise IntegrityError("Reserved publication bundle was substituted during publication")
-    except Exception:
-        if temp is not None:
-            shutil.rmtree(temp, ignore_errors=True)
+        preserve_unpublished_stage(stage, error)
+        raise IntegrityError(f"Refusing to overwrite existing bundle: {bundle}; unpublished evidence preserved at {stage}") from error
+    except BaseException as error:
+        preserve_unpublished_stage(stage, error)
         raise
-    finally:
-        if bundle_fd is not None:
-            os.close(bundle_fd)
     return bundle / "report.md", bundle / "manifest.json"
 
 
