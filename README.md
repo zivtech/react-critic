@@ -99,10 +99,18 @@ therefore supports no performance, full-skill, prose/remediation, severity,
 provider-authenticity, or statistical-superiority claim. Historical reports
 remain rejected.
 
-Publication reserves the exact bundle directory before writing and adds a final
-`COMPLETE` marker only after both report and manifest are in place. This is a
-fail-closed local publication guard; it does not claim crash-durable or
-independently witnessed publication.
+Publication builds the complete bundle in a private sibling staging directory,
+then exposes all three files at once with the platform's atomic no-replace
+directory rename. macOS uses `renamex_np(RENAME_EXCL)` and Linux uses
+`renameat2(RENAME_NOREPLACE)`; unsupported platforms, kernels, or filesystems
+fail closed. A concurrent destination is never replaced. On handled publication
+failures, `COMPLETE` is removed before staging evidence is retained, and because
+the canonical name remains free, a later retry is allowed. A marker-removal
+failure is reported explicitly. Published bundles inherit the staging
+directory's owner-only permissions; on macOS, inherited ACLs are removed and
+verified before payload creation. This guard does not claim crash durability,
+protection from an arbitrary malicious same-user process, or independent
+witnessing.
 
 ## License
 
